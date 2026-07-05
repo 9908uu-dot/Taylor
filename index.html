@@ -212,10 +212,22 @@
                                     <button class="btn btn-secondary btn-tab" data-category="phrases">實用情境</button>
                                     <button class="btn btn-secondary btn-tab" data-category="dining">飲食餐飲</button>
                                 </div>
-                                <div class="voice-selection-bar">
-                                    <label for="voice-rate"><i class="fas fa-tachometer-alt"></i> 語速: </label>
-                                    <span id="rate-val">1x</span>
-                                    <input type="range" id="voice-rate" min="0.5" max="1.5" step="0.1" value="1">
+                                <div class="control-actions-wrapper">
+                                    <div class="lang-selector-wrapper">
+                                        <label for="native-lang"><i class="fas fa-globe"></i> 母語: </label>
+                                        <select id="native-lang" class="select-dropdown">
+                                            <option value="zh">繁體中文</option>
+                                            <option value="en">English</option>
+                                            <option value="es">Español</option>
+                                            <option value="ja">日本語</option>
+                                            <option value="ko">한국어</option>
+                                        </select>
+                                    </div>
+                                    <div class="voice-selection-bar">
+                                        <label for="voice-rate"><i class="fas fa-tachometer-alt"></i> 語速: </label>
+                                        <span id="rate-val">1x</span>
+                                        <input type="range" id="voice-rate" min="0.5" max="1.5" step="0.1" value="1">
+                                    </div>
                                 </div>
                             </div>
 
@@ -229,75 +241,75 @@
                         <!-- Right Panel: Resources and tips -->
                         <div class="italian-resource-panel">
                             <div class="resource-section">
-                                <h3><i class="fas fa-external-link-alt"></i> 義大利文推薦學習網站</h3>
+                                <h3 id="res-title-web"><i class="fas fa-external-link-alt"></i> 義大利文推薦學習網站</h3>
                                 <ul class="resource-list">
                                     <li>
                                         <a href="https://www.wordreference.com/" target="_blank" class="resource-item">
                                             <strong>WordReference</strong>
-                                            <span>全球最受歡迎的義大利文字典，提供詳細的變位表與詞彙用法討論區。</span>
+                                            <span id="res-desc-wr">全球最受歡迎的義大利文字典，提供詳細的變位表與詞彙用法討論區。</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="https://www.collinsdictionary.com/dictionary/english-italian" target="_blank" class="resource-item">
                                             <strong>Collins Dictionary</strong>
-                                            <span>優質的英義雙語字典，內附清晰的單字原生真人發音。</span>
+                                            <span id="res-desc-collins">優質的英義雙語字典，內附清晰的單字原生真人發音。</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="https://www.treccani.it/vocabolario/" target="_blank" class="resource-item">
                                             <strong>Treccani</strong>
-                                            <span>義大利國家百科全書官方詞典，最權威的義義字典（適合中高級學者）。</span>
+                                            <span id="res-desc-treccani">義大利國家百科全書官方詞典，最權威的義義字典（適合中高級學者）。</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
 
                             <div class="resource-section">
-                                <h3><i class="fab fa-youtube"></i> 推薦 YouTube 學習頻道</h3>
+                                <h3 id="res-title-yt"><i class="fab fa-youtube"></i> 推薦 YouTube 學習頻道</h3>
                                 <ul class="resource-list">
                                     <li>
                                         <a href="https://www.youtube.com/@LearnItalianwithLucrezia" target="_blank" class="resource-item">
                                             <strong>Learn Italian with Lucrezia</strong>
-                                            <span>最受歡迎的義大利文網紅！發音標準，包含豐富的生活 Vlogs 與文法教學。</span>
+                                            <span id="res-desc-lucrezia">最受歡迎的義大利文網紅！發音標準，包含豐富的生活 Vlogs 與文法教學。</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="https://www.youtube.com/@EasyItalian" target="_blank" class="resource-item">
                                             <strong>Easy Italian</strong>
-                                            <span>街頭街坊實測學習！提供雙語字幕，帶您學習義大利人日常最真實的對話與語速。</span>
+                                            <span id="res-desc-easy">街頭街坊實測學習！提供雙語字幕，帶您學習義大利人日常最真實的對話與語速。</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="https://www.youtube.com/@ItalyMadeEasy" target="_blank" class="resource-item">
                                             <strong>Italy Made Easy</strong>
-                                            <span>主持人講英文十分風趣，透過科學與邏輯方法拆解義大利文的結構，非常適合完全零基礎。</span>
+                                            <span id="res-desc-easy-italy">主持人講英文十分風趣，透過科學與邏輯方法拆解義大利文的結構，非常適合完全零基礎。</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
 
                             <div class="resource-section">
-                                <h3><i class="fas fa-mobile-alt"></i> 推薦實用 App</h3>
+                                <h3 id="res-title-app"><i class="fas fa-mobile-alt"></i> 推薦實用 App</h3>
                                 <div class="app-badges">
                                     <div class="app-badge">
                                         <span class="app-icon"><i class="fas fa-owl"></i></span>
                                         <div class="app-details">
                                             <strong>Duolingo (多鄰國)</strong>
-                                            <span>每天 5 分鐘闖關式遊戲化學習，最適合建立基礎習慣。</span>
+                                            <span id="app-desc-duo">每天 5 分鐘闖關式遊戲化學習，最適合建立基礎習慣。</span>
                                         </div>
                                     </div>
                                     <div class="app-badge">
                                         <span class="app-icon"><i class="fas fa-brain"></i></span>
                                         <div class="app-details">
                                             <strong>Memrise (憶術家)</strong>
-                                            <span>利用原生短片加深字彙記憶，提供最道地的當地人用語。</span>
+                                            <span id="app-desc-mem">利用原生短片加深字彙記憶，提供最道地的當地人用語。</span>
                                         </div>
                                     </div>
                                     <div class="app-badge">
                                         <span class="app-icon"><i class="fas fa-clone"></i></span>
                                         <div class="app-details">
                                             <strong>Anki 記憶卡</strong>
-                                            <span>使用間隔重複系統 (SRS) 演算法，適合高效率背單字。</span>
+                                            <span id="app-desc-anki">使用間隔重複系統 (SRS) 演算法，適合高效率背單字。</span>
                                         </div>
                                     </div>
                                 </div>
