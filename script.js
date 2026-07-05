@@ -1,51 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
-    // 1. Navigation Scroll Effect
+    // 1. Navigation & Tab Switching
     // ==========================================
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    const activeTitle = document.getElementById('active-tool-title');
+    const toolCards = document.querySelectorAll('.tool-card');
+
+    const switchTab = (targetId) => {
+        // Remove active class from buttons and panes
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+
+        // Add active to selected button and pane
+        const targetBtn = document.querySelector(`.nav-btn[data-target="${targetId}"]`);
+        const targetPane = document.getElementById(targetId);
+
+        if (targetBtn && targetPane) {
+            targetBtn.classList.add('active');
+            targetPane.classList.add('active');
+            
+            // Update Header Title
+            const titleText = targetBtn.textContent.trim();
+            activeTitle.textContent = titleText;
         }
-    });
+    };
 
-    // ==========================================
-    // 2. Mobile Menu Toggle
-    // ==========================================
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navLinks = document.getElementById('nav-links');
-    const navItems = document.querySelectorAll('.nav-item');
-
-    mobileToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileToggle.classList.toggle('active');
-        
-        // Burger animation
-        const bars = mobileToggle.querySelectorAll('.bar');
-        if (mobileToggle.classList.contains('active')) {
-            bars[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-            bars[1].style.opacity = '0';
-            bars[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
-        } else {
-            bars[0].style.transform = 'none';
-            bars[1].style.opacity = '1';
-            bars[2].style.transform = 'none';
-        }
-    });
-
-    // Close menu when clicking link
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileToggle.classList.remove('active');
-            const bars = mobileToggle.querySelectorAll('.bar');
-            bars[0].style.transform = 'none';
-            bars[1].style.opacity = '1';
-            bars[2].style.transform = 'none';
+    // Nav list clicks
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const target = button.getAttribute('data-target');
+            switchTab(target);
         });
     });
+
+    // Dashboard card clicks
+    toolCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const target = card.getAttribute('data-card-target');
+            switchTab(target);
+        });
+    });
+
+    // ==========================================
+    // 2. Tool Search Filter
+    // ==========================================
+    const toolSearch = document.getElementById('tool-search');
+    
+    if (toolSearch) {
+        toolSearch.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            navButtons.forEach(btn => {
+                const target = btn.getAttribute('data-target');
+                if (target === 'dashboard') return; // Skip dashboard item
+
+                const btnText = btn.textContent.toLowerCase();
+                if (btnText.includes(query)) {
+                    btn.parentElement.style.display = 'block';
+                } else {
+                    btn.parentElement.style.display = 'none';
+                }
+            });
+        });
+    }
 
     // ==========================================
     // 3. Theme Toggle (Dark / Light)
@@ -54,173 +71,285 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeIcon = themeToggle.querySelector('i');
     const body = document.body;
 
-    // Check saved theme or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const savedTheme = localStorage.getItem('toolbox-theme') || 'dark';
     if (savedTheme === 'light') {
         body.classList.remove('dark-theme');
         body.classList.add('light-theme');
         themeIcon.className = 'fas fa-sun';
-    } else {
-        body.classList.add('dark-theme');
-        body.classList.remove('light-theme');
-        themeIcon.className = 'fas fa-moon';
     }
 
     themeToggle.addEventListener('click', () => {
         if (body.classList.contains('dark-theme')) {
             body.classList.replace('dark-theme', 'light-theme');
             themeIcon.className = 'fas fa-sun';
-            localStorage.setItem('theme', 'light');
+            localStorage.setItem('toolbox-theme', 'light');
         } else {
             body.classList.replace('light-theme', 'dark-theme');
             themeIcon.className = 'fas fa-moon';
-            localStorage.setItem('theme', 'dark');
+            localStorage.setItem('toolbox-theme', 'dark');
         }
     });
 
     // ==========================================
-    // 4. Scroll Active Navigation Highlights
+    // Helper: Clipboard Copy
     // ==========================================
-    const sections = document.querySelectorAll('section');
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 150)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href').slice(1) === current) {
-                item.classList.add('active');
-            }
-        });
-    });
-
-    // ==========================================
-    // 5. Portfolio Filtering
-    // ==========================================
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
-
-            const filterValue = button.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filterValue === 'all' || category === filterValue) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
+    const copyToClipboard = (text, successCallback) => {
+        navigator.clipboard.writeText(text)
+            .then(successCallback)
+            .catch(err => {
+                console.error('無法複製文字: ', err);
             });
-        });
-    });
-
-    // ==========================================
-    // 6. Intersection Observers for Scroll Animations
-    // ==========================================
-    // Stats Count Up Animation
-    const statsSection = document.getElementById('about');
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let animatedStats = false;
-
-    const countUp = (element) => {
-        const target = parseInt(element.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
-        const stepTime = Math.abs(Math.floor(duration / target));
-        let current = 0;
-        
-        const timer = setInterval(() => {
-            current += 1;
-            element.textContent = current;
-            if (current >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            }
-        }, Math.max(stepTime, 15));
     };
 
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !animatedStats) {
-                statNumbers.forEach(num => countUp(num));
-                animatedStats = true;
-            }
+    // ==========================================
+    // 4. Tool: JSON Formatter & Validator
+    // ==========================================
+    const jsonInput = document.getElementById('json-input');
+    const jsonOutput = document.getElementById('json-output');
+    const jsonStatus = document.getElementById('json-status');
+    const btnJsonFormat = document.getElementById('btn-json-format');
+    const btnJsonMinify = document.getElementById('btn-json-minify');
+    const btnJsonClear = document.getElementById('btn-json-clear');
+    const btnJsonCopy = document.getElementById('btn-json-copy');
+
+    const updateJsonStatus = (isValid, message = '') => {
+        jsonStatus.className = 'tool-status-bar';
+        if (isValid) {
+            jsonStatus.classList.add('valid');
+            jsonStatus.innerHTML = '<i class="fas fa-check-circle"></i> JSON 格式正確！';
+        } else {
+            jsonStatus.classList.add('invalid');
+            jsonStatus.innerHTML = `<i class="fas fa-exclamation-circle"></i> 語法錯誤: ${message}`;
+        }
+    };
+
+    const processJson = (minify = false) => {
+        const val = jsonInput.value.trim();
+        if (!val) {
+            jsonOutput.textContent = '格式化後的資料將在此顯示...';
+            jsonOutput.className = 'empty-output';
+            jsonStatus.className = 'tool-status-bar';
+            jsonStatus.innerHTML = '';
+            return;
+        }
+
+        try {
+            const parsed = JSON.parse(val);
+            const formatted = minify ? JSON.stringify(parsed) : JSON.stringify(parsed, null, 4);
+            jsonOutput.textContent = formatted;
+            jsonOutput.className = '';
+            updateJsonStatus(true);
+        } catch (e) {
+            jsonOutput.textContent = '解析錯誤，請確認輸入資料。';
+            jsonOutput.className = 'empty-output';
+            updateJsonStatus(false, e.message);
+        }
+    };
+
+    if (btnJsonFormat) {
+        btnJsonFormat.addEventListener('click', () => processJson(false));
+        btnJsonMinify.addEventListener('click', () => processJson(true));
+        
+        btnJsonClear.addEventListener('click', () => {
+            jsonInput.value = '';
+            processJson();
         });
-    }, { threshold: 0.3 });
 
-    if (statsSection) {
-        statsObserver.observe(statsSection);
-    }
-
-    // Skills Bar Progression Animation
-    const skillsSection = document.getElementById('skills');
-    const skillItems = document.querySelectorAll('.skill-item');
-
-    const skillsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                skillItems.forEach(item => {
-                    item.classList.add('animated');
+        btnJsonCopy.addEventListener('click', () => {
+            const text = jsonOutput.textContent;
+            if (text && !jsonOutput.classList.contains('empty-output')) {
+                copyToClipboard(text, () => {
+                    const originalText = btnJsonCopy.innerHTML;
+                    btnJsonCopy.innerHTML = '<i class="fas fa-check"></i> 已複製';
+                    setTimeout(() => {
+                        btnJsonCopy.innerHTML = originalText;
+                    }, 2000);
                 });
             }
         });
-    }, { threshold: 0.2 });
-
-    if (skillsSection) {
-        skillsObserver.observe(skillsSection);
     }
 
     // ==========================================
-    // 7. Contact Form Handling
+    // 5. Tool: Color Palette Generator
     // ==========================================
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
+    const paletteDisplay = document.getElementById('palette-display');
+    const btnGenerateColors = document.getElementById('btn-generate-colors');
+    let colorSlotsData = [];
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+    // Helper: generate random beautiful color
+    const generateRandomHex = () => {
+        // HSL based generation to ensure clean, vibrant colors (no muddy colors)
+        const h = Math.floor(Math.random() * 360);
+        const s = Math.floor(Math.random() * 25) + 65; // 65% - 90%
+        const l = Math.floor(Math.random() * 20) + 45; // 45% - 65%
+        
+        // Convert HSL to Hex
+        const hslToHex = (h, s, l) => {
+            l /= 100;
+            const a = s * Math.min(l, 1 - l) / 100;
+            const f = n => {
+                const k = (n + h / 30) % 12;
+                const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+                return Math.round(255 * color).toString(16).padStart(2, '0');
+            };
+            return `#${f(0)}${f(8)}${f(4)}`;
+        };
+        
+        return hslToHex(h, s, l);
+    };
+
+    // Helper: Hex to RGB
+    const hexToRgbString = (hex) => {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return `RGB(${r}, ${g}, ${b})`;
+    };
+
+    const renderPalette = () => {
+        if (!paletteDisplay) return;
+        paletteDisplay.innerHTML = '';
+        
+        colorSlotsData.forEach((slot, index) => {
+            const slotEl = document.createElement('div');
+            slotEl.className = 'color-slot';
             
-            // Collect Form Data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            slotEl.innerHTML = `
+                <div class="color-block" style="background-color: ${slot.hex}"></div>
+                <div class="color-slot-meta">
+                    <div class="color-hex">${slot.hex.toUpperCase()}</div>
+                    <div class="color-rgb">${hexToRgbString(slot.hex)}</div>
+                    <button class="lock-btn ${slot.locked ? 'locked' : ''}" aria-label="鎖定色彩">
+                        <i class="fas ${slot.locked ? 'fa-lock' : 'fa-lock-open'}"></i>
+                    </button>
+                </div>
+            `;
 
-            // Simple user UX simulation
-            formStatus.className = 'form-status';
-            formStatus.textContent = '傳送中...';
-            formStatus.style.opacity = '1';
+            // Lock toggle listener
+            const lockBtn = slotEl.querySelector('.lock-btn');
+            lockBtn.addEventListener('click', () => {
+                colorSlotsData[index].locked = !colorSlotsData[index].locked;
+                renderPalette();
+            });
 
-            setTimeout(() => {
-                // Success feedback
-                formStatus.classList.add('success');
-                formStatus.textContent = `感謝您的聯絡，${name}！您的訊息已發送成功。`;
-                contactForm.reset();
+            // Copy Hex on click
+            const hexEl = slotEl.querySelector('.color-hex');
+            const colorBlock = slotEl.querySelector('.color-block');
+            
+            const handleCopy = () => {
+                copyToClipboard(slot.hex.toUpperCase(), () => {
+                    const originalText = hexEl.textContent;
+                    hexEl.textContent = '複製成功！';
+                    hexEl.style.color = 'var(--success)';
+                    setTimeout(() => {
+                        hexEl.textContent = originalText;
+                        hexEl.style.color = '';
+                    }, 1200);
+                });
+            };
 
-                // Fade out after 5 seconds
-                setTimeout(() => {
-                    formStatus.style.opacity = '0';
-                }, 5000);
-            }, 1200);
+            hexEl.addEventListener('click', handleCopy);
+            colorBlock.addEventListener('click', handleCopy);
+
+            paletteDisplay.appendChild(slotEl);
         });
+    };
+
+    const generatePalette = (initial = false) => {
+        if (initial) {
+            colorSlotsData = Array.from({ length: 5 }, () => ({
+                hex: generateRandomHex(),
+                locked: false
+            }));
+        } else {
+            colorSlotsData = colorSlotsData.map(slot => {
+                if (slot.locked) return slot;
+                return {
+                    hex: generateRandomHex(),
+                    locked: false
+                };
+            });
+        }
+        renderPalette();
+    };
+
+    if (btnGenerateColors) {
+        btnGenerateColors.addEventListener('click', () => generatePalette(false));
+        // Run initial load
+        generatePalette(true);
+    }
+
+    // ==========================================
+    // 6. Tool: Markdown Previewer
+    // ==========================================
+    const markdownInput = document.getElementById('markdown-input');
+    const markdownOutput = document.getElementById('markdown-output');
+    const btnMdClear = document.getElementById('btn-md-clear');
+    const btnMdSample = document.getElementById('btn-md-sample');
+
+    const sampleMarkdown = `# Markdown 範例文件
+
+這是一個由 **Nova Toolbox** 即時渲染的範本。
+
+## 常用語法介紹
+
+### 1. 清單項目
+*   **粗體字** 與 *斜體字* 混合使用。
+*   內嵌 \`inline code\` 程式碼。
+*   支援項目符號：
+    *   子清單項目一
+    *   子清單項目二
+
+### 2. 程式碼區塊 (Code Block)
+\`\`\`javascript
+function calculateSum(a, b) {
+    console.log("計算總和中...");
+    return a + b;
+}
+console.log(calculateSum(10, 20));
+\`\`\`
+
+### 3. 引言 (Blockquote)
+> "科技始終來自於人性，而代碼始終來自於熱情。"
+> — *Nova Chen*
+
+---
+請在此處隨意編輯或輸入您的 Markdown 文件，右側會立刻顯示網頁排版結果。`;
+
+    const renderMarkdown = () => {
+        if (!markdownInput || !markdownOutput) return;
+        const rawText = markdownInput.value;
+        if (!rawText.trim()) {
+            markdownOutput.innerHTML = '<p class="empty-output">預覽結果將在此顯示...</p>';
+            return;
+        }
+        
+        // Parse markdown using marked.js library loaded via CDN
+        try {
+            markdownOutput.innerHTML = marked.parse(rawText);
+        } catch (e) {
+            markdownOutput.innerHTML = `<p style="color: var(--danger)">編譯錯誤: ${e.message}</p>`;
+        }
+    };
+
+    if (markdownInput) {
+        markdownInput.addEventListener('input', renderMarkdown);
+        
+        if (btnMdClear) {
+            btnMdClear.addEventListener('click', () => {
+                markdownInput.value = '';
+                renderMarkdown();
+            });
+        }
+
+        if (btnMdSample) {
+            btnMdSample.addEventListener('click', () => {
+                markdownInput.value = sampleMarkdown;
+                renderMarkdown();
+            });
+        }
+
+        // Load initial state if empty
+        renderMarkdown();
     }
 });

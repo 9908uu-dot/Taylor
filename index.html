@@ -3,374 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>極致未來感個人網頁 - 數位創作與程式設計</title>
-    <meta name="description" content="展示個人專案、前端技術、動態設計與系統架構，打造沉浸式現代化數位體驗。">
+    <title>Nova Toolbox - 多功能工具箱</title>
+    <meta name="description" content="集合多種實用數位工具的極致美感工具箱，包含開發者工具、設計助理與日常生產力工具。">
     <!-- Google Fonts: Outfit & Noto Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-theme">
-    <!-- Background Glow Effects -->
+    <!-- Ambient Background Glows -->
     <div class="bg-glow circle-1"></div>
     <div class="bg-glow circle-2"></div>
-    <div class="bg-glow circle-3"></div>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <span class="logo-text">Nova</span><span class="logo-dot">.</span>
-            </a>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#hero" class="nav-item active">首頁</a></li>
-                <li><a href="#about" class="nav-item">關於我</a></li>
-                <li><a href="#projects" class="nav-item">精選專案</a></li>
-                <li><a href="#skills" class="nav-item">專業技能</a></li>
-                <li><a href="#contact" class="nav-item">聯絡我</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="切換主題">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="開啟選單">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section" style="background-image: linear-gradient(135deg, rgba(10, 10, 20, 0.9), rgba(10, 10, 20, 0.7)), url('assets/images/hero_bg.jpg');">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="badge fade-in">
-                    <span class="badge-dot"></span> 接受新提案中
-                </div>
-                <h1 class="hero-title fade-in-delay-1">
-                    創造 <span class="gradient-text">數位未來</span> 的無限可能
-                </h1>
-                <p class="hero-description fade-in-delay-2">
-                    我是 <strong class="highlight">Nova Chen</strong>，一名全端工程師與互動設計師。專注於打造兼具極致視覺美感與流暢效能的現代 Web 應用。
-                </p>
-                <div class="hero-cta fade-in-delay-3">
-                    <a href="#projects" class="btn btn-primary">探索專案 <i class="fas fa-arrow-right"></i></a>
-                    <a href="#contact" class="btn btn-secondary">聯絡我</a>
-                </div>
-            </div>
-            <div class="hero-image-wrapper fade-in-delay-2">
-                <div class="avatar-glow-ring">
-                    <div class="avatar-container">
-                        <img src="assets/images/profile_avatar.jpg" alt="Nova Chen Profile" class="avatar-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span class="mouse">
-                <span class="wheel"></span>
-            </span>
-            <span class="scroll-text">向下捲動</span>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">ABOUT ME</span>
-                <h2 class="section-title">關於我的故事</h2>
-                <div class="header-line"></div>
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="logo">
+                    <span class="logo-text">Nova</span><span class="logo-dot">.</span><span class="logo-sub">Box</span>
+                </a>
             </div>
             
-            <div class="about-grid">
-                <div class="about-text-content">
-                    <h3>用程式碼與設計改變世界</h3>
-                    <p>我熱衷於將複雜的邏輯轉化為直覺、優雅的介面。在過去的五年中，我協助多個品牌與團隊打造其核心數位產品，從新創公司的 MVP 開發到企業級 SaaS 系統的重構。</p>
-                    <p>我的設計哲學是「美感與功能並重」，每一次的互動細節與動態效果，都是為了提升使用者的操作體驗，而非僅是裝飾。</p>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h4 class="stat-number" data-target="5">0</h4>
-                            <p class="stat-label">年開發經驗</p>
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="tool-search" placeholder="搜尋工具...">
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">工具分類</span>
+                    <ul class="nav-list">
+                        <li>
+                            <button class="nav-btn active" data-target="dashboard">
+                                <i class="fas fa-th-large"></i> 儀表板首頁
+                            </button>
+                        </li>
+                        <li>
+                            <button class="nav-btn" data-target="json-tool">
+                                <i class="fas fa-code"></i> JSON 格式化與驗證
+                            </button>
+                        </li>
+                        <li>
+                            <button class="nav-btn" data-target="color-tool">
+                                <i class="fas fa-palette"></i> 漸層配色產生器
+                            </button>
+                        </li>
+                        <li>
+                            <button class="nav-btn" data-target="markdown-tool">
+                                <i class="fab fa-markdown"></i> Markdown 即時預覽
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="theme-toggle-wrapper">
+                    <span>切換主題</span>
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <header class="workspace-header">
+                <h1 id="active-tool-title">儀表板首頁</h1>
+                <div class="header-actions">
+                    <span class="status-indicator"><span class="status-dot"></span> 系統運作正常</span>
+                </div>
+            </header>
+
+            <div class="workspace-content">
+                <!-- Tab 1: Dashboard Home -->
+                <div class="tab-pane active" id="dashboard">
+                    <div class="dashboard-hero">
+                        <h2>歡迎來到 Nova Toolbox</h2>
+                        <p>為開發者與設計師打造的極致美感工具箱。點擊左側導覽列開始使用工具，或點擊下方卡片直接進入。</p>
+                    </div>
+
+                    <div class="tools-grid">
+                        <!-- Card 1 -->
+                        <div class="tool-card" data-card-target="json-tool">
+                            <div class="tool-card-icon bg-blue">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>JSON 格式化與驗證</h3>
+                            <p>解析、格式化、排版與壓縮您的 JSON 數據，並即時檢查語法錯誤。</p>
+                            <span class="card-action">開始使用 <i class="fas fa-arrow-right"></i></span>
                         </div>
-                        <div class="stat-card">
-                            <h4 class="stat-number" data-target="24">0</h4>
-                            <p class="stat-label">完成專案</p>
+                        
+                        <!-- Card 2 -->
+                        <div class="tool-card" data-card-target="color-tool">
+                            <div class="tool-card-icon bg-purple">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3>漸層配色產生器</h3>
+                            <p>一鍵隨機生成高質感的調色盤，支援顏色鎖定、複製程式碼與配色調整。</p>
+                            <span class="card-action">開始使用 <i class="fas fa-arrow-right"></i></span>
                         </div>
-                        <div class="stat-card">
-                            <h4 class="stat-number" data-target="100">0</h4>
-                            <p class="stat-label">客戶滿意度 %</p>
+
+                        <!-- Card 3 -->
+                        <div class="tool-card" data-card-target="markdown-tool">
+                            <div class="tool-card-icon bg-pink">
+                                <i class="fab fa-markdown"></i>
+                            </div>
+                            <h3>Markdown 即時預覽</h3>
+                            <p>雙欄式編輯器，即時將您的 Markdown 語法編譯成 HTML 渲染效果。</p>
+                            <span class="card-action">開始使用 <i class="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="about-details">
-                    <div class="detail-card">
-                        <div class="detail-icon">
-                            <i class="fas fa-laptop-code"></i>
+
+                <!-- Tab 2: JSON Formatter & Validator -->
+                <div class="tab-pane" id="json-tool">
+                    <div class="tool-container">
+                        <div class="tool-control-bar">
+                            <button class="btn btn-primary" id="btn-json-format"><i class="fas fa-indent"></i> 美化排版</button>
+                            <button class="btn btn-secondary" id="btn-json-minify"><i class="fas fa-compress-arrows-alt"></i> 壓縮 Minify</button>
+                            <button class="btn btn-secondary" id="btn-json-clear"><i class="fas fa-trash-alt"></i> 清除</button>
+                            <button class="btn btn-secondary" id="btn-json-copy"><i class="fas fa-copy"></i> 複製結果</button>
                         </div>
-                        <div class="detail-info">
-                            <h4>全端開發</h4>
-                            <p>掌握 React, Next.js, Node.js 等現代技術棧，實踐高品質前後端分離開發。</p>
+                        
+                        <div class="editor-grid">
+                            <div class="editor-pane">
+                                <div class="pane-header">輸入原始 JSON</div>
+                                <textarea id="json-input" placeholder='請在此貼上您的 JSON 資料... 例如：\n{"name": "Nova", "age": 5, "active": true}'></textarea>
+                            </div>
+                            <div class="editor-pane">
+                                <div class="pane-header">輸出結果</div>
+                                <div id="json-output-wrapper">
+                                    <pre id="json-output" class="empty-output">格式化後的資料將在此顯示...</pre>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="json-status" class="tool-status-bar"></div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Color Palette Generator -->
+                <div class="tab-pane" id="color-tool">
+                    <div class="tool-container color-palette-container">
+                        <div class="color-control-header">
+                            <button class="btn btn-primary" id="btn-generate-colors"><i class="fas fa-sync-alt"></i> 隨機生成配色</button>
+                            <p class="tool-hint">提示：點擊色塊可以複製色彩代碼，點擊 <i class="fas fa-lock-open"></i> 鎖定色彩。</p>
+                        </div>
+
+                        <div class="palette-display" id="palette-display">
+                            <!-- Color slots will be populated by JS -->
                         </div>
                     </div>
-                    
-                    <div class="detail-card">
-                        <div class="detail-icon">
-                            <i class="fas fa-palette"></i>
+                </div>
+
+                <!-- Tab 4: Markdown Previewer -->
+                <div class="tab-pane" id="markdown-tool">
+                    <div class="tool-container">
+                        <div class="tool-control-bar">
+                            <button class="btn btn-secondary" id="btn-md-clear"><i class="fas fa-trash-alt"></i> 清除</button>
+                            <button class="btn btn-secondary" id="btn-md-sample"><i class="fas fa-file-alt"></i> 載入範本</button>
                         </div>
-                        <div class="detail-info">
-                            <h4>UI/UX 互動設計</h4>
-                            <p>追求卓越的視覺美學，設計符合人性直覺的流暢介面與細緻微動畫。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-card">
-                        <div class="detail-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <div class="detail-info">
-                            <h4>雲端架構與部署</h4>
-                            <p>熟悉 AWS、Docker 與 CI/CD 自動化部署流程，保障網站穩定與安全。</p>
+                        
+                        <div class="editor-grid markdown-editor-grid">
+                            <div class="editor-pane">
+                                <div class="pane-header">編輯 Markdown</div>
+                                <textarea id="markdown-input" placeholder="# 歡迎使用 Markdown 編輯器\n\n在此輸入 Markdown 語法...\n\n- 項目一\n- 項目二\n\n**粗體字** 與 *斜體字*"></textarea>
+                            </div>
+                            <div class="editor-pane">
+                                <div class="pane-header">即時預覽</div>
+                                <div id="markdown-output" class="markdown-body">
+                                    <!-- Parsed markdown will be outputted here -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">PORTFOLIO</span>
-                <h2 class="section-title">精選專案展示</h2>
-                <div class="header-line"></div>
-            </div>
-
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">全部</button>
-                <button class="filter-btn" data-filter="web">Web 應用</button>
-                <button class="filter-btn" data-filter="design">介面設計</button>
-                <button class="filter-btn" data-filter="tool">工具開發</button>
-            </div>
-
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder bg-gradient-1">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" aria-label="查看專案"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-tag">Web 應用</span>
-                        <h3>Aether Analytics 智能分析平台</h3>
-                        <p>一個基於 Next.js 與 Chart.js 的即時數據分析看板，支援自定義報表與 AI 趨勢預測。</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>Next.js</span>
-                            <span>Tailwind</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card" data-category="design">
-                    <div class="project-image">
-                        <div class="project-placeholder bg-gradient-2">
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" aria-label="查看專案"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-tag">介面設計</span>
-                        <h3>CryptoVault 去中心化錢包</h3>
-                        <p>精心雕琢的 Web3 錢包介面，採用擬物玻璃擬態風格，聚焦於安全且流暢的交易流向設計。</p>
-                        <div class="project-tech">
-                            <span>Figma</span>
-                            <span>CSS Glassmorphism</span>
-                            <span>Web3</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card" data-category="tool">
-                    <div class="project-image">
-                        <div class="project-placeholder bg-gradient-3">
-                            <i class="fas fa-terminal"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" aria-label="查看專案"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-tag">工具開發</span>
-                        <h3>DevFlow 自動化開發助手</h3>
-                        <p>為開發者打造的 CLI 工具與配套 Dashboard，一鍵整合 Git 提交規範與自動化發版流程。</p>
-                        <div class="project-tech">
-                            <span>Node.js</span>
-                            <span>TypeScript</span>
-                            <span>Commander</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">EXPERTISE</span>
-                <h2 class="section-title">我的專業技能</h2>
-                <div class="header-line"></div>
-            </div>
-
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> 前端開發</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>HTML5 & CSS3 (Flexbox/Grid)</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>JavaScript (ES6+) & TypeScript</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>React & Next.js Framework</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> 後端與資料庫</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Node.js & Express / NestJS</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>SQL (PostgreSQL, MySQL)</span>
-                                <span>75%</span>
-                            </div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>NoSQL (MongoDB, Redis)</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">GET IN TOUCH</span>
-                <h2 class="section-title">與我取得聯絡</h2>
-                <div class="header-line"></div>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-info-panel">
-                    <h3>讓我們一起聊聊您的新專案！</h3>
-                    <p>不論您是有明確的需求，還是想隨意討論創意的可行性，都非常歡迎隨時與我聯繫。</p>
-                    
-                    <div class="contact-details-list">
-                        <div class="contact-detail-item">
-                            <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <h5>電子郵件</h5>
-                                <p><a href="mailto:nova.design.code@gmail.com">nova.design.code@gmail.com</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-detail-item">
-                            <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
-                            <div>
-                                <h5>目前位置</h5>
-                                <p>台灣，台北市</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links-title">追蹤我的社群</div>
-                    <div class="social-links">
-                        <a href="#" class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contact-form" action="#" method="POST">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" required placeholder=" ">
-                            <label for="name">您的姓名</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" required placeholder=" ">
-                            <label for="email">電子郵件信箱</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" required placeholder=" ">
-                            <label for="subject">主旨</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
-                            <label for="message">訊息內容</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">發送訊息 <i class="fas fa-paper-plane"></i></button>
-                    </form>
-                    <div id="form-status" class="form-status"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <p class="copyright">&copy; 2026 Nova Chen. 保留所有權利。</p>
-            <p class="designed-by">Designed & Built with <i class="fas fa-heart"></i> by Antigravity</p>
-        </div>
-    </footer>
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script src="script.js"></script>
