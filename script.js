@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update Header Title
             const titleText = targetBtn.textContent.trim();
             activeTitle.textContent = titleText;
+
+            // Trigger sub-initializations if needed
+            if (targetId === 'italian-tool') {
+                renderVocabList(currentItalianCategory);
+            }
         }
     };
 
@@ -351,5 +356,139 @@ console.log(calculateSum(10, 20));
 
         // Load initial state if empty
         renderMarkdown();
+    }
+
+    // ==========================================
+    // 7. Tool: Italian Learning Assistant
+    // ==========================================
+    // Data definition for Italian vocabularies
+    const italianVocabData = {
+        greetings: [
+            { word: 'Buongiorno', phonetic: 'bwohn-JOHR-noh', meaning: '早安 / 您好 (正式)', example: 'Buongiorno, signora. Come sta?', exampleTranslation: '女士早安，您好嗎？' },
+            { word: 'Ciao', phonetic: 'CHAH-oh', meaning: '你好 / 再見 (非正式)', example: 'Ciao Luca! Come va?', exampleTranslation: '嗨盧卡！最近怎麼樣？' },
+            { word: 'Grazie', phonetic: 'GRAHT-tsyeh', meaning: '謝謝', example: 'Grazie mille per l\'ospitalità.', exampleTranslation: '非常感謝您的熱情款待。' },
+            { word: 'Prego', phonetic: 'PREH-goh', meaning: '不客氣 / 請', example: 'Prego, si accomodi pure.', exampleTranslation: '不客氣，請隨意坐。' },
+            { word: 'Per favore', phonetic: 'pehr fah-VOH-reh', meaning: '請 (Please)', example: 'Un bicchiere d\'acqua, per favore.', exampleTranslation: '請給我一杯水。' },
+            { word: 'Arrivederci', phonetic: 'ahr-ree-veh-DEHR-chee', meaning: '再見 (正式)', example: 'Grazie della cena, arrivederci.', exampleTranslation: '感謝招待，再見。' }
+        ],
+        phrases: [
+            { word: 'Come stai?', phonetic: 'KOH-meh STAH-ee', meaning: '你好嗎？', example: 'Ciao! Come stai? Tutto bene?', exampleTranslation: '嗨！你好嗎？一切都好嗎？' },
+            { word: 'Dov\'è il bagno?', phonetic: 'doh-VEH eel BAHN-yoh', meaning: '廁所在哪裡？', example: 'Scusi, dov\'è il bagno in questo ristorante?', exampleTranslation: '不好意思，請問這家餐廳的廁所在哪裡？' },
+            { word: 'Quanto costa?', phonetic: 'KWAHN-toh KOHS-tah', meaning: '這多少錢？', example: 'Quanto costa questo souvenir?', exampleTranslation: '這個紀念品多少錢？' },
+            { word: 'Parla inglese?', phonetic: 'PAHR-lah een-GLEH-zeh', meaning: '您會說英文嗎？', example: 'Non parlo bene l\'italiano. Parla inglese?', exampleTranslation: '我義大利文說得不好。您會說英文嗎？' },
+            { word: 'Mi dispiace', phonetic: 'mee dees-PYAH-cheh', meaning: '對不起 / 遺憾', example: 'Mi dispiace, non posso venire stasera.', exampleTranslation: '很抱歉，我今晚無法過來。' },
+            { word: 'Non capisco', phonetic: 'nohn kah-PEES-koh', meaning: '我不懂 / 我不明白', example: 'Può ripetere lentamente? Non capisco.', exampleTranslation: '您可以說慢一點嗎？我不明白。' }
+        ],
+        dining: [
+            { word: 'Il conto, per favore', phonetic: 'eel KOHN-toh pehr fah-VOH-reh', meaning: '請結帳', example: 'Cameriere, il conto, per favore.', exampleTranslation: '服務生，請幫我結帳。' },
+            { word: 'Buono', phonetic: 'BWOH-noh', meaning: '好吃的 / 好的', example: 'Questa pasta al pomodoro è molto buona!', exampleTranslation: '這盤番茄麵非常好吃！' },
+            { word: 'Acqua', phonetic: 'AHK-wah', meaning: '水', example: 'Una bottiglia di acqua frizzante, per favore.', exampleTranslation: '請給我一瓶氣泡水。' },
+            { word: 'Salute!', phonetic: 'sah-LOO-teh', meaning: '乾杯！ / 祝健康！', example: 'Brindiamo al tuo successo. Salute!', exampleTranslation: '為你的成功乾杯。祝你健康！' },
+            { word: 'Il menù', phonetic: 'eel meh-NOO', meaning: '菜單', example: 'Posso ordinare? Vorrei vedere il menù.', exampleTranslation: '我可以點餐嗎？我想看菜單。' },
+            { word: 'Delizioso', phonetic: 'deh-lee-tsYOH-zoh', meaning: '美味的', example: 'Questo tiramisù è delizioso!', exampleTranslation: '這個提拉米蘇太美味了！' }
+        ]
+    };
+
+    let currentItalianCategory = 'greetings';
+    const vocabDisplay = document.getElementById('vocab-display');
+    const rateSlider = document.getElementById('voice-rate');
+    const rateVal = document.getElementById('rate-val');
+    const italianTabs = document.querySelectorAll('.btn-tab');
+
+    // Speech synthesis function
+    const speakItalian = (text) => {
+        if ('speechSynthesis' in window) {
+            // Cancel current speech if speaking
+            window.speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'it-IT';
+            utterance.rate = rateSlider ? parseFloat(rateSlider.value) : 1;
+            
+            // Log voice list info for debugging or fallbacks
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('您的瀏覽器不支援發音功能。建議使用 Chrome 或 Safari 瀏覽器。');
+        }
+    };
+
+    // Render Vocabulary List
+    const renderVocabList = (category) => {
+        if (!vocabDisplay) return;
+        vocabDisplay.innerHTML = '';
+        currentItalianCategory = category;
+
+        const data = italianVocabData[category];
+        if (!data) return;
+
+        data.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'vocab-card';
+            card.innerHTML = `
+                <div class="vocab-word-info">
+                    <h3>
+                        ${item.word}
+                        <span class="phonetic">/ ${item.phonetic} /</span>
+                    </h3>
+                    <div class="meaning">${item.meaning}</div>
+                    <div class="example">
+                        <i class="fas fa-quote-left" style="font-size: 0.7rem; opacity: 0.5; margin-right: 0.3rem;"></i>
+                        <strong>${item.example}</strong>
+                    </div>
+                    <div class="example-translation">${item.exampleTranslation}</div>
+                </div>
+                <div class="play-btn-group">
+                    <button class="play-btn btn-play-word" aria-label="播放單字發音">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <span class="play-label">單字</span>
+                    <button class="play-btn btn-play-sentence" aria-label="播放例句發音">
+                        <i class="fas fa-comment-dots"></i>
+                    </button>
+                    <span class="play-label" style="font-size: 0.6rem;">例句</span>
+                </div>
+            `;
+
+            // Speak Word Event
+            card.querySelector('.btn-play-word').addEventListener('click', (e) => {
+                e.stopPropagation();
+                speakItalian(item.word);
+            });
+
+            // Speak Sentence Event
+            card.querySelector('.btn-play-sentence').addEventListener('click', (e) => {
+                e.stopPropagation();
+                speakItalian(item.example);
+            });
+
+            vocabDisplay.appendChild(card);
+        });
+    };
+
+    // Sub-tab toggling for categories
+    italianTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            italianTabs.forEach(t => {
+                t.classList.remove('btn-primary');
+                t.classList.add('btn-secondary');
+            });
+            tab.classList.remove('btn-secondary');
+            tab.classList.add('btn-primary');
+
+            const category = tab.getAttribute('data-category');
+            renderVocabList(category);
+        });
+    });
+
+    // Voice Speed Range listener
+    if (rateSlider && rateVal) {
+        rateSlider.addEventListener('input', (e) => {
+            rateVal.textContent = e.target.value + 'x';
+        });
+    }
+
+    // Initialize list inside current category
+    if (vocabDisplay) {
+        renderVocabList('greetings');
     }
 });
