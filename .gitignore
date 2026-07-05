@@ -1,0 +1,18 @@
+# System and environment files
+.cache/
+.local/
+.gemini/
+.bashrc
+.profile
+deploy.sh
+
+# Logs and debug files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# OS files
+.DS_Store
+Thumbs.db
