@@ -481,7 +481,7 @@ body.light-theme .tool-control-bar {
 /* --- Vocab Card List Wrapper --- */
 .vocab-list-wrapper {
     padding: 2rem;
-    max-height: 800px;
+    max-height: 850px;
     overflow-y: auto;
 }
 
@@ -516,8 +516,8 @@ body.light-theme .vocab-card {
 
 /* Vocab card image layout styles */
 .vocab-card-image {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     border-radius: var(--radius-sm);
     overflow: hidden;
     flex-shrink: 0;
@@ -560,26 +560,61 @@ body.light-theme .vocab-card {
     font-style: italic;
 }
 
-/* Dictionary details and grammar styling */
+/* Premium gender and part-of-speech badges */
 .pos-tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--primary);
-    background: rgba(139, 92, 246, 0.12);
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 0.25rem 0.7rem;
+    border-radius: 6px;
     font-family: inherit;
-    text-transform: lowercase;
+    text-transform: capitalize;
     display: inline-block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Masculine noun: blue badge */
+.pos-masculine {
+    background: rgba(6, 182, 212, 0.12);
+    border: 1px solid rgba(6, 182, 212, 0.35);
+    color: var(--secondary);
+}
+
+/* Feminine noun: rose/pink badge */
+.pos-feminine {
+    background: rgba(236, 72, 153, 0.12);
+    border: 1px solid rgba(236, 72, 153, 0.35);
+    color: var(--accent);
+}
+
+/* Verbs: green badge */
+.pos-verb {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: var(--success);
+}
+
+/* Adjectives/Others: purple badge */
+.pos-other {
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    color: var(--primary);
 }
 
 .grammar-info-row {
-    margin-top: 0.4rem;
-    font-size: 0.82rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     display: flex;
+    flex-wrap: wrap;
     gap: 1.2rem;
+    background: rgba(0, 0, 0, 0.08);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid var(--bg-surface-border);
+}
+
+body.light-theme .grammar-info-row {
+    background: rgba(0, 0, 0, 0.01);
 }
 
 .grammar-info-row span strong {
@@ -591,7 +626,7 @@ body.light-theme .vocab-card {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    margin: 0.6rem 0 1rem 0;
+    margin: 0.8rem 0 1rem 0;
 }
 
 .label-badge {
@@ -615,16 +650,16 @@ body.light-theme .vocab-card {
 }
 
 .vocab-word-info .meaning {
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: var(--text-primary);
 }
 
 .vocab-word-info .example {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     color: var(--text-secondary);
-    line-height: 1.4;
-    border-left: 2.5px solid var(--primary);
+    line-height: 1.45;
+    border-left: 3px solid var(--primary);
     padding-left: 0.8rem;
 }
 
@@ -632,14 +667,14 @@ body.light-theme .vocab-card {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    margin-top: 0.4rem;
+    margin-top: 0.5rem;
     padding-left: 0.8rem;
 }
 
 .vocab-word-info .example-translation {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    opacity: 0.85;
+    opacity: 0.88;
 }
 
 /* Play buttons */
