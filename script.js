@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 ko: { 
                     meaning: '피자', 
-                    example: '이 따끈한 마르게리타 피자는 정말 대단해요.', exampleTranslation: '이 따끈한 마르게리타 피자는 정말 대단해요.',
+                    example: '이 따끈한 마르게리타 피자는 정말 맛있어요.', exampleTranslation: '이 따끈한 마르게리타 피자는 정말 맛있어요.',
                     example2: '저녁으로 피자 한 판을 다 먹습니다.', exampleTranslation2: '저녁으로 피자 한 판을 다 먹습니다.'
                 }
             }
@@ -260,13 +260,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 es: { 
                     meaning: 'tiramisú', 
-                    example: 'Pido un tiramisú clásico como postre.', exampleTranslation: 'Pido un tiramisú clásico como postre.',
+                    example: 'Pido un tiramisú classico como postre.', exampleTranslation: 'Pido un tiramisú classico como postre.',
                     example2: 'El tiramisú es mi postre italiano favorito.', exampleTranslation2: 'El tiramisú es mi postre italiano favorito.'
                 },
                 ja: { 
                     meaning: 'ティラミス', 
                     example: 'デザートにクラシックなティラミスを注文します。', exampleTranslation: 'デザートにクラシックなティラミスを注文します。',
-                    example2: 'ティラミスは私の一番好きなイタリアのデザートです。', exampleTranslation2: 'ティラミスは私の一番好きなイタリアのデザートです。'
+                    example2: 'ティラミスは私の一番好きなイタリアのデザートです。', exampleTranslation2: 'ティラミスは私の一番好きなイタリア의デザートです。'
                 },
                 ko: { 
                     meaning: '티라미수', 
@@ -581,7 +581,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ja: { 
                     meaning: '犬', 
                     example: '犬が公園を嬉しそうに走っています。', exampleTranslation: '犬が公園を嬉しそうに走っています。',
-                    example2: '犬は人間の最良の友です。', exampleTranslation2: '犬は人間の最良の友です。'
+                    example2: '犬は人間の最良の友です。', exampleTranslation2: '犬は人間の最良의友です。'
                 },
                 ko: { 
                     meaning: '개 / 강아지', 
@@ -706,7 +706,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 zh: { 
                     meaning: '城市', 
                     example: 'Roma è la città eterna.', exampleTranslation: '羅馬是永恆之城。',
-                    example2: 'Visito una nuova città ogni anno.', exampleTranslation2: '我每年都會拜訪一個新城市。'
+                    example2: 'Visito una nova città ogni anno.', exampleTranslation2: '我每年都會拜訪一個新城市。'
                 },
                 en: { 
                     meaning: 'city', 
@@ -1236,7 +1236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pluralLabel: '복수형: ',
             conjugationLabel: '동사 변화: ',
             articleLabel: '정관사: ',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> 속도: ',
+            rateLabel: '<i class="fas fa-tint"></i> 속도: ',
             onlineTag: '<i class="fas fa-globe-americas"></i> 온라인 실시간 번역 시스템',
             onlineTranslating: '번역 중...',
             onlineTranslationLabel: '번역',
@@ -1347,11 +1347,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error('API response failed');
             const data = await response.json();
-            
-            if (data && data.responseData && data.responseData.translatedText) {
-                return data.responseData.translatedText;
-            }
-            return null;
+            return data; // Return full response containing matches!
         } catch (error) {
             console.error('Translation error:', error);
             return null;
@@ -1413,6 +1409,40 @@ document.addEventListener('DOMContentLoaded', () => {
                                     ${ui.onlineTranslating}
                                 </div>
                             </div>
+
+                            <!-- Placeholder for Example 1 -->
+                            <div id="online-ex1-block" class="vocab-example-block" style="display: none;">
+                                <div class="vocab-example-text-side">
+                                    <div class="example">
+                                        <i class="fas fa-quote-left" style="font-size: 0.7rem; opacity: 0.5; margin-right: 0.3rem;"></i>
+                                        <strong id="online-ex1-it"></strong>
+                                    </div>
+                                    <div class="example-translation-row">
+                                        <span class="label-badge badge-example">${ui.exampleLabel}</span>
+                                        <div class="example-translation" id="online-ex1-tr"></div>
+                                    </div>
+                                </div>
+                                <button class="play-btn btn-play-sentence" id="btn-play-online-ex1" aria-label="播放例句一發音">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+
+                            <!-- Placeholder for Example 2 -->
+                            <div id="online-ex2-block" class="vocab-example-block" style="display: none; border-left-color: var(--secondary);">
+                                <div class="vocab-example-text-side">
+                                    <div class="example">
+                                        <i class="fas fa-quote-left" style="font-size: 0.7rem; opacity: 0.5; margin-right: 0.3rem;"></i>
+                                        <strong id="online-ex2-it"></strong>
+                                    </div>
+                                    <div class="example-translation-row">
+                                        <span class="label-badge badge-example" style="background: rgba(6, 182, 212, 0.1); color: var(--secondary); border-color: rgba(6, 182, 212, 0.2);">${ui.exampleLabel2}</span>
+                                        <div class="example-translation" id="online-ex2-tr"></div>
+                                    </div>
+                                </div>
+                                <button class="play-btn btn-play-sentence" style="background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.25); color: var(--secondary);" id="btn-play-online-ex2" aria-label="播放例句二發音">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="play-btn-group">
                             <button class="play-btn btn-play-word" id="btn-play-online-word" aria-label="播放線上發音">
@@ -1432,17 +1462,71 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Debounce translation API request to prevent overwhelming the server
                 if (lastTranslationTimeout) clearTimeout(lastTranslationTimeout);
                 lastTranslationTimeout = setTimeout(async () => {
-                    const translatedText = await fetchOnlineTranslation(searchQuery, selectedNativeLanguage);
+                    const data = await fetchOnlineTranslation(searchQuery, selectedNativeLanguage);
                     const resultDiv = document.getElementById('online-translation-result');
-                    if (resultDiv) {
-                        if (translatedText) {
-                            resultDiv.innerText = translatedText;
-                            resultDiv.style.fontStyle = 'normal';
-                            resultDiv.style.color = 'var(--text-primary)';
-                        } else {
-                            resultDiv.innerText = ui.onlineTranslationError;
-                            resultDiv.style.color = 'var(--danger)';
+                    if (resultDiv && data) {
+                        const translatedText = data.responseData.translatedText;
+                        resultDiv.innerText = translatedText;
+                        resultDiv.style.fontStyle = 'normal';
+                        resultDiv.style.color = 'var(--text-primary)';
+
+                        // Parse example sentence matches from translated segments
+                        const matches = data.matches || [];
+                        const validSentences = [];
+                        
+                        for (let match of matches) {
+                            const seg = match.segment.trim();
+                            const trans = match.translation.trim();
+                            
+                            // Check if segment is a sentence and not just the single word
+                            if (seg.toLowerCase() !== searchQuery.toLowerCase() && 
+                                trans.toLowerCase() !== translatedText.toLowerCase() && 
+                                seg.length > searchQuery.length + 3) {
+                                validSentences.push({ segment: seg, translation: trans });
+                            }
+                            if (validSentences.length >= 2) break;
                         }
+                        
+                        // Render Example 1 if found
+                        if (validSentences.length > 0) {
+                            const ex1Block = document.getElementById('online-ex1-block');
+                            const ex1It = document.getElementById('online-ex1-it');
+                            const ex1Tr = document.getElementById('online-ex1-tr');
+                            const playEx1Btn = document.getElementById('btn-play-online-ex1');
+                            
+                            if (ex1Block && ex1It && ex1Tr) {
+                                ex1It.innerText = validSentences[0].segment;
+                                ex1Tr.innerText = validSentences[0].translation;
+                                ex1Block.style.display = 'flex';
+                                
+                                playEx1Btn.onclick = (e) => {
+                                    e.stopPropagation();
+                                    speakItalian(validSentences[0].segment);
+                                };
+                            }
+                        }
+                        
+                        // Render Example 2 if found
+                        if (validSentences.length > 1) {
+                            const ex2Block = document.getElementById('online-ex2-block');
+                            const ex2It = document.getElementById('online-ex2-it');
+                            const ex2Tr = document.getElementById('online-ex2-tr');
+                            const playEx2Btn = document.getElementById('btn-play-online-ex2');
+                            
+                            if (ex2Block && ex2It && ex2Tr) {
+                                ex2It.innerText = validSentences[1].segment;
+                                ex2Tr.innerText = validSentences[1].translation;
+                                ex2Block.style.display = 'flex';
+                                
+                                playEx2Btn.onclick = (e) => {
+                                    e.stopPropagation();
+                                    speakItalian(validSentences[1].segment);
+                                };
+                            }
+                        }
+                    } else if (resultDiv) {
+                        resultDiv.innerText = ui.onlineTranslationError;
+                        resultDiv.style.color = 'var(--danger)';
                     }
                 }, 500);
 
