@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
             translations: {
                 zh: { meaning: '吃 (動詞)', example: 'Mi piace mangiare al ristorante.', exampleTranslation: '我喜歡在餐廳吃東西。' },
                 en: { meaning: 'to eat', example: 'Mi piace mangiare al ristorante.', exampleTranslation: 'I like to eat at the restaurant.' },
-                es: { meaning: 'comer', example: 'Mi piace mangiare al ristorante.', exampleTranslation: 'Me gusta comer en el restaurante.' },
+                es: { meaning: 'comer', example: 'Mi piace mangiare al restaurante.', exampleTranslation: 'Me gusta comer en el restaurante.' },
                 ja: { meaning: '食べる', example: 'Mi piace mangiare al ristorante.', exampleTranslation: '私はレストランで食べるのが好きです。' },
                 ko: { meaning: '먹다', example: 'Mi piace mangiare al ristorante.', exampleTranslation: '나는 레스토랑에서 먹는 것을 좋아합니다.' }
             }
@@ -340,7 +340,11 @@ document.addEventListener('DOMContentLoaded', () => {
             pluralLabel: '複數: ',
             conjugationLabel: '動詞變位: ',
             articleLabel: '定冠詞: ',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> 語速: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> 語速: ',
+            onlineTag: '<i class="fas fa-globe-americas"></i> 線上即時翻譯系統',
+            onlineTranslating: '正在翻譯中...',
+            onlineTranslationLabel: '譯',
+            onlineTranslationError: '翻譯失敗，請檢查網路連線。'
         },
         en: {
             heroTitle: 'Nova Dizionario Italiano',
@@ -370,7 +374,11 @@ document.addEventListener('DOMContentLoaded', () => {
             pluralLabel: 'Plural: ',
             conjugationLabel: 'Conjugation: ',
             articleLabel: 'Def. Article: ',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> Speed: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> Speed: ',
+            onlineTag: '<i class="fas fa-globe-americas"></i> Online Translation System',
+            onlineTranslating: 'Translating...',
+            onlineTranslationLabel: 'Trans',
+            onlineTranslationError: 'Translation failed. Please check connection.'
         },
         es: {
             heroTitle: 'Nova Dizionario Italiano',
@@ -400,7 +408,11 @@ document.addEventListener('DOMContentLoaded', () => {
             pluralLabel: 'Plural: ',
             conjugationLabel: 'Conjugación: ',
             articleLabel: 'Art. Def: ',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> Vel: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> Vel: ',
+            onlineTag: '<i class="fas fa-globe-americas"></i> Sistema de traducción en línea',
+            onlineTranslating: 'Traduciendo...',
+            onlineTranslationLabel: 'Trad',
+            onlineTranslationError: 'La traducción falló. Compruebe la conexión.'
         },
         ja: {
             heroTitle: 'Nova Dizionario Italiano',
@@ -430,7 +442,11 @@ document.addEventListener('DOMContentLoaded', () => {
             pluralLabel: '複数: ',
             conjugationLabel: '活用変化: ',
             articleLabel: '定冠詞: ',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> 速度: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> 速度: ',
+            onlineTag: '<i class="fas fa-globe-americas"></i> オンライン即時翻訳システム',
+            onlineTranslating: '翻訳中...',
+            onlineTranslationLabel: '翻訳',
+            onlineTranslationError: '翻訳に失敗しました。接続を確認してください。'
         },
         ko: {
             heroTitle: 'Nova Dizionario Italiano',
@@ -460,13 +476,18 @@ document.addEventListener('DOMContentLoaded', () => {
             pluralLabel: '복수형: ',
             conjugationLabel: '동사 변화: ',
             articleLabel: '정관사: ',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> 속도: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> 속도: ',
+            onlineTag: '<i class="fas fa-globe-americas"></i> 온라인 실시간 번역 시스템',
+            onlineTranslating: '번역 중...',
+            onlineTranslationLabel: '번역',
+            onlineTranslationError: '번역에 실패했습니다. 연결을 확인하세요.'
         }
     };
 
     let selectedNativeLanguage = 'zh';
     let searchQuery = '';
     let selectedLetter = 'all';
+    let lastTranslationTimeout = null;
 
     const vocabDisplay = document.getElementById('vocab-display');
     const rateSlider = document.getElementById('voice-rate');
@@ -492,11 +513,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Client-side translation lookup via MyMemory API
+    const fetchOnlineTranslation = async (query, lang) => {
+        const langMap = {
+            'zh': 'zh-TW',
+            'en': 'en',
+            'es': 'es',
+            'ja': 'ja',
+            'ko': 'ko'
+        };
+        const targetLang = langMap[lang] || 'zh-TW';
+        const apiUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(query)}&langpair=it|${targetLang}`;
+        
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error('API response failed');
+            const data = await response.json();
+            
+            if (data && data.responseData && data.responseData.translatedText) {
+                return data.responseData.translatedText;
+            }
+            return null;
+        } catch (error) {
+            console.error('Translation error:', error);
+            return null;
+        }
+    };
+
     // Render Dictionary Cards dynamically
     const renderDictionary = () => {
         if (!vocabDisplay) return;
-        vocabDisplay.innerHTML = '';
-
+        
         // Filter the database
         const filteredData = italianDictionaryData.filter(item => {
             // Letter filter
@@ -520,17 +567,70 @@ document.addEventListener('DOMContentLoaded', () => {
             resultsCountText.innerText = ui.allResultsCount.replace('{count}', filteredData.length);
         }
 
-        // Handle Empty state
+        // Handle Empty state - fallback to Online Translation System!
         if (filteredData.length === 0) {
-            vocabDisplay.innerHTML = `
-                <div class="empty-results-box">
-                    <i class="fas fa-search-minus"></i>
-                    <h4>${ui.noResults}</h4>
-                </div>
-            `;
+            if (searchQuery !== '') {
+                // Render an Instant Online Translator card
+                vocabDisplay.innerHTML = `
+                    <div class="vocab-card online-translation-card" style="border-color: var(--primary);">
+                        <div class="vocab-word-info">
+                            <h3>
+                                ${searchQuery}
+                                <span class="pos-tag" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3); color: var(--secondary); margin-left: 0.8rem;">
+                                    ${ui.onlineTag}
+                                </span>
+                            </h3>
+                            <div class="vocab-meaning-row" style="margin-top: 1rem;">
+                                <span class="label-badge badge-meaning">${ui.onlineTranslationLabel}</span>
+                                <div class="meaning" id="online-translation-result" style="font-style: italic; color: var(--text-secondary);">
+                                    ${ui.onlineTranslating}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="play-btn-group">
+                            <button class="play-btn btn-play-word" id="btn-play-online-word" aria-label="播放線上發音">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <span class="play-label">${ui.wordLabel}</span>
+                        </div>
+                    </div>
+                `;
+
+                // Add sound listener to online result
+                const playBtn = document.getElementById('btn-play-online-word');
+                if (playBtn) {
+                    playBtn.addEventListener('click', () => speakItalian(searchQuery));
+                }
+
+                // Debounce translation API request to prevent overwhelming the server
+                if (lastTranslationTimeout) clearTimeout(lastTranslationTimeout);
+                lastTranslationTimeout = setTimeout(async () => {
+                    const translatedText = await fetchOnlineTranslation(searchQuery, selectedNativeLanguage);
+                    const resultDiv = document.getElementById('online-translation-result');
+                    if (resultDiv) {
+                        if (translatedText) {
+                            resultDiv.innerText = translatedText;
+                            resultDiv.style.fontStyle = 'normal';
+                            resultDiv.style.color = 'var(--text-primary)';
+                        } else {
+                            resultDiv.innerText = ui.onlineTranslationError;
+                            resultDiv.style.color = 'var(--danger)';
+                        }
+                    }
+                }, 500);
+
+            } else {
+                vocabDisplay.innerHTML = `
+                    <div class="empty-results-box">
+                        <i class="fas fa-search-minus"></i>
+                        <h4>${ui.noResults}</h4>
+                    </div>
+                `;
+            }
             return;
         }
 
+        vocabDisplay.innerHTML = '';
         filteredData.forEach(item => {
             const translation = item.translations[selectedNativeLanguage] || item.translations['en'];
             const hasImage = !!item.image;
