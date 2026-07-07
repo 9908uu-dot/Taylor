@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pos: 's.m.',
             article: 'il',
             plural: 'caffè',
-            image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80',
+            image: 'assets/images/caffe.jpg',
             translations: {
                 zh: { meaning: '咖啡', example: 'Prendiamo un caffè espresso al bar?', exampleTranslation: '我們要不要在咖啡廳喝杯濃縮咖啡？' },
                 en: { meaning: 'coffee', example: 'Prendiamo un caffè espresso al bar?', exampleTranslation: 'Shall we grab an espresso at the bar?' },
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pos: 's.f.',
             article: 'la',
             plural: 'pizze',
-            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=300&q=80',
+            image: 'assets/images/pizza.jpg',
             translations: {
                 zh: { meaning: '比薩', example: 'Questa pizza Margherita calda è fantastica.', exampleTranslation: '這款剛出爐的瑪格麗特比薩棒透了。' },
                 en: { meaning: 'pizza', example: 'Questa pizza Margherita calda è fantastica.', exampleTranslation: 'This hot Margherita pizza is fantastic.' },
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pos: 's.f.',
             article: 'la',
             plural: 'paste',
-            image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300&q=80',
+            image: 'assets/images/pasta.jpg',
             translations: {
                 zh: { meaning: '義大利麵', example: 'Cucino la pasta al pomodoro stasera.', exampleTranslation: '我今晚要煮番茄義大利麵。' },
                 en: { meaning: 'pasta', example: 'Cucino la pasta al pomodoro stasera.', exampleTranslation: 'I am cooking tomato pasta tonight.' },
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pos: 's.m.',
             article: 'il',
             plural: 'tiramisù',
-            image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=300&q=80',
+            image: 'assets/images/tiramisu.jpg',
             translations: {
                 zh: { meaning: '提拉米蘇', example: 'Ordino un tiramisù classico come dolce.', exampleTranslation: '我點了一份經典提拉米蘇當甜點。' },
                 en: { meaning: 'tiramisu', example: 'Ordino un tiramisù classico come dolce.', exampleTranslation: 'I order a classic tiramisu as dessert.' },
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pos: 's.m.',
             article: 'il',
             plural: 'vini',
-            image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=300&q=80',
+            image: 'assets/images/vino.jpg',
             translations: {
                 zh: { meaning: '葡萄酒', example: 'Offro un bicchiere di vino rosso toscano.', exampleTranslation: '我請喝一杯托斯卡尼的紅葡萄酒。' },
                 en: { meaning: 'wine', example: 'Offro un bicchiere di vino rosso toscano.', exampleTranslation: 'I offer a glass of Tuscan red wine.' },
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pos: 's.m.',
             article: 'il',
             plural: 'pani',
-            image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=300&q=80',
+            image: 'assets/images/pane.jpg',
             translations: {
                 zh: { meaning: '麵包', example: 'Compriamo il pane fresco al panificio.', exampleTranslation: '我們去麵包店買剛出爐的新鮮麵包。' },
                 en: { meaning: 'bread', example: 'Compriamo il pane fresco al panificio.', exampleTranslation: 'We buy fresh bread at the bakery.' },
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pos: 's.m.',
             article: 'il',
             plural: 'gatti',
-            image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=300&q=80',
+            image: 'assets/images/gatto.jpg',
             translations: {
                 zh: { meaning: '貓', example: 'Il gatto nero dorme sulla sedia.', exampleTranslation: '這隻黑貓在椅子上睡覺。' },
                 en: { meaning: 'cat', example: 'Il gatto nero dorme sulla sedia.', exampleTranslation: 'The black cat is sleeping on the chair.' },
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pos: 's.f.',
             article: 'la',
             plural: 'macchine',
-            image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=300&q=80',
+            image: 'assets/images/macchina.jpg',
             translations: {
                 zh: { meaning: '汽車 / 機器', example: 'Guido una macchina rossa veloce.', exampleTranslation: '我開著一輛快速的紅色跑車。' },
                 en: { meaning: 'car / machine', example: 'Guido una macchina rossa veloce.', exampleTranslation: 'I drive a fast red car.' },
@@ -424,6 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
             phonetic: 'mahn-JAH-reh',
             pos: 'v.', // verbo
             conjugation: 'regular -are',
+            image: 'assets/images/mangiare.jpg',
             translations: {
                 zh: { meaning: '吃 (動詞)', example: 'Mi piace mangiare la pizza italiana.', exampleTranslation: '我喜歡吃義大利比薩。' },
                 en: { meaning: 'to eat', example: 'Mi piace mangiare la pizza italiana.', exampleTranslation: 'I like to eat Italian pizza.' },
@@ -437,6 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
             phonetic: 'pahr-LAH-reh',
             pos: 'v.',
             conjugation: 'regular -are',
+            image: 'assets/images/parlare.jpg',
             translations: {
                 zh: { meaning: '說話 / 討論', example: 'Parlo l\'italiano con i miei amici.', exampleTranslation: '我和我的朋友們說義大利文。' },
                 en: { meaning: 'to speak / to talk', example: 'Parlo l\'italiano con i miei amici.', exampleTranslation: 'I speak Italian with my friends.' },
