@@ -26,13 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 2. Vocabulary Database
+    // 2. Vocabulary Database with Royalty-Free Unsplash Images
     // ==========================================
     const italianVocabData = {
         greetings: [
             {
                 word: 'Buongiorno',
                 phonetic: 'bwohn-JOHR-noh',
+                image: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=300&q=80',
                 translations: {
                     zh: { meaning: '早安 / 您好 (正式)', example: 'Buongiorno, signora. Come sta?', exampleTranslation: '女士早安，您好嗎？' },
                     en: { meaning: 'Good morning / Hello (formal)', example: 'Buongiorno, signora. Come sta?', exampleTranslation: 'Good morning, ma\'am. How are you?' },
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 word: 'Ciao',
                 phonetic: 'CHAH-oh',
+                image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80',
                 translations: {
                     zh: { meaning: '你好 / 再見 (隨意)', example: 'Ciao Luca! Come va?', exampleTranslation: '嗨盧卡！最近怎麼樣？' },
                     en: { meaning: 'Hello / Goodbye (informal)', example: 'Ciao Luca! Come va?', exampleTranslation: 'Hi Luca! How\'s it going?' },
@@ -112,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 word: 'Dov\'è il bagno?',
                 phonetic: 'doh-VEH eel BAHN-yoh',
+                image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=300&q=80',
                 translations: {
                     zh: { meaning: '廁所在哪裡？', example: 'Scusi, dov\'è il bagno in questo bar?', exampleTranslation: '不好意思，請問這家咖啡廳的廁所在哪裡？' },
                     en: { meaning: 'Where is the bathroom?', example: 'Scusi, dov\'è il bagno in questo bar?', exampleTranslation: 'Excuse me, where is the bathroom in this bar?' },
@@ -124,11 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 word: 'Quanto costa?',
                 phonetic: 'KWAHN-toh KOHS-tah',
                 translations: {
-                    zh: { meaning: '這多少錢？', example: 'Quanto costa questo gelato al pistacchio?', exampleTranslation: '這球開心果冰淇淋多少錢？' },
-                    en: { meaning: 'How much does it cost?', example: 'Quanto costa questo gelato al pistacchio?', exampleTranslation: 'How much is this pistachio gelato?' },
-                    es: { meaning: '¿Cuánto cuesta?', example: 'Quanto costa questo gelato al pistacchio?', exampleTranslation: '¿Cuánto cuesta este helado de pistacho?' },
-                    ja: { meaning: 'いくらですか？', example: 'Quanto costa questo gelato al pistacchio?', exampleTranslation: 'このピスタチオジェラートはいくらですか？' },
-                    ko: { meaning: '얼마예요?', example: 'Quanto costa questo gelato al pistacchio?', exampleTranslation: '이 젤라토는 얼마예요?' }
+                    zh: { meaning: '這多少錢？', example: 'Quanto costa questo souvenir?', exampleTranslation: '這個紀念品多少錢？' },
+                    en: { meaning: 'How much does it cost?', example: 'Quanto costa questo souvenir?', exampleTranslation: 'How much is this souvenir?' },
+                    es: { meaning: '¿Cuánto cuesta?', example: 'Quanto costa questo souvenir?', exampleTranslation: '¿Cuánto cuesta este recuerdo?' },
+                    ja: { meaning: 'いくらですか？', example: 'Quanto costa questo souvenir?', exampleTranslation: 'このお土産はいくらですか？' },
+                    ko: { meaning: '얼마예요?', example: 'Quanto costa questo souvenir?', exampleTranslation: '이 기념품은 얼마예요?' }
                 }
             },
             {
@@ -167,30 +170,57 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         dining: [
             {
-                word: 'Il conto, per favore',
-                phonetic: 'eel KOHN-toh pehr fah-VOH-reh',
+                word: 'Caffè',
+                phonetic: 'kahf-FEH',
+                image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80',
                 translations: {
-                    zh: { meaning: '請結帳', example: 'Cameriere, il conto, per favore.', exampleTranslation: '服務生，請幫我結帳。' },
-                    en: { meaning: 'The bill, please', example: 'Cameriere, il conto, per favore.', exampleTranslation: 'Waiter, the bill please.' },
-                    es: { meaning: 'La cuenta, por favor', example: 'Cameriere, il conto, per favore.', exampleTranslation: 'Camarero, la cuenta por favor.' },
-                    ja: { meaning: 'お会計をお願いします', example: 'Cameriere, il conto, per favore.', exampleTranslation: 'ウェイターさん、お会計をお願いします。' },
-                    ko: { meaning: '계산서 부탁합니다', example: 'Cameriere, il conto, per favore.', exampleTranslation: '웨이터, 여기 계산서 좀 주세요.' }
+                    zh: { meaning: '咖啡', example: 'Prendiamo un caffè insieme?', exampleTranslation: '我們要不要一起喝杯咖啡？' },
+                    en: { meaning: 'Coffee', example: 'Prendiamo un caffè insieme?', exampleTranslation: 'Shall we grab a coffee together?' },
+                    es: { meaning: 'Café', example: 'Prendiamo un caffè insieme?', exampleTranslation: '¿Tomamos un café juntos?' },
+                    ja: { meaning: 'コーヒー', example: 'Prendiamo un caffè insieme?', exampleTranslation: '一緒にコーヒーを飲みませんか？' },
+                    ko: { meaning: '커피', example: 'Prendiamo un caffè insieme?', exampleTranslation: '우리 같이 커피 한잔할까요?' }
                 }
             },
             {
-                word: 'Buono',
-                phonetic: 'BWOH-noh',
+                word: 'Gelato',
+                phonetic: 'jeh-LAH-toh',
+                image: 'https://images.unsplash.com/photo-1560008511-11c63416e52d?auto=format&fit=crop&w=300&q=80',
                 translations: {
-                    zh: { meaning: '好吃 / 好的', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: '這款瑪格麗特比薩非常好吃！' },
-                    en: { meaning: 'Good / Tasty', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: 'This Margherita pizza is very tasty!' },
-                    es: { meaning: 'Bueno / Sabroso', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: '¡Esta pizza Margherita es muy buena!' },
-                    ja: { meaning: '美味しい / 良い', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: 'このマルゲリータピザはとても美味しいです！' },
-                    ko: { meaning: '맛있는 / 좋은', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: '이 마르게리타 피자는 정말 맛있어요!' }
+                    zh: { meaning: '冰淇淋', example: 'Vorrei un gelato al cioccolato.', exampleTranslation: '我想要一個巧克力冰淇淋。' },
+                    en: { meaning: 'Ice Cream', example: 'Vorrei un gelato al cioccolato.', exampleTranslation: 'I would like a chocolate ice cream.' },
+                    es: { meaning: 'Helado', example: 'Vorrei un gelato al cioccolato.', exampleTranslation: 'Me gustaría un helado de chocolate.' },
+                    ja: { meaning: 'ジェラート (アイス)', example: 'Vorrei un gelato al cioccolato.', exampleTranslation: 'チョコレートジェラートを一つください。' },
+                    ko: { meaning: '젤라토 (아이스크림)', example: 'Vorrei un gelato al cioccolato.', exampleTranslation: '초콜릿 젤라토 하나 주세요.' }
+                }
+            },
+            {
+                word: 'Pizza',
+                phonetic: 'PEET-tsah',
+                image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=300&q=80',
+                translations: {
+                    zh: { meaning: '比薩', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: '這款瑪格麗特比薩非常好吃！' },
+                    en: { meaning: 'Pizza', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: 'This Margherita pizza is very tasty!' },
+                    es: { meaning: 'Pizza', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: '¡Esta pizza Margherita es muy buena!' },
+                    ja: { meaning: 'ピザ', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: 'このマルゲリータピザはとても美味しいです！' },
+                    ko: { meaning: '피자', example: 'Questa pizza Margherita è molto buona!', exampleTranslation: '이 마르게리타 피자는 정말 맛있어요!' }
+                }
+            },
+            {
+                word: 'Pasta',
+                phonetic: 'PAHS-tah',
+                image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300&q=80',
+                translations: {
+                    zh: { meaning: '義大利麵', example: 'Stasera mangiamo la pasta.', exampleTranslation: '我們今晚吃義大利麵。' },
+                    en: { meaning: 'Pasta', example: 'Stasera mangiamo la pasta.', exampleTranslation: 'Tonight we are eating pasta.' },
+                    es: { meaning: 'Pasta', example: 'Stasera mangiamo la pasta.', exampleTranslation: 'Esta noche comemos pasta.' },
+                    ja: { meaning: 'パスタ', example: 'Stasera mangiamo la pasta.', exampleTranslation: '今夜はパスタを食べます。' },
+                    ko: { meaning: '파스타', example: 'Stasera mangiamo la pasta.', exampleTranslation: '오늘 밤에 우리는 파스타를 먹을 거예요.' }
                 }
             },
             {
                 word: 'Acqua',
                 phonetic: 'AHK-wah',
+                image: 'https://images.unsplash.com/photo-1548839134-6fd0ec258549?auto=format&fit=crop&w=300&q=80',
                 translations: {
                     zh: { meaning: '水', example: 'Una bottiglia di acqua frizzante, per favore.', exampleTranslation: '請給我一瓶氣泡水。' },
                     en: { meaning: 'Water', example: 'Una bottiglia di acqua frizzante, per favore.', exampleTranslation: 'A bottle of sparkling water, please.' },
@@ -200,36 +230,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             },
             {
-                word: 'Salute!',
-                phonetic: 'sah-LOO-teh',
+                word: 'Tiramisù',
+                phonetic: 'tee-rah-mee-SOO',
+                image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=300&q=80',
                 translations: {
-                    zh: { meaning: '乾杯！ / 祝健康！', example: 'Cin cin, salute a tutti!', exampleTranslation: '親親（乾杯聲），祝大家健康！' },
-                    en: { meaning: 'Cheers! / To your health!', example: 'Cin cin, salute a tutti!', exampleTranslation: 'Cheers! To everyone\'s health!' },
-                    es: { meaning: '¡Salud! / ¡A su salud!', example: 'Cin cin, salute a tutti!', exampleTranslation: '¡Salud, salud para todos!' },
-                    ja: { meaning: '乾杯！ / 健康を祝して！', example: 'Cin cin, salute a tutti!', exampleTranslation: 'チンチン（乾杯）、みんなの健康に乾杯！' },
-                    ko: { meaning: '건배! / 건강을 위해!', example: 'Cin cin, salute a tutti!', exampleTranslation: '짠! 모두의 건강을 위해!' }
+                    zh: { meaning: '提拉米蘇', example: 'Questo tiramisù è delizioso!', exampleTranslation: '這個提拉米蘇太美味了！' },
+                    en: { meaning: 'Tiramisu', example: 'Questo tiramisù è delizioso!', exampleTranslation: 'This tiramisu is delicious!' },
+                    es: { meaning: 'Tiramisú', example: 'Questo tiramisù è delizioso!', exampleTranslation: '¡Este tiramisú es delicioso!' },
+                    ja: { meaning: 'ティラミス', example: 'Questo tiramisù è delizioso!', exampleTranslation: 'このティラミスは最高に美味しいです！' },
+                    ko: { meaning: '티라미수', example: 'Questo tiramisù è delizioso!', exampleTranslation: '이 티라미수는 너무 맛있어요!' }
                 }
             },
             {
-                word: 'Il menù',
-                phonetic: 'eel meh-NOO',
+                word: 'Il conto, per favore',
+                phonetic: 'eel KOHN-toh pehr fah-VOH-reh',
                 translations: {
-                    zh: { meaning: '菜單', example: 'Posso ordinare? Vorrei vedere il menù.', exampleTranslation: '我可以點餐嗎？我想看一下菜單。' },
-                    en: { meaning: 'The menu', example: 'Posso ordinare? Vorrei vedere il menù.', exampleTranslation: 'Can I order? I would like to see the menu.' },
-                    es: { meaning: 'El menú', example: 'Posso ordinare? Vorrei vedere il menù.', exampleTranslation: '¿Puedo pedir? Me gustaría ver el menú.' },
-                    ja: { meaning: 'メニュー', example: 'Posso ordinare? Vorrei vedere il menù.', exampleTranslation: '注文してもいいですか？メニューを見せてください。' },
-                    ko: { meaning: '메뉴판', example: 'Posso ordinare? Vorrei vedere il menù.', exampleTranslation: '주문해도 될까요? 메뉴판을 보고 싶어요.' }
-                }
-            },
-            {
-                word: 'Delizioso',
-                phonetic: 'deh-lee-tsYOH-zoh',
-                translations: {
-                    zh: { meaning: '美味的', example: 'Questo tiramisù è delizioso!', exampleTranslation: '這個提拉米蘇太美味了！' },
-                    en: { meaning: 'Delicious', example: 'Questo tiramisù è delizioso!', exampleTranslation: 'This tiramisu is delicious!' },
-                    es: { meaning: 'Delicioso', example: 'Questo tiramisù è delizioso!', exampleTranslation: '¡Este tiramisú es delicioso!' },
-                    ja: { meaning: 'とても美味しい', example: 'Questo tiramisù è delizioso!', exampleTranslation: 'このティラミスは美味です！' },
-                    ko: { meaning: '아주 맛있는', example: 'Questo tiramisù è delizioso!', exampleTranslation: '이 티라미수는 너무 맛있어요!' }
+                    zh: { meaning: '請結帳', example: 'Cameriere, il conto, per favore.', exampleTranslation: '服務生，請幫我結帳。' },
+                    en: { meaning: 'The bill, please', example: 'Cameriere, il conto, per favore.', exampleTranslation: 'Waiter, the bill please.' },
+                    es: { meaning: 'La cuenta, por favor', example: 'Cameriere, il conto, per favore.', exampleTranslation: 'Camarero, la cuenta por favor.' },
+                    ja: { meaning: 'お会計をお願いします', example: 'Cameriere, il conto, per favore.', exampleTranslation: 'ウェイターさん、お会計をお願いします。' },
+                    ko: { meaning: '계산서 부탁합니다', example: 'Cameriere, il conto, per favore.', exampleTranslation: '웨이터, 여기 계산서 좀 주세요.' }
                 }
             }
         ]
@@ -246,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resDescCollins: '優質的英義雙語字典，內附清晰的單字原生真人發音。',
             resDescTreccani: '義大利國家百科全書官方詞典，最權威的義義字典（適合中高級學者）。',
             resTitleYt: '<i class="fab fa-youtube"></i> 推薦 YouTube 學習頻道',
-            resDescLucrezia: '最受歡迎的義大利文網紅！發音標準，包含豐富的生活 Vlogs 與文法教學。',
+            resDescLucrezia: '最受歡迎 of 義大利文網紅！發音標準，包含豐富的生活 Vlogs 與文法教學。',
             resDescEasy: '街頭街坊實測學習！提供雙語字幕，帶您學習義大利人日常最真實的對話與語速。',
             resDescEasyItaly: '主持人講英文十分風趣，透過科學與邏輯方法拆解義大利文的結構，非常適合完全零基礎。',
             resTitleApp: '<i class="fas fa-mobile-alt"></i> 推薦實用 App',
@@ -360,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navGreetings: '인사말',
             navPhrases: '유용한 대화',
             navDining: '식사 & 식당',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> 속도: '
+            rateLabel: '<i class="fas fa-tint"></i> 속도: '
         }
     };
 
@@ -401,10 +421,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         data.forEach(item => {
             const translation = item.translations[selectedNativeLanguage] || item.translations['en'];
+            const hasImage = !!item.image;
 
             const card = document.createElement('div');
-            card.className = 'vocab-card';
+            card.className = `vocab-card ${hasImage ? 'has-image' : ''}`;
+            
+            let imageHtml = '';
+            if (hasImage) {
+                imageHtml = `
+                    <div class="vocab-card-image">
+                        <img src="${item.image}" alt="${item.word}" loading="lazy">
+                    </div>
+                `;
+            }
+
             card.innerHTML = `
+                ${imageHtml}
                 <div class="vocab-word-info">
                     <h3>
                         ${item.word}
