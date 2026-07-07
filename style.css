@@ -322,6 +322,7 @@ body.light-theme .flag-btn {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
 }
 
 .search-box-wrapper {
@@ -440,6 +441,41 @@ body.light-theme .alphabet-btn {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+/* --- Dictionary View Switcher Tabs --- */
+.dictionary-tabs-container {
+    display: flex;
+    border-bottom: 1px solid var(--bg-surface-border);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .dictionary-tabs-container {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.main-tab-btn {
+    flex: 1;
+    padding: 1.2rem 2rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-bottom: 3px solid transparent;
+    transition: var(--transition-smooth);
+}
+
+.main-tab-btn:hover {
+    color: var(--secondary);
+}
+
+.main-tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    background: rgba(139, 92, 246, 0.03);
 }
 
 /* --- Tool Control Bar --- */
@@ -572,28 +608,24 @@ body.light-theme .vocab-card {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Masculine noun: blue badge */
 .pos-masculine {
     background: rgba(6, 182, 212, 0.12);
     border: 1px solid rgba(6, 182, 212, 0.35);
     color: var(--secondary);
 }
 
-/* Feminine noun: rose/pink badge */
 .pos-feminine {
     background: rgba(236, 72, 153, 0.12);
     border: 1px solid rgba(236, 72, 153, 0.35);
     color: var(--accent);
 }
 
-/* Verbs: green badge */
 .pos-verb {
     background: rgba(16, 185, 129, 0.12);
     border: 1px solid rgba(16, 185, 129, 0.35);
     color: var(--success);
 }
 
-/* Adjectives/Others: purple badge */
 .pos-other {
     background: rgba(139, 92, 246, 0.12);
     border: 1px solid rgba(139, 92, 246, 0.35);
@@ -635,6 +667,7 @@ body.light-theme .grammar-info-row {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
+    flex-shrink: 0;
 }
 
 .label-badge.badge-meaning {
@@ -655,20 +688,31 @@ body.light-theme .grammar-info-row {
     color: var(--text-primary);
 }
 
+.vocab-example-block {
+    margin-top: 0.8rem;
+    border-left: 3px solid var(--primary);
+    padding-left: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.vocab-example-text-side {
+    flex-grow: 1;
+}
+
 .vocab-word-info .example {
     font-size: 0.98rem;
     color: var(--text-secondary);
     line-height: 1.45;
-    border-left: 3px solid var(--primary);
-    padding-left: 0.8rem;
 }
 
 .example-translation-row {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    margin-top: 0.5rem;
-    padding-left: 0.8rem;
+    margin-top: 0.3rem;
 }
 
 .vocab-word-info .example-translation {
@@ -752,6 +796,115 @@ body.light-theme .grammar-info-row {
     font-size: 1.2rem;
     color: var(--text-primary);
     font-weight: 700;
+}
+
+/* --- Grammatica View Content Styling --- */
+.grammar-content-wrapper {
+    padding: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-height: 850px;
+    overflow-y: auto;
+}
+
+.grammar-card {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--bg-surface-border);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+}
+
+body.light-theme .grammar-card {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.grammar-card h4 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.grammar-card h4 i {
+    color: var(--secondary);
+}
+
+.grammar-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.table-scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--bg-surface-border);
+}
+
+.grammar-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    text-align: left;
+}
+
+.grammar-table th {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 0.9rem 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--bg-surface-border);
+}
+
+body.light-theme .grammar-table th {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.grammar-table td {
+    padding: 0.9rem 1.2rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--bg-surface-border);
+}
+
+.grammar-table tr:last-child td {
+    border-bottom: none;
+}
+
+.grammar-table tr:hover td {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.01);
+}
+
+/* Grammar text highlights */
+.grammar-highlight {
+    font-weight: 800;
+    color: var(--primary);
+    background: rgba(139, 92, 246, 0.08);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+.grammar-highlight-blue {
+    font-weight: 800;
+    color: var(--secondary);
+    background: rgba(6, 182, 212, 0.08);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+.grammar-highlight-pink {
+    font-weight: 800;
+    color: var(--accent);
+    background: rgba(236, 72, 153, 0.08);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
 }
 
 /* --- Resource sidebar cards --- */
@@ -958,5 +1111,10 @@ body.light-theme ::-webkit-scrollbar-thumb {
         margin-top: 1.2rem;
         justify-content: space-around;
         width: 100%;
+    }
+    
+    .main-tab-btn {
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
     }
 }

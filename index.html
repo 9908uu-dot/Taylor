@@ -61,7 +61,7 @@
         </section>
 
         <!-- Dictionary Search and Index Bar -->
-        <section class="dictionary-search-section">
+        <section class="dictionary-search-section" id="dictionary-search-section">
             <div class="search-box-wrapper">
                 <i class="fas fa-search search-main-icon"></i>
                 <input type="text" id="dict-search-input" placeholder="輸入義大利文單字搜尋... (例如: pizza, libro, mangiare)">
@@ -87,22 +87,191 @@
 
         <!-- Italian Learning Layout -->
         <div class="italian-layout">
-            <!-- Left Panel: Dictionary Search Results -->
+            <!-- Left Panel: Dictionary Search Results & Grammar Hub -->
             <div class="italian-main-panel">
-                <div class="tool-control-bar">
-                    <div class="results-count-wrapper">
-                        <span id="results-count-text">顯示所有詞彙 (共 16 筆)</span>
+                <!-- Main Tab Headers -->
+                <div class="dictionary-tabs-container">
+                    <button class="main-tab-btn active" data-view="dizionario" id="btn-view-dizionario">
+                        <i class="fas fa-search"></i> Dizionario (詞典檢索)
+                    </button>
+                    <button class="main-tab-btn" data-view="grammatica" id="btn-view-grammatica">
+                        <i class="fas fa-book"></i> Grammatica (文法指南)
+                    </button>
+                </div>
+
+                <!-- 1. Dictionary View Content -->
+                <div id="dict-view-content" class="tab-view-content active">
+                    <div class="tool-control-bar">
+                        <div class="results-count-wrapper">
+                            <span id="results-count-text">顯示所有詞彙 (共 39 筆)</span>
+                        </div>
+                        <div class="voice-selection-bar">
+                            <label for="voice-rate" id="rate-label"><i class="fas fa-tachometer-alt"></i> 語速: </label>
+                            <span id="rate-val">1x</span>
+                            <input type="range" id="voice-rate" min="0.5" max="1.5" step="0.1" value="1">
+                        </div>
                     </div>
-                    <div class="voice-selection-bar">
-                        <label for="voice-rate" id="rate-label"><i class="fas fa-tachometer-alt"></i> 語速: </label>
-                        <span id="rate-val">1x</span>
-                        <input type="range" id="voice-rate" min="0.5" max="1.5" step="0.1" value="1">
+
+                    <div class="vocab-list-wrapper">
+                        <div id="vocab-display" class="vocab-grid">
+                            <!-- Populated dynamically by JS -->
+                        </div>
                     </div>
                 </div>
 
-                <div class="vocab-list-wrapper">
-                    <div id="vocab-display" class="vocab-grid">
-                        <!-- Populated dynamically by JS -->
+                <!-- 2. Grammar View Content (Deep Italian Grammar & Pronoun Lists) -->
+                <div id="grammar-view-content" class="tab-view-content" style="display: none;">
+                    <div class="grammar-content-wrapper">
+                        <!-- Grammar Unit 1: Pronouns & Objects -->
+                        <div class="grammar-card">
+                            <h4 id="g-unit1-title"><i class="fas fa-random"></i> 直接與間接受詞代名詞變化對照表 (Pronomi Diretti e Indiretti)</h4>
+                            <p id="g-unit1-desc">在義大利文文法中，受詞代名詞會根據「直接受格」與「間接受格」產生不同的字尾與型態變化。以下為詞性列造對照表：</p>
+                            <div class="table-scroll-container">
+                                <table class="grammar-table">
+                                    <thead>
+                                        <tr>
+                                            <th>人稱 (Persona)</th>
+                                            <th>直接受格 (Pronomi Diretti)</th>
+                                            <th>間接受格 (Pronomi Indiretti)</th>
+                                            <th>功能與文法說明 (Funzione)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>1a Sing. (io)</strong></td>
+                                            <td><span class="grammar-highlight">mi</span> (我)</td>
+                                            <td><span class="grammar-highlight">mi</span> (對我)</td>
+                                            <td>例如: Mi vedi (你看到我) / Mi parli (你對我說話)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>2a Sing. (tu)</strong></td>
+                                            <td><span class="grammar-highlight">ti</span> (你)</td>
+                                            <td><span class="grammar-highlight">ti</span> (對你)</td>
+                                            <td>例如: Ti amo (我愛你) / Ti do un libro (我給你一本書)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>3a Sing. Masc. (lui)</strong></td>
+                                            <td><span class="grammar-highlight-blue">lo</span> (他/它)</td>
+                                            <td><span class="grammar-highlight-blue">gli</span> (對他)</td>
+                                            <td>例如: Lo conosco (我認識他) / Gli telefono (我給他打電話)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>3a Sing. Fem. (lei)</strong></td>
+                                            <td><span class="grammar-highlight-pink">la</span> (她/它)</td>
+                                            <td><span class="grammar-highlight-pink">le</span> (對她)</td>
+                                            <td>例如: La chiamo (我叫她) / Le rispondo (我回答她)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>1a Plur. (noi)</strong></td>
+                                            <td><span class="grammar-highlight">ci</span> (我們)</td>
+                                            <td><span class="grammar-highlight">ci</span> (對我們)</td>
+                                            <td>例如: Ci sentono (他們聽到我們) / Ci offrono un caffè (他們請我們喝咖啡)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>2a Plur. (voi)</strong></td>
+                                            <td><span class="grammar-highlight">vi</span> (你們)</td>
+                                            <td><span class="grammar-highlight">vi</span> (對你們)</td>
+                                            <td>例如: Vi cerco (我尋找你們) / Vi scrivo una lettera (我給你們寫信)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>3a Plur. (loro)</strong></td>
+                                            <td><span class="grammar-highlight-blue">li</span> (他們) / <span class="grammar-highlight-pink">le</span> (它們)</td>
+                                            <td><span class="grammar-highlight">gli / loro</span> (對他們/它們)</td>
+                                            <td>例如: Li compro (我買下它們) / Gli dico la verità (我對他們說實話)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Grammar Unit 2: Gender Agreement -->
+                        <div class="grammar-card">
+                            <h4 id="g-unit2-title"><i class="fas fa-venus-mars"></i> 名詞陰陽性與單複數規則 (Sostantivi: Genere e Numero)</h4>
+                            <p id="g-unit2-desc">義大利文名詞均有性別（陽性與陰性），形容詞與冠詞必須與名詞進行「性別與單複數一致性」調整。</p>
+                            <div class="table-scroll-container">
+                                <table class="grammar-table">
+                                    <thead>
+                                        <tr>
+                                            <th>性別類型 (Genere)</th>
+                                            <th>單數結尾 (Singolare)</th>
+                                            <th>複數結尾 (Plurale)</th>
+                                            <th>經典字彙與詞形變化示例 (Esempio)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="pos-tag pos-masculine">陽性 (Maschile)</span></td>
+                                            <td><strong>-o</strong></td>
+                                            <td><strong>-i</strong></td>
+                                            <td><em>il libr<strong>o</strong></em> (書) &rarr; <em>i libr<strong>i</strong></em> (複數)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="pos-tag pos-feminine">陰性 (Femminile)</span></td>
+                                            <td><strong>-a</strong></td>
+                                            <td><strong>-e</strong></td>
+                                            <td><em>la cas<strong>a</strong></em> (房子) &rarr; <em>le cas<strong>e</strong></em> (複數)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="pos-tag pos-other">中性/不規則型</span></td>
+                                            <td><strong>-e</strong></td>
+                                            <td><strong>-i</strong></td>
+                                            <td><em>il can<strong>e</strong></em> (狗) &rarr; <em>i can<strong>i</strong></em> / <em>la nott<strong>e</strong></em> &rarr; <em>le nott<strong>i</strong></em></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Grammar Unit 3: Definite Articles -->
+                        <div class="grammar-card">
+                            <h4 id="g-unit3-title"><i class="fas fa-font"></i> 定冠詞對照規則 (Articoli Determinativi)</h4>
+                            <p id="g-unit3-desc">冠詞的選擇會隨著單字字首的字母類型（母音、一般子音、特殊子音 S+子音/Z 等）而有所改變：</p>
+                            <div class="table-scroll-container">
+                                <table class="grammar-table">
+                                    <thead>
+                                        <tr>
+                                            <th>性別 (Genere)</th>
+                                            <th>字首條件 (Condizione)</th>
+                                            <th>單數冠詞 (Sing.)</th>
+                                            <th>複數冠詞 (Plur.)</th>
+                                            <th>範例 (Esempio)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td rowspan="3"><strong>陽性 (Maschile)</strong></td>
+                                            <td>一般子音開頭</td>
+                                            <td><span class="grammar-highlight">il</span></td>
+                                            <td><span class="grammar-highlight">i</span></td>
+                                            <td><em>il cane</em> &rarr; <em>i cani</em> (狗)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>母音開頭 (A, E, I, O, U)</td>
+                                            <td><span class="grammar-highlight">l'</span></td>
+                                            <td rowspan="2"><span class="grammar-highlight">gli</span></td>
+                                            <td><em>l'amico</em> &rarr; <em>gli amici</em> (朋友)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>特殊子音 (s+子音, z, gn, ps)</td>
+                                            <td><span class="grammar-highlight">lo</span></td>
+                                            <td><em>lo studente</em> &rarr; <em>gli studenti</em> (學生)</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="2"><strong>陰性 (Femminile)</strong></td>
+                                            <td>子音開頭</td>
+                                            <td><span class="grammar-highlight">la</span></td>
+                                            <td rowspan="2"><span class="grammar-highlight">le</span></td>
+                                            <td><em>la pizza</em> &rarr; <em>le pizze</em> (比薩)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>母音開頭</td>
+                                            <td><span class="grammar-highlight">l'</span></td>
+                                            <td><em>l'acqua</em> &rarr; <em>le acque</em> (水)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

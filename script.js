@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // 2. Comprehensive Dictionary Database
+    // Each word contains TWO accurate example sentences
     // ==========================================
     const italianDictionaryData = [
         {
@@ -37,11 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'libri',
             image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '書 / 書籍', example: 'Leggo un libro interessante in biblioteca.', exampleTranslation: '我正在圖書館看一本很有趣的書。' },
-                en: { meaning: 'book', example: 'Leggo un libro interessante in biblioteca.', exampleTranslation: 'I am reading an interesting book in the library.' },
-                es: { meaning: 'libro', example: 'Leggo un libro interessante in biblioteca.', exampleTranslation: 'Leo un libro interesante en la biblioteca.' },
-                ja: { meaning: '本 / 書籍', example: 'Leggo un libro interessante in biblioteca.', exampleTranslation: '私は図書館で面白い本を読んでいます。' },
-                ko: { meaning: '책', example: 'Leggo un libro interessante in biblioteca.', exampleTranslation: '나는 도서관에서 흥미로운 책을 읽고 있습니다.' }
+                zh: { 
+                    meaning: '書 / 書籍', 
+                    example: 'Leggo un libro interessante in biblioteca.', exampleTranslation: '我正在圖書館看一本很有趣的書。',
+                    example2: 'Ho comprato questo libro ieri in libreria.', exampleTranslation2: '我昨天在書店買了這本書。'
+                },
+                en: { 
+                    meaning: 'book', 
+                    example: 'Leggo un libro interessante in the library.', exampleTranslation: 'I am reading an interesting book in the library.',
+                    example2: 'I bought this book yesterday at the bookstore.', exampleTranslation2: 'I bought this book yesterday at the bookstore.'
+                },
+                es: { 
+                    meaning: 'libro', 
+                    example: 'Leo un libro interesante en la biblioteca.', exampleTranslation: 'Leo un libro interesante en la biblioteca.',
+                    example2: 'Compré este libro ayer en la librería.', exampleTranslation2: 'Compré este libro ayer en la librería.'
+                },
+                ja: { 
+                    meaning: '本 / 書籍', 
+                    example: '図書館で面白い本を読んでいます。', exampleTranslation: '図書館で面白い本を読んでいます。',
+                    example2: '昨日、本屋でこの本を買いました。', exampleTranslation2: '昨日、本屋でこの本を買いました。'
+                },
+                ko: { 
+                    meaning: '책', 
+                    example: '도서관에서 흥미로운 책을 읽고 있습니다.', exampleTranslation: '도서관에서 흥미로운 책을 읽고 있습니다.',
+                    example2: '어제 서점에서 이 책을 샀습니다.', exampleTranslation2: '어제 서점에서 이 책을 샀습니다.'
+                }
             }
         },
         {
@@ -52,11 +73,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'case',
             image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '房子 / 家', example: 'La mia casa si trova a Roma.', exampleTranslation: '我的家位在羅馬。' },
-                en: { meaning: 'house / home', example: 'La mia casa si trova a Roma.', exampleTranslation: 'My house is located in Rome.' },
-                es: { meaning: 'casa / hogar', example: 'La mia casa si trova a Roma.', exampleTranslation: 'Mi casa se encuentra en Roma.' },
-                ja: { meaning: '家 / 自宅', example: 'La mia casa si trova a Roma.', exampleTranslation: '私の家はローマにあります。' },
-                ko: { meaning: '집', example: 'La mia casa si trova a Roma.', exampleTranslation: '우리 집은 로마에 있습니다.' }
+                zh: { 
+                    meaning: '房子 / 家', 
+                    example: 'La mia casa si trova a Roma.', exampleTranslation: '我的家位在羅馬。',
+                    example2: 'Torno a casa stasera dopo il lavoro.', exampleTranslation2: '我今晚工作後要回家。'
+                },
+                en: { 
+                    meaning: 'house / home', 
+                    example: 'My house is located in Rome.', exampleTranslation: 'My house is located in Rome.',
+                    example2: 'I return home tonight after work.', exampleTranslation2: 'I return home tonight after work.'
+                },
+                es: { 
+                    meaning: 'casa / hogar', 
+                    example: 'Mi casa se encuentra en Roma.', exampleTranslation: 'Mi casa se encuentra en Roma.',
+                    example2: 'Vuelvo a casa esta noche después de trabajar.', exampleTranslation2: 'Vuelvo a casa esta noche después de trabajar.'
+                },
+                ja: { 
+                    meaning: '家 / 自宅', 
+                    example: '私の家はローマにあります。', exampleTranslation: '私の家はローマにあります。',
+                    example2: '今夜仕事の後に家に帰ります。', exampleTranslation2: '今夜仕事の後に家に帰ります。'
+                },
+                ko: { 
+                    meaning: '집', 
+                    example: '우리 집은 로마에 있습니다.', exampleTranslation: '우리 집은 로마에 있습니다.',
+                    example2: '오늘 퇴근 후에 집으로 돌아갑니다.', exampleTranslation2: '오늘 퇴근 후에 집으로 돌아갑니다.'
+                }
             }
         },
         {
@@ -67,11 +108,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'caffè',
             image: 'assets/images/caffe.jpg',
             translations: {
-                zh: { meaning: '咖啡', example: 'Prendiamo un caffè espresso al bar?', exampleTranslation: '我們要不要在咖啡廳喝杯濃縮咖啡？' },
-                en: { meaning: 'coffee', example: 'Prendiamo un caffè espresso al bar?', exampleTranslation: 'Shall we grab an espresso at the bar?' },
-                es: { meaning: 'café', example: 'Prendiamo un caffè espresso al bar?', exampleTranslation: '¿Tomamos un café expresso en el bar?' },
-                ja: { meaning: 'コーヒー', example: 'Prendiamo un caffè espresso al bar?', exampleTranslation: 'カフェでエスプレッソを一杯飲みませんか？' },
-                ko: { meaning: '커피', example: 'Prendiamo un caffè espresso al bar?', exampleTranslation: '우리 카페에서 에스프레소 한잔할까요?' }
+                zh: { 
+                    meaning: '咖啡', 
+                    example: 'Prendiamo un caffè espresso al bar?', exampleTranslation: '我們要不要在咖啡廳喝杯濃縮咖啡？',
+                    example2: 'Bevo sempre un caffè caldo la mattina.', exampleTranslation2: '我早上總是喝一杯熱咖啡。'
+                },
+                en: { 
+                    meaning: 'coffee', 
+                    example: 'Shall we grab an espresso at the bar?', exampleTranslation: 'Shall we grab an espresso at the bar?',
+                    example2: 'I always drink a hot coffee in the morning.', exampleTranslation2: 'I always drink a hot coffee in the morning.'
+                },
+                es: { 
+                    meaning: 'café', 
+                    example: '¿Tomamos un café expresso en el bar?', exampleTranslation: '¿Tomamos un café expresso en el bar?',
+                    example2: 'Siempre bebo un café caliente por la mañana.', exampleTranslation2: 'Siempre bebo un café caliente por la mañana.'
+                },
+                ja: { 
+                    meaning: 'コーヒー', 
+                    example: 'カフェでエスプレッソを一杯飲みませんか？', exampleTranslation: 'カフェでエスプレッソを一杯飲みませんか？',
+                    example2: '朝はいつも温かいコーヒーを飲みます。', exampleTranslation2: '朝はいつも温かいコーヒーを飲みます。'
+                },
+                ko: { 
+                    meaning: '커피', 
+                    example: '우리 카페에서 에스프레소 한잔할까요?', exampleTranslation: '우리 카페에서 에스프레소 한잔할까요?',
+                    example2: '나는 아침에 항상 따뜻한 커피를 마십니다.', exampleTranslation2: '나는 아침에 항상 따뜻한 커피를 마십니다.'
+                }
             }
         },
         {
@@ -82,11 +143,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'pizze',
             image: 'assets/images/pizza.jpg',
             translations: {
-                zh: { meaning: '比薩', example: 'Questa pizza Margherita calda è fantastica.', exampleTranslation: '這款剛出爐的瑪格麗特比薩棒透了。' },
-                en: { meaning: 'pizza', example: 'Questa pizza Margherita calda è fantastica.', exampleTranslation: 'This hot Margherita pizza is fantastic.' },
-                es: { meaning: 'pizza', example: 'Questa pizza Margherita calda è fantastica.', exampleTranslation: 'Esta pizza Margherita caliente es fantástica.' },
-                ja: { meaning: 'ピザ', example: 'Questa pizza Margherita calda è fantastica.', exampleTranslation: 'この焼きたてのマルゲリータピザは素晴らしいです。' },
-                ko: { meaning: '피자', example: 'Questa pizza Margherita calda è fantastica.', exampleTranslation: '이 따끈한 마르게리타 피자는 정말 대단해요.' }
+                zh: { 
+                    meaning: '比薩', 
+                    example: 'Questa pizza Margherita calda è fantastica.', exampleTranslation: '這款剛出爐的瑪格麗特比薩棒透了。',
+                    example2: 'Mangiamo una pizza intera per cena.', exampleTranslation2: '我們晚餐吃一整片比薩。'
+                },
+                en: { 
+                    meaning: 'pizza', 
+                    example: 'This hot Margherita pizza is fantastic.', exampleTranslation: 'This hot Margherita pizza is fantastic.',
+                    example2: 'We eat a whole pizza for dinner.', exampleTranslation2: 'We eat a whole pizza for dinner.'
+                },
+                es: { 
+                    meaning: 'pizza', 
+                    example: 'Esta pizza Margherita caliente es fantástica.', exampleTranslation: 'Esta pizza Margherita caliente es fantástica.',
+                    example2: 'Comemos una pizza entera para cenar.', exampleTranslation2: 'Comemos una pizza entera para cenar.'
+                },
+                ja: { 
+                    meaning: 'ピザ', 
+                    example: 'この焼きたてのマルゲリータピザは素晴らしいです。', exampleTranslation: 'この焼きたてのマルゲリータピザは素晴らしいです。',
+                    example2: '夕食にピザを丸ごと一枚食べます。', exampleTranslation2: '夕食にピザを丸ごと一枚食べます。'
+                },
+                ko: { 
+                    meaning: '피자', 
+                    example: '이 따끈한 마르게리타 피자는 정말 대단해요.', exampleTranslation: '이 따끈한 마르게리타 피자는 정말 대단해요.',
+                    example2: '저녁으로 피자 한 판을 다 먹습니다.', exampleTranslation2: '저녁으로 피자 한 판을 다 먹습니다.'
+                }
             }
         },
         {
@@ -97,11 +178,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'paste',
             image: 'assets/images/pasta.jpg',
             translations: {
-                zh: { meaning: '義大利麵', example: 'Cucino la pasta al pomodoro stasera.', exampleTranslation: '我今晚要煮番茄義大利麵。' },
-                en: { meaning: 'pasta', example: 'Cucino la pasta al pomodoro stasera.', exampleTranslation: 'I am cooking tomato pasta tonight.' },
-                es: { meaning: 'pasta', example: 'Cucino la pasta al pomodoro stasera.', exampleTranslation: 'Cocino la pasta con tomate esta noche.' },
-                ja: { meaning: 'パスタ', example: '今夜はトマトパスタを作ります。', exampleTranslation: '今夜はトマトパスタを作ります。' },
-                ko: { meaning: '파스타', example: 'Cucino la pasta al pomodoro stasera.', exampleTranslation: '오늘 밤에 토마토 파스타를 요리할 거예요.' }
+                zh: { 
+                    meaning: '義大利麵', 
+                    example: 'Cucino la pasta al pomodoro stasera.', exampleTranslation: '我今晚要煮番茄義大利麵。',
+                    example2: 'La pasta italiana è famosa in tutto il mondo.', exampleTranslation2: '義大利麵在全世界都非常有名。'
+                },
+                en: { 
+                    meaning: 'pasta', 
+                    example: 'I am cooking tomato pasta tonight.', exampleTranslation: 'I am cooking tomato pasta tonight.',
+                    example2: 'Italian pasta is famous all over the world.', exampleTranslation2: 'Italian pasta is famous all over the world.'
+                },
+                es: { 
+                    meaning: 'pasta', 
+                    example: 'Cocino la pasta con tomate esta noche.', exampleTranslation: 'Cocino la pasta con tomate esta noche.',
+                    example2: 'La pasta italiana es famosa en todo el mundo.', exampleTranslation2: 'La pasta italiana es famosa en todo el mundo.'
+                },
+                ja: { 
+                    meaning: 'パスタ', 
+                    example: '今夜はトマトパスタを作ります。', exampleTranslation: '今夜はトマトパスタを作ります。',
+                    example2: 'イタリアのパスタは世界中で有名です。', exampleTranslation2: 'イタリアのパスタは世界中で有名です。'
+                },
+                ko: { 
+                    meaning: '파스타', 
+                    example: '오늘 밤에 토마토 파스타를 요리할 거예요.', exampleTranslation: '오늘 밤에 토마토 파스타를 요리할 거예요.',
+                    example2: '이탈리아 파스타는 전 세계적으로 유명합니다.', exampleTranslation2: '이탈리아 파스타는 전 세계적으로 유명합니다.'
+                }
             }
         },
         {
@@ -112,11 +213,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'acque',
             image: 'https://images.unsplash.com/photo-1548839134-6fd0ec258549?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '水', example: 'Una bottiglia di acqua minerale, per favore.', exampleTranslation: '請給我一瓶礦泉水。' },
-                en: { meaning: 'water', example: 'Una bottiglia di acqua minerale, per favore.', exampleTranslation: 'A bottle of mineral water, please.' },
-                es: { meaning: 'agua', example: 'Una bottiglia di agua mineral, por favor.', exampleTranslation: 'Una botella de agua mineral, por favor.' },
-                ja: { meaning: '水', example: 'Una bottiglia di acqua minerale, per favore.', exampleTranslation: 'ミネラルウォーターをボトルで一本お願いします。' },
-                ko: { meaning: '물', example: 'Una bottiglia di acqua minerale, per favore.', exampleTranslation: '생수 한 병 주세요.' }
+                zh: { 
+                    meaning: '水', 
+                    example: 'Una bottiglia di acqua minerale, per favore.', exampleTranslation: '請給我一瓶礦泉水。',
+                    example2: 'L\'acqua fresca fa bene alla salute.', exampleTranslation2: '新鮮的冷水對健康有益。'
+                },
+                en: { 
+                    meaning: 'water', 
+                    example: 'A bottle of mineral water, please.', exampleTranslation: 'A bottle of mineral water, please.',
+                    example2: 'Fresh water is good for your health.', exampleTranslation2: 'Fresh water is good for your health.'
+                },
+                es: { 
+                    meaning: 'agua', 
+                    example: 'Una botella de agua mineral, por favor.', exampleTranslation: 'Una botella de agua mineral, por favor.',
+                    example2: 'El agua fresca es buena para la salud.', exampleTranslation2: 'El agua fresca es buena para la salud.'
+                },
+                ja: { 
+                    meaning: '水', 
+                    example: 'ミネラルウォーターをボトルで一本お願いします。', exampleTranslation: 'ミネラルウォーターをボトルで一本お願いします。',
+                    example2: '新鮮な水は健康に良いです。', exampleTranslation2: '新鮮な水は健康に良いです。'
+                },
+                ko: { 
+                    meaning: '물', 
+                    example: '생수 한 병 주세요.', exampleTranslation: '생수 한 병 주세요.',
+                    example2: '신선한 물은 건강에 좋습니다.', exampleTranslation2: '신선한 물은 건강에 좋습니다.'
+                }
             }
         },
         {
@@ -127,11 +248,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'tiramisù',
             image: 'assets/images/tiramisu.jpg',
             translations: {
-                zh: { meaning: '提拉米蘇', example: 'Ordino un tiramisù classico come dolce.', exampleTranslation: '我點了一份經典提拉米蘇當甜點。' },
-                en: { meaning: 'tiramisu', example: 'Ordino un tiramisù classico come dolce.', exampleTranslation: 'I order a classic tiramisu as dessert.' },
-                es: { meaning: 'tiramisú', example: 'Ordino un tiramisù classico come dolce.', exampleTranslation: 'Pido un tiramisú clásico como postre.' },
-                ja: { meaning: 'ティラミス', example: 'デザートにクラシックなティラミスを注文します。', exampleTranslation: 'デザートにクラシックなティラミスを注文します。' },
-                ko: { meaning: '티라미수', example: 'Ordino un tiramisù classico come dolce.', exampleTranslation: '디저트로 클래식 티라미수를 주문합니다.' }
+                zh: { 
+                    meaning: '提拉米蘇', 
+                    example: 'Ordino un tiramisù classico come dolce.', exampleTranslation: '我點了一份經典提拉米蘇當甜點。',
+                    example2: 'Il tiramisù è il mio dolce italiano preferito.', exampleTranslation2: '提拉米蘇是我最愛的義大利甜點。'
+                },
+                en: { 
+                    meaning: 'tiramisu', 
+                    example: 'I order a classic tiramisu as dessert.', exampleTranslation: 'I order a classic tiramisu as dessert.',
+                    example2: 'Tiramisu is my favorite Italian dessert.', exampleTranslation2: 'Tiramisu is my favorite Italian dessert.'
+                },
+                es: { 
+                    meaning: 'tiramisú', 
+                    example: 'Pido un tiramisú clásico como postre.', exampleTranslation: 'Pido un tiramisú clásico como postre.',
+                    example2: 'El tiramisú es mi postre italiano favorito.', exampleTranslation2: 'El tiramisú es mi postre italiano favorito.'
+                },
+                ja: { 
+                    meaning: 'ティラミス', 
+                    example: 'デザートにクラシックなティラミスを注文します。', exampleTranslation: 'デザートにクラシックなティラミスを注文します。',
+                    example2: 'ティラミスは私の一番好きなイタリアのデザートです。', exampleTranslation2: 'ティラミスは私の一番好きなイタリアのデザートです。'
+                },
+                ko: { 
+                    meaning: '티라미수', 
+                    example: '디저트로 클래식 티라미수를 주문합니다.', exampleTranslation: '디저트로 클래식 티라미수를 주문합니다.',
+                    example2: '티라미수는 내가 가장 좋아하는 이탈리아 디저트입니다.', exampleTranslation2: '티라미수는 내가 가장 좋아하는 이탈리아 디저트입니다.'
+                }
             }
         },
         {
@@ -142,11 +283,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'amici',
             image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '朋友 (男)', example: 'Lui è il mio migliore amico d\'infanzia.', exampleTranslation: '他是我的兒時死黨。' },
-                en: { meaning: 'friend (male)', example: 'Lui è il mio migliore amico d\'infanzia.', exampleTranslation: 'He is my best childhood friend.' },
-                es: { meaning: 'amigo', example: 'Lui è il mio migliore amico d\'infanzia.', exampleTranslation: 'Él es mi mejor amigo de la infancia.' },
-                ja: { meaning: '友達 (男性)', example: 'Lui è il mio migliore amico d\'infanzia.', exampleTranslation: '彼は私の幼馴染みの親友です。' },
-                ko: { meaning: '친구 (남자)', example: 'Lui è il mio migliore amico d\'infanzia.', exampleTranslation: '그는 내 소꿉친구이자 가장 친한 친구입니다.' }
+                zh: { 
+                    meaning: '朋友 (男)', 
+                    example: 'Lui è il mio migliore amico d\'infanzia.', exampleTranslation: '他是我的兒時死黨。',
+                    example2: 'Esco stasera con un caro amico.', exampleTranslation2: '我今晚要跟一位摯友出去。'
+                },
+                en: { 
+                    meaning: 'friend (male)', 
+                    example: 'He is my best childhood friend.', exampleTranslation: 'He is my best childhood friend.',
+                    example2: 'I am going out tonight with a dear friend.', exampleTranslation2: 'I am going out tonight with a dear friend.'
+                },
+                es: { 
+                    meaning: 'amigo', 
+                    example: 'Él es mi mejor amigo de la infancia.', exampleTranslation: 'Él es mi mejor amigo de la infancia.',
+                    example2: 'Salgo esta noche con un querido amigo.', exampleTranslation2: 'Salgo esta noche con un querido amigo.'
+                },
+                ja: { 
+                    meaning: '友達 (男性)', 
+                    example: '彼は私の幼馴染みの親友です。', exampleTranslation: '彼は私の幼馴染みの親友です。',
+                    example2: '今夜、親しい友人と出かけます。', exampleTranslation2: '今夜、親しい友人と出かけます。'
+                },
+                ko: { 
+                    meaning: '친구 (남자)', 
+                    example: '그는 내 소꿉친구이자 가장 친한 친구입니다.', exampleTranslation: '그는 내 소꿉친구이자 가장 친한 친구입니다.',
+                    example2: '오늘 밤에 친한 친구와 외출합니다.', exampleTranslation2: '오늘 밤에 친한 친구와 외출합니다.'
+                }
             }
         },
         {
@@ -157,11 +318,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'treni',
             image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '火車', example: 'Prendo il treno ad alta velocità per Firenze.', exampleTranslation: '我搭乘高速鐵路火車前往佛羅倫斯。' },
-                en: { meaning: 'train', example: 'Prendo il treno ad alta velocità per Firenze.', exampleTranslation: 'I take the high-speed train to Florence.' },
-                es: { meaning: 'tren', example: 'Prendo il treno ad alta velocità per Firenze.', exampleTranslation: 'Tomo el tren de alta velocidad a Florencia.' },
-                ja: { meaning: '電車 / 列車', example: 'フィレンツェ行きの高速列車に乗ります。', exampleTranslation: 'フィレンツェ行きの高速列車に乗ります。' },
-                ko: { meaning: '기차 / 열차', example: 'Prendo il treno ad alta velocità per Firenze.', exampleTranslation: '피렌체행 고속열차를 탑니다.' }
+                zh: { 
+                    meaning: '火車 / 鐵路列車', 
+                    example: 'Il treno parte alle dieci.', exampleTranslation: '火車將在十點出發。',
+                    example2: 'Il treno per Milano è in ritardo.', exampleTranslation2: '去往米蘭的火車晚點了。'
+                },
+                en: { 
+                    meaning: 'train', 
+                    example: 'The train leaves at ten.', exampleTranslation: 'The train leaves at ten.',
+                    example2: 'The train to Milan is late.', exampleTranslation2: 'The train to Milan is late.'
+                },
+                es: { 
+                    meaning: 'tren', 
+                    example: 'El tren sale a las diez.', exampleTranslation: 'El tren sale a las diez.',
+                    example2: 'El tren a Milán llega tarde.', exampleTranslation2: 'El tren a Milán llega tarde.'
+                },
+                ja: { 
+                    meaning: '電車 / 列車', 
+                    example: '列車は10時に出発します。', exampleTranslation: '列車は10時に出発します。',
+                    example2: 'ミラノ行きの列車が遅れています。', exampleTranslation2: 'ミラノ行きの列車が遅れています。'
+                },
+                ko: { 
+                    meaning: '기차 / 열차', 
+                    example: '열차는 10시에 출발합니다.', exampleTranslation: '열차는 10시에 출발합니다.',
+                    example2: '밀라노행 열차가 지연되고 있습니다.', exampleTranslation2: '밀라노행 열차가 지연되고 있습니다.'
+                }
             }
         },
         {
@@ -172,11 +353,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'vini',
             image: 'assets/images/vino.jpg',
             translations: {
-                zh: { meaning: '葡萄酒', example: 'Offro un bicchiere di vino rosso toscano.', exampleTranslation: '我請喝一杯托斯卡尼的紅葡萄酒。' },
-                en: { meaning: 'wine', example: 'Offro un bicchiere di vino rosso toscano.', exampleTranslation: 'I offer a glass of Tuscan red wine.' },
-                es: { meaning: 'vino', example: 'Offro un bicchiere di vino rosso toscano.', exampleTranslation: 'Ofrezco una copa de vino tinto toscano.' },
-                ja: { meaning: 'ワイン', example: 'トスカーナの赤ワインを一杯ごちそうします。', exampleTranslation: 'トスカーナの赤ワインを一杯ごちそうします。' },
-                ko: { meaning: '와인', example: 'Offro un bicchiere di vino rosso toscano.', exampleTranslation: '토스카나 레드 와인 한 잔 대접할게요.' }
+                zh: { 
+                    meaning: '葡萄酒 / 紅酒', 
+                    example: 'Offro un bicchiere di vino rosso toscano.', exampleTranslation: '我請喝一杯托斯卡尼的紅葡萄酒。',
+                    example2: 'Il vino bianco si beve freddo.', exampleTranslation2: '白葡萄酒通常冷著喝。'
+                },
+                en: { 
+                    meaning: 'wine', 
+                    example: 'I offer a glass of Tuscan red wine.', exampleTranslation: 'I offer a glass of Tuscan red wine.',
+                    example2: 'White wine is drunk chilled.', exampleTranslation2: 'White wine is drunk chilled.'
+                },
+                es: { 
+                    meaning: 'vino', 
+                    example: 'Ofrezco una copa de vino tinto toscano.', exampleTranslation: 'Ofrezco una copa de vino tinto toscano.',
+                    example2: 'El vino blanco se bebe frío.', exampleTranslation2: 'El vino blanco se bebe frío.'
+                },
+                ja: { 
+                    meaning: 'ワイン', 
+                    example: 'トスカーナの赤ワインを一杯ごちそうします。', exampleTranslation: 'トスカーナの赤ワインを一杯ごちそうします。',
+                    example2: '白ワインは冷やして飲みます。', exampleTranslation2: '白ワインは冷やして飲みます。'
+                },
+                ko: { 
+                    meaning: '와인 / 포도주', 
+                    example: '토스카나 레드 와인 한 잔 대접할게요.', exampleTranslation: '토스카나 레드 와인 한 잔 대접할게요.',
+                    example2: '화이트 와인은 차갑게 마십니다.', exampleTranslation2: '화이트 와인은 차갑게 마십니다.'
+                }
             }
         },
         {
@@ -187,11 +388,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'pani',
             image: 'assets/images/pane.jpg',
             translations: {
-                zh: { meaning: '麵包', example: 'Compriamo il pane fresco al panificio.', exampleTranslation: '我們去麵包店買剛出爐的新鮮麵包。' },
-                en: { meaning: 'bread', example: 'Compriamo il pane fresco al panificio.', exampleTranslation: 'We buy fresh bread at the bakery.' },
-                es: { meaning: 'pan', example: 'Compriamo il pane fresco al panificio.', exampleTranslation: 'Compramos pan fresco en la panadería.' },
-                ja: { meaning: 'パン', example: 'Compriamo il pane fresco al panificio.', exampleTranslation: 'パン屋さんで新鮮なパンを買います。' },
-                ko: { meaning: '빵', example: 'Compriamo del pane fresco al panificio.', exampleTranslation: '우리는 제과점에서 신선한 빵을 삽니다.' }
+                zh: { 
+                    meaning: '麵包', 
+                    example: 'Compriamo il pane fresco al panificio.', exampleTranslation: '我們去麵包店買剛出爐的新鮮麵包。',
+                    example2: 'Mangio pane e formaggio ogni giorno.', exampleTranslation2: '我每天都吃麵包加起司。'
+                },
+                en: { 
+                    meaning: 'bread', 
+                    example: 'We buy fresh bread at the bakery.', exampleTranslation: 'We buy fresh bread at the bakery.',
+                    example2: 'I eat bread and cheese every day.', exampleTranslation2: 'I eat bread and cheese every day.'
+                },
+                es: { 
+                    meaning: 'pan', 
+                    example: 'Compramos pan fresco en la panadería.', exampleTranslation: 'Compramos pan fresco en la panadería.',
+                    example2: 'Como pan y queso todos los días.', exampleTranslation2: 'Como pan y queso todos los días.'
+                },
+                ja: { 
+                    meaning: 'パン', 
+                    example: 'パン屋さんで新鮮なパンを買います。', exampleTranslation: 'パン屋さんで新鮮なパンを買います。',
+                    example2: '私は毎日パンとチーズを食べます。', exampleTranslation2: '私は毎日パンとチーズを食べます。'
+                },
+                ko: { 
+                    meaning: '빵', 
+                    example: '우리는 제과점에서 신선한 빵을 삽니다.', exampleTranslation: '우리는 제과점에서 신선한 빵을 삽니다.',
+                    example2: '나는 매일 빵과 치즈를 먹습니다.', exampleTranslation2: '나는 매일 빵과 치즈를 먹습니다.'
+                }
             }
         },
         {
@@ -202,11 +423,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'formaggi',
             image: 'https://images.unsplash.com/photo-1486299267070-83823f5448dd?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '起司 / 乾酪', example: 'Aggiungo il formaggio parmigiano grattugiato.', exampleTranslation: '我撒上磨碎的帕馬森起司。' },
-                en: { meaning: 'cheese', example: 'Aggiungo il formaggio parmigiano grattugiato.', exampleTranslation: 'I add grated parmesan cheese.' },
-                es: { meaning: 'queso', example: 'Aggiungo il formaggio parmigiano grattugiato.', exampleTranslation: 'Agrego queso parmesano rallado.' },
-                ja: { meaning: 'チーズ', example: 'すりおろしたパルメザンチーズを加えます。', exampleTranslation: 'すりおろしたパルメザンチーズを加えます。' },
-                ko: { meaning: '치즈', example: 'Aggiungo il formaggio parmigiano grattugiato.', exampleTranslation: '갈아 놓은 파르메산 치즈를 뿌립니다.' }
+                zh: { 
+                    meaning: '起司 / 乾酪', 
+                    example: 'Aggiungo il formaggio parmigiano grattugiato.', exampleTranslation: '我撒上磨碎的帕馬森起司。',
+                    example2: 'Questo formaggio italiano ha un sapore forte.', exampleTranslation2: '這種義大利起司味道很濃郁。'
+                },
+                en: { 
+                    meaning: 'cheese', 
+                    example: 'I add grated parmesan cheese.', exampleTranslation: 'I add grated parmesan cheese.',
+                    example2: 'This Italian cheese has a strong flavor.', exampleTranslation2: 'This Italian cheese has a strong flavor.'
+                },
+                es: { 
+                    meaning: 'queso', 
+                    example: 'Agrego queso parmesano rallado.', exampleTranslation: 'Agrego queso parmesano rallado.',
+                    example2: 'Este queso italiano tiene un sabor fuerte.', exampleTranslation2: 'Este queso italiano tiene un sabor fuerte.'
+                },
+                ja: { 
+                    meaning: 'チーズ', 
+                    example: 'すりおろしたパルメザンチーズを加えます。', exampleTranslation: 'すりおろしたパルメザンチーズを加えます。',
+                    example2: 'このイタリアのチーズは味が強いです。', exampleTranslation2: 'このイタリアのチーズは味が強いです。'
+                },
+                ko: { 
+                    meaning: '치즈', 
+                    example: '갈아 놓은 파르메산 치즈를 뿌립니다.', exampleTranslation: '갈아 놓은 파르메산 치즈를 뿌립니다.',
+                    example2: '이 이탈리아 치즈는 강한 맛이 납니다.', exampleTranslation2: '이 이탈리아 치즈는 강한 맛이 납니다.'
+                }
             }
         },
         {
@@ -217,11 +458,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'mele',
             image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '蘋果', example: 'Mangio una mela rossa per merenda.', exampleTranslation: '我吃一顆紅蘋果當點心。' },
-                en: { meaning: 'apple', example: 'Mangio una mela rossa per merenda.', exampleTranslation: 'I eat a red apple for a snack.' },
-                es: { meaning: 'manzana', example: 'Mangio una mela rossa per merenda.', exampleTranslation: 'Como una manzana roja para la merienda.' },
-                ja: { meaning: 'リンゴ', example: 'おやつに赤いリンゴを食べます。', exampleTranslation: 'おやつに赤いリンゴを食べます。' },
-                ko: { meaning: '사과', example: 'Mangio una mela rossa per merenda.', exampleTranslation: '간식으로 빨간 사과를 먹습니다.' }
+                zh: { 
+                    meaning: '蘋果', 
+                    example: 'Mangio una mela rossa per merenda.', exampleTranslation: '我吃一顆紅蘋果當點心。',
+                    example2: 'Una mela al giorno toglie il medico di torno.', exampleTranslation2: '一天一蘋果，醫生遠離我。'
+                },
+                en: { 
+                    meaning: 'apple', 
+                    example: 'I eat a red apple for a snack.', exampleTranslation: 'I eat a red apple for a snack.',
+                    example2: 'An apple a day keeps the doctor away.', exampleTranslation2: 'An apple a day keeps the doctor away.'
+                },
+                es: { 
+                    meaning: 'manzana', 
+                    example: 'Como una manzana roja para la merienda.', exampleTranslation: 'Como una manzana roja para la merienda.',
+                    example2: 'Una manzana al día mantiene al médico en la lejanía.', exampleTranslation2: 'Una manzana al día mantiene al médico en la lejanía.'
+                },
+                ja: { 
+                    meaning: 'リンゴ', 
+                    example: 'おやつに赤いリンゴを食べます。', exampleTranslation: 'おやつに赤いリンゴを食べます。',
+                    example2: '一日一個のリンゴは医者を遠ざける。', exampleTranslation2: '一日一個のリンゴは医者を遠ざける。'
+                },
+                ko: { 
+                    meaning: '사과', 
+                    example: '간식으로 빨간 사과를 먹습니다.', exampleTranslation: '간식으로 빨간 사과를 먹습니다.',
+                    example2: '하루 사과 한 개면 의사가 필요 없다.', exampleTranslation2: '하루 사과 한 개면 의사가 필요 없다.'
+                }
             }
         },
         {
@@ -232,11 +493,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'soli',
             image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '太陽', example: 'Il sole splende nel cielo oggi.', exampleTranslation: '今天太陽高掛在天空中。' },
-                en: { meaning: 'sun', example: 'Il sole splende nel cielo oggi.', exampleTranslation: 'The sun is shining in the sky today.' },
-                es: { meaning: 'sol', example: 'Il sole splende nel cielo oggi.', exampleTranslation: 'El sol brilla en el cielo hoy.' },
-                ja: { meaning: '太陽', example: '今日は空に太陽が輝いています。', exampleTranslation: '今日は空に太陽が輝いています。' },
-                ko: { meaning: '태양', example: '오늘 하늘에 태양이 밝게 빛나고 있습니다.', exampleTranslation: '오늘 하늘에 태양이 밝게 빛나고 있습니다.' }
+                zh: { 
+                    meaning: '太陽', 
+                    example: 'Il sole splende nel cielo oggi.', exampleTranslation: '今天太陽高掛在天空中。',
+                    example2: 'Mi piace sdraiarmi sotto il sole estivo.', exampleTranslation2: '我喜歡躺在夏日的陽光下。'
+                },
+                en: { 
+                    meaning: 'sun', 
+                    example: 'The sun is shining in the sky today.', exampleTranslation: 'The sun is shining in the sky today.',
+                    example2: 'I like to lie under the summer sun.', exampleTranslation2: 'I like to lie under the summer sun.'
+                },
+                es: { 
+                    meaning: 'sol', 
+                    example: 'El sol brilla en el cielo hoy.', exampleTranslation: 'El sol brilla en el cielo hoy.',
+                    example2: 'Me gusta acostarme bajo el sol del verano.', exampleTranslation2: 'Me gusta acostarme bajo el sol del verano.'
+                },
+                ja: { 
+                    meaning: '太陽', 
+                    example: '今日は空に太陽が輝いています。', exampleTranslation: '今日は空に太陽が輝いています。',
+                    example2: '夏の太陽の下で横になるのが好きです。', exampleTranslation2: '夏の太陽の下で横になるのが好きです。'
+                },
+                ko: { 
+                    meaning: '태양', 
+                    example: '오늘 하늘에 태양이 밝게 빛나고 있습니다.', exampleTranslation: '오늘 하늘에 태양이 밝게 빛나고 있습니다.',
+                    example2: '나는 여름 태양 아래 눕는 것을 좋아합니다.', exampleTranslation2: '나는 여름 태양 아래 눕는 것을 좋아합니다.'
+                }
             }
         },
         {
@@ -247,11 +528,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'gatti',
             image: 'assets/images/gatto.jpg',
             translations: {
-                zh: { meaning: '貓', example: 'Il gatto nero dorme sulla sedia.', exampleTranslation: '這隻黑貓在椅子上睡覺。' },
-                en: { meaning: 'cat', example: 'Il gatto nero dorme sulla sedia.', exampleTranslation: 'The black cat is sleeping on the chair.' },
-                es: { meaning: 'gato', example: 'Il gatto nero dorme sulla sedia.', exampleTranslation: 'El gato negro duerme en la silla.' },
-                ja: { meaning: '猫', example: '黒猫が椅子の上で寝ています。', exampleTranslation: '黒猫が椅子の上で寝ています。' },
-                ko: { meaning: '고양이', example: '검은 고양이가 의자 위에서 자고 있습니다.', exampleTranslation: '검은 고양이가 의자 위에서 자고 있습니다.' }
+                zh: { 
+                    meaning: '貓', 
+                    example: 'Il gatto nero dorme sulla sedia.', exampleTranslation: '這隻黑貓在椅子上睡覺。',
+                    example2: 'Il mio gatto gioca con una palla.', exampleTranslation2: '我的貓咪正在玩球。'
+                },
+                en: { 
+                    meaning: 'cat', 
+                    example: 'The black cat is sleeping on the chair.', exampleTranslation: 'The black cat is sleeping on the chair.',
+                    example2: 'My cat is playing with a ball.', exampleTranslation2: 'My cat is playing with a ball.'
+                },
+                es: { 
+                    meaning: 'gato', 
+                    example: 'El gato negro duerme en la silla.', exampleTranslation: 'El gato negro duerme en la silla.',
+                    example2: 'Mi gato juega con una pelota.', exampleTranslation2: 'Mi gato juega con una pelota.'
+                },
+                ja: { 
+                    meaning: '猫', 
+                    example: '黒猫が椅子の上で寝ています。', exampleTranslation: '黒猫が椅子の上で寝ています。',
+                    example2: '私の猫はボールで遊んでいます。', exampleTranslation2: '私の猫はボールで遊んでいます。'
+                },
+                ko: { 
+                    meaning: '고양이', 
+                    example: '검은 고양이가 의자 위에서 자고 있습니다.', exampleTranslation: '검은 고양이가 의자 위에서 자고 있습니다.',
+                    example2: '내 고양이가 공을 가지고 놀고 있습니다.', exampleTranslation2: '내 고양이가 공을 가지고 놀고 있습니다.'
+                }
             }
         },
         {
@@ -262,11 +563,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'cani',
             image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '狗', example: 'Il cane corre felice nel parco.', exampleTranslation: '狗狗開心地在公園裡奔跑。' },
-                en: { meaning: 'dog', example: 'Il cane corre felice nel parco.', exampleTranslation: 'The dog runs happily in the park.' },
-                es: { meaning: 'perro', example: 'Il cane corre felice nel parco.', exampleTranslation: 'El perro corre feliz en el parque.' },
-                ja: { meaning: '犬', example: '犬が公園を嬉しそうに走っています。', exampleTranslation: '犬が公園を嬉しそうに走っています。' },
-                ko: { meaning: '개 / 강아지', example: '개가 공원에서 행복하게 달리고 있습니다.', exampleTranslation: '개가 공원에서 행복하게 달리고 있습니다.' }
+                zh: { 
+                    meaning: '狗', 
+                    example: 'Il cane corre felice nel parco.', exampleTranslation: '狗狗開心地在公園裡奔跑。',
+                    example2: 'Il cane è il migliore amico dell\'uomo.', exampleTranslation2: '狗是人類最好的朋友。'
+                },
+                en: { 
+                    meaning: 'dog', 
+                    example: 'The dog runs happily in the park.', exampleTranslation: 'The dog runs happily in the park.',
+                    example2: 'The dog is man\'s best friend.', exampleTranslation2: 'The dog is man\'s best friend.'
+                },
+                es: { 
+                    meaning: 'perro', 
+                    example: 'El perro corre feliz en el parque.', exampleTranslation: 'El perro corre feliz en el parque.',
+                    example2: 'El perro es el mejor amigo del hombre.', exampleTranslation2: 'El perro es el mejor amigo del hombre.'
+                },
+                ja: { 
+                    meaning: '犬', 
+                    example: '犬が公園を嬉しそうに走っています。', exampleTranslation: '犬が公園を嬉しそうに走っています。',
+                    example2: '犬は人間の最良の友です。', exampleTranslation2: '犬は人間の最良の友です。'
+                },
+                ko: { 
+                    meaning: '개 / 강아지', 
+                    example: '개가 공원에서 행복하게 달리고 있습니다.', exampleTranslation: '개가 공원에서 행복하게 달리고 있습니다.',
+                    example2: '개는 인간의 가장 좋은 친구이다.', exampleTranslation2: '개는 인간의 가장 좋은 친구이다.'
+                }
             }
         },
         {
@@ -277,11 +598,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'ragazzi',
             image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '男孩 / 少年', example: 'Quel ragazzo gioca bene a calcio.', exampleTranslation: '那個男孩足球踢得很好。' },
-                en: { meaning: 'boy / young man', example: 'Quel ragazzo gioca bene a calcio.', exampleTranslation: 'That boy plays soccer well.' },
-                es: { meaning: 'chico / muchacho', example: 'Quel ragazzo gioca bene a calcio.', exampleTranslation: 'Ese chico juega bien al fútbol.' },
-                ja: { meaning: '少年 / 男の子', example: 'あの男の子はサッカーが上手です。', exampleTranslation: 'あの男の子はサッカーが上手です。' },
-                ko: { meaning: '소년 / 남자아이', example: '저 소년은 축구를 잘합니다.', exampleTranslation: '저 소년은 축구를 잘합니다.' }
+                zh: { 
+                    meaning: '男孩 / 少年', 
+                    example: 'Quel ragazzo gioca bene a calcio.', exampleTranslation: '那個男孩足球踢得很好。',
+                    example2: 'Conosco quel ragazzo da molti anni.', exampleTranslation2: '我認識那個男孩很多年了。'
+                },
+                en: { 
+                    meaning: 'boy / young man', 
+                    example: 'That boy plays soccer well.', exampleTranslation: 'That boy plays soccer well.',
+                    example2: 'I have known that boy for many years.', exampleTranslation2: 'I have known that boy for many years.'
+                },
+                es: { 
+                    meaning: 'chico / muchacho', 
+                    example: 'Ese chico juega bien al fútbol.', exampleTranslation: 'Ese chico juega bien al fútbol.',
+                    example2: 'Conozco a ese chico desde hace muchos años.', exampleTranslation2: 'Conozco a ese chico desde hace muchos años.'
+                },
+                ja: { 
+                    meaning: '少年 / 男の子', 
+                    example: 'あの男の子はサッカーが上手です。', exampleTranslation: 'あの男の子はサッカーが上手です。',
+                    example2: '私はあの男の子を何年も前から知っています。', exampleTranslation2: '私はあの男の子を何年も前から知っています。'
+                },
+                ko: { 
+                    meaning: '소년 / 남자아이', 
+                    example: '저 소년은 축구를 잘합니다.', exampleTranslation: '저 소년은 축구를 잘합니다.',
+                    example2: '나는 저 소년을 수년 동안 알고 지냈습니다.', exampleTranslation2: '나는 저 소년을 수년 동안 알고 지냈습니다.'
+                }
             }
         },
         {
@@ -292,11 +633,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'ragazze',
             image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '女孩 / 少女', example: 'La ragazza studia l\'italiano a scuola.', exampleTranslation: '那個女孩在學校學習義大利文。' },
-                en: { meaning: 'girl / young woman', example: 'La ragazza studia l\'italiano a scuola.', exampleTranslation: 'The girl studies Italian at school.' },
-                es: { meaning: 'chica / muchacha', example: 'La ragazza studia l\'italiano a scuola.', exampleTranslation: 'La chica estudia italiano en la escuela.' },
-                ja: { meaning: '少女 / 女の子', example: '女の子は学校でイタリア語を勉強しています。', exampleTranslation: '女の子は学校でイタリア語を勉強しています。' },
-                ko: { meaning: '소녀 / 여자아이', example: '그 소녀는 학교에서 이탈리아어를 공부합니다.', exampleTranslation: '그 소녀는 학교에서 이탈리아어를 공부합니다.' }
+                zh: { 
+                    meaning: '女孩 / 少女', 
+                    example: 'La ragazza studia l\'italiano a scuola.', exampleTranslation: '那個女孩在學校學習義大利文。',
+                    example2: 'Questa ragazza suona il pianoforte benissimo.', exampleTranslation2: '這個女孩鋼琴彈得極好。'
+                },
+                en: { 
+                    meaning: 'girl / young woman', 
+                    example: 'The girl studies Italian at school.', exampleTranslation: 'The girl studies Italian at school.',
+                    example2: 'This girl plays the piano very well.', exampleTranslation2: 'This girl plays the piano very well.'
+                },
+                es: { 
+                    meaning: 'chica / muchacha', 
+                    example: 'La chica estudia italiano en la escuela.', exampleTranslation: 'La chica estudia italiano en la escuela.',
+                    example2: 'Esta chica toca el piano muy bien.', exampleTranslation2: 'Esta chica toca el piano muy bien.'
+                },
+                ja: { 
+                    meaning: '少女 / 女の子', 
+                    example: '女の子は学校でイタリア語を勉強しています。', exampleTranslation: '女の子は学校でイタリア語を勉強しています。',
+                    example2: 'この女の子はピアノをとても上手に弾きます。', exampleTranslation2: 'この女の子はピアノをとても上手に弾きます。'
+                },
+                ko: { 
+                    meaning: '소녀 / 여자아이', 
+                    example: '그 소녀는 학교에서 이탈리아어를 공부합니다.', exampleTranslation: '그 소녀는 학교에서 이탈리아어를 공부합니다.',
+                    example2: '이 소녀는 피아노를 아주 잘 칩니다.', exampleTranslation2: '이 소녀는 피아노를 아주 잘 칩니다.'
+                }
             }
         },
         {
@@ -307,11 +668,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'macchine',
             image: 'assets/images/macchina.jpg',
             translations: {
-                zh: { meaning: '汽車 / 機器', example: 'Guido una macchina rossa veloce.', exampleTranslation: '我開著一輛快速的紅色跑車。' },
-                en: { meaning: 'car / machine', example: 'Guido una macchina rossa veloce.', exampleTranslation: 'I drive a fast red car.' },
-                es: { meaning: 'coche / carro', example: 'Guido una macchina rossa veloce.', exampleTranslation: 'Conduzco un coche rojo rápido.' },
-                ja: { meaning: '車 / 自動車', example: '私は速い赤い車を運転します。', exampleTranslation: '私は速い赤い車を運転します。' },
-                ko: { meaning: '차 / 자동차', example: '나는 빠른 빨간 자동차를 운전합니다.', exampleTranslation: '나는 빠른 빨간 자동차를 운전합니다.' }
+                zh: { 
+                    meaning: '汽車', 
+                    example: 'Guido una macchina rossa veloce.', exampleTranslation: '我開著一輛快速的紅色車子。',
+                    example2: 'Ho parcheggiato la macchina vicino a casa.', exampleTranslation2: '我把車子停在房子附近。'
+                },
+                en: { 
+                    meaning: 'car / machine', 
+                    example: 'I drive a fast red car.', exampleTranslation: 'I drive a fast red car.',
+                    example2: 'I parked the car near the house.', exampleTranslation2: 'I parked the car near the house.'
+                },
+                es: { 
+                    meaning: 'coche / carro', 
+                    example: 'Conduzco un coche rojo rápido.', exampleTranslation: 'Conduzco un coche rojo rápido.',
+                    example2: 'Aparqué el coche cerca de la casa.', exampleTranslation2: 'Aparqué el coche cerca de la casa.'
+                },
+                ja: { 
+                    meaning: '車 / 自動車', 
+                    example: '私は速い赤い車を運転します。', exampleTranslation: '私は速い赤い車を運転します。',
+                    example2: '家の近くに車を停めました。', exampleTranslation2: '家の近くに車を停めました。'
+                },
+                ko: { 
+                    meaning: '차 / 자동차', 
+                    example: '나는 빠른 빨간 자동차를 운전합니다.', exampleTranslation: '나는 빠른 빨간 자동차를 운전합니다.',
+                    example2: '집 근처에 차를 주차했습니다.', exampleTranslation2: '집 근처에 차를 주차했습니다.'
+                }
             }
         },
         {
@@ -322,11 +703,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'città',
             image: 'https://images.unsplash.com/photo-1542820229-081e0c12af0b?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '城市', example: 'Roma è la città eterna.', exampleTranslation: '羅馬是永恆之城。' },
-                en: { meaning: 'city', example: 'Roma è la città eterna.', exampleTranslation: 'Rome is the eternal city.' },
-                es: { meaning: 'ciudad', example: 'Roma è la città eterna.', exampleTranslation: 'Roma es la ciudad eterna.' },
-                ja: { meaning: '都市 / 街', example: 'ローマは永遠の都です。', exampleTranslation: 'ローマは永遠の都です。' },
-                ko: { meaning: '도시', example: '로마는 영원의 도시입니다.', exampleTranslation: '로마는 영원의 도시입니다.' }
+                zh: { 
+                    meaning: '城市', 
+                    example: 'Roma è la città eterna.', exampleTranslation: '羅馬是永恆之城。',
+                    example2: 'Visito una nuova città ogni anno.', exampleTranslation2: '我每年都會拜訪一個新城市。'
+                },
+                en: { 
+                    meaning: 'city', 
+                    example: 'Rome is the eternal city.', exampleTranslation: 'Rome is the eternal city.',
+                    example2: 'I visit a new city every year.', exampleTranslation2: 'I visit a new city every year.'
+                },
+                es: { 
+                    meaning: 'ciudad', 
+                    example: 'Roma es la ciudad eterna.', exampleTranslation: 'Roma es la ciudad eterna.',
+                    example2: 'Visito una nueva ciudad cada año.', exampleTranslation2: 'Visito una nueva ciudad cada año.'
+                },
+                ja: { 
+                    meaning: '都市 / 街', 
+                    example: 'ローマは永遠の都です。', exampleTranslation: 'ローマは永遠の都です。',
+                    example2: '毎年新しい都市を訪れます。', exampleTranslation2: '毎年新しい都市を訪れます。'
+                },
+                ko: { 
+                    meaning: '도시', 
+                    example: '로마는 영원의 도시입니다.', exampleTranslation: '로마는 영원의 도시입니다.',
+                    example2: '나는 매년 새로운 도시를 방문합니다.', exampleTranslation2: '나는 매년 새로운 도시를 방문합니다.'
+                }
             }
         },
         {
@@ -337,11 +738,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'notti',
             image: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '夜晚', example: 'Auguro buona notte a tutti.', exampleTranslation: '祝大家晚安。' },
-                en: { meaning: 'night', example: 'Auguro buona notte a tutti.', exampleTranslation: 'I wish good night to everyone.' },
-                es: { meaning: 'noche', example: 'Auguro buona noche a tutti.', exampleTranslation: 'Les deseo buenas noches a todos.' },
-                ja: { meaning: '夜 / 夜間', example: '皆さんに「おやすみなさい」と言います。', exampleTranslation: '皆さんに「おやすみなさい」と言います。' },
-                ko: { meaning: '밤', example: '모두에게 좋은 밤 되시길 바랍니다.', exampleTranslation: '모두에게 좋은 밤 되시길 바랍니다.' }
+                zh: { 
+                    meaning: '夜晚', 
+                    example: 'Auguro buona notte a tutti.', exampleTranslation: '祝大家晚安。',
+                    example2: 'La notte stellata è molto romantica.', exampleTranslation2: '繁星密布的夜晚非常浪漫。'
+                },
+                en: { 
+                    meaning: 'night', 
+                    example: 'I wish good night to everyone.', exampleTranslation: 'I wish good night to everyone.',
+                    example2: 'The starry night is very romantic.', exampleTranslation2: 'The starry night is very romantic.'
+                },
+                es: { 
+                    meaning: 'noche', 
+                    example: 'Les deseo buenas noches a todos.', exampleTranslation: 'Les deseo buenas noches a todos.',
+                    example2: 'La noche estrellada es muy romántica.', exampleTranslation2: 'La noche estrellada es muy romántica.'
+                },
+                ja: { 
+                    meaning: '夜 / 夜間', 
+                    example: '皆さんに「おやすみなさい」と言います。', exampleTranslation: '皆さんに「おやすみなさい」と言います。',
+                    example2: '星空の夜はとてもロマンチックです。', exampleTranslation2: '星空の夜はとてもロマンチックです。'
+                },
+                ko: { 
+                    meaning: '밤', 
+                    example: '모두에게 좋은 밤 되시길 바랍니다.', exampleTranslation: '모두에게 좋은 밤 되시길 바랍니다.',
+                    example2: '별이 빛나는 밤은 매우 낭만적입니다.', exampleTranslation2: '별이 빛나는 밤은 매우 낭만적입니다.'
+                }
             }
         },
         {
@@ -352,11 +773,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'famiglie',
             image: 'https://images.unsplash.com/photo-1609234656388-0ff363383899?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '家庭 / 家人', example: 'La mia famiglia vive felice.', exampleTranslation: '我的家庭生活非常幸福。' },
-                en: { meaning: 'family', example: 'La mia famiglia vive felice.', exampleTranslation: 'My family lives happily.' },
-                es: { meaning: 'familia', example: 'La mia famiglia vive felice.', exampleTranslation: 'Mi familia vive feliz.' },
-                ja: { meaning: '家族 / 家庭', example: '私の家族は幸せに暮らしています。', exampleTranslation: '私の家族は幸せに暮らしています。' },
-                ko: { meaning: '가족', example: '우리 가족은 행복하게 살고 있습니다.', exampleTranslation: '우리 가족은 행복하게 살고 있습니다.' }
+                zh: { 
+                    meaning: '家庭 / 家人', 
+                    example: 'La mia famiglia vive felice.', exampleTranslation: '我的家庭生活非常幸福。',
+                    example2: 'Passo il Natale con la mia famiglia.', exampleTranslation2: '我和家人一起度過聖誕節。'
+                },
+                en: { 
+                    meaning: 'family', 
+                    example: 'My family lives happily.', exampleTranslation: 'My family lives happily.',
+                    example2: 'I spend Christmas with my family.', exampleTranslation2: 'I spend Christmas with my family.'
+                },
+                es: { 
+                    meaning: 'familia', 
+                    example: 'Mi familia vive feliz.', exampleTranslation: 'Mi familia vive feliz.',
+                    example2: 'Paso la Navidad con mi familia.', exampleTranslation2: 'Paso la Navidad con mi familia.'
+                },
+                ja: { 
+                    meaning: '家族 / 家庭', 
+                    example: '私の家族は幸せに暮らしています。', exampleTranslation: '私の家族は幸せに暮らしています。',
+                    example2: 'クリスマスは家族と一緒に過ごします。', exampleTranslation2: 'クリスマスは家族と一緒に過ごします。'
+                },
+                ko: { 
+                    meaning: '가족', 
+                    example: '우리 가족은 행복하게 살고 있습니다.', exampleTranslation: '우리 가족은 행복하게 살고 있습니다.',
+                    example2: '나는 크리스마스를 가족과 함께 보낸다.', exampleTranslation2: '나는 크리스마스를 가족과 함께 보낸다.'
+                }
             }
         },
         {
@@ -367,11 +808,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'scuole',
             image: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '學校', example: 'I bambini vanno a scuola alle otto.', exampleTranslation: '小孩子們八點上學。' },
-                en: { meaning: 'school', example: 'I bambini vanno a scuola alle otto.', exampleTranslation: 'The children go to school at eight o\'clock.' },
-                es: { meaning: 'escuela', example: 'I bambini vanno a scuola alle otto.', exampleTranslation: 'Los niños van a la escuela a las ocho.' },
-                ja: { meaning: '学校', example: '子供たちは8時に学校に行きます。', exampleTranslation: '子供たちは8時に学校に行きます。' },
-                ko: { meaning: '학교', example: '아이들은 8시에 학교에 갑니다.', exampleTranslation: '아이들은 8시에 학교에 갑니다.' }
+                zh: { 
+                    meaning: '學校', 
+                    example: 'I bambini vanno a scuola alle otto.', exampleTranslation: '小孩子們八點上學。',
+                    example2: 'La scuola d\'italiano è molto vicina.', exampleTranslation2: '義大利文學校非常近。'
+                },
+                en: { 
+                    meaning: 'school', 
+                    example: 'The children go to school at eight o\'clock.', exampleTranslation: 'The children go to school at eight o\'clock.',
+                    example2: 'The Italian school is very close.', exampleTranslation2: 'The Italian school is very close.'
+                },
+                es: { 
+                    meaning: 'escuela', 
+                    example: 'Los niños van a la escuela a las ocho.', exampleTranslation: 'Los niños van a la escuela a las ocho.',
+                    example2: 'La escuela de italiano está muy cerca.', exampleTranslation2: 'La escuela de italiano está muy cerca.'
+                },
+                ja: { 
+                    meaning: '学校', 
+                    example: '子供たちは8時に学校に行きます。', exampleTranslation: '子供たちは8時に学校に行きます。',
+                    example2: 'イタリア語学校はとても近いです。', exampleTranslation2: 'イタリア語学校はとても近いです。'
+                },
+                ko: { 
+                    meaning: '학교', 
+                    example: '아이들은 8시에 학교에 갑니다.', exampleTranslation: '아이들은 8시에 학교에 갑니다.',
+                    example2: '이탈리아어 학교가 매우 가깝습니다.', exampleTranslation2: '이탈리아어 학교가 매우 가깝습니다.'
+                }
             }
         },
         {
@@ -382,11 +843,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'mari',
             image: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '海 / 海洋', example: 'Facciamo il bagno nel mare d\'estate.', exampleTranslation: '我們夏天在海裡游泳游泳。' },
-                en: { meaning: 'sea / ocean', example: 'Facciamo il bagno nel mare d\'estate.', exampleTranslation: 'We swim in the sea in summer.' },
-                es: { meaning: 'mar', example: 'Facciamo il bagno nel mare d\'estate.', exampleTranslation: 'Nos bañamos en el mar en verano.' },
-                ja: { meaning: '海 / 海洋', example: '夏には海で泳ぎます。', exampleTranslation: '夏には海で泳ぎます。' },
-                ko: { meaning: '바다', example: '우리는 여름에 바다에서 수영을 합니다.', exampleTranslation: '우리는 여름에 바다에서 수영을 합니다.' }
+                zh: { 
+                    meaning: '海 / 海洋', 
+                    example: 'Facciamo il bagno nel mare d\'estate.', exampleTranslation: '我們夏天在海裡游泳。',
+                    example2: 'La spiaggia davanti al mare è bellissima.', exampleTranslation2: '大海前方的沙灘美極了。'
+                },
+                en: { 
+                    meaning: 'sea / ocean', 
+                    example: 'We swim in the sea in summer.', exampleTranslation: 'We swim in the sea in summer.',
+                    example2: 'The beach in front of the sea is beautiful.', exampleTranslation2: 'The beach in front of the sea is beautiful.'
+                },
+                es: { 
+                    meaning: 'mar', 
+                    example: 'Nos bañamos en el mar en verano.', exampleTranslation: 'Nos bañamos en el mar en verano.',
+                    example2: 'La playa frente al mar es hermosa.', exampleTranslation2: 'La playa frente al mar es hermosa.'
+                },
+                ja: { 
+                    meaning: '海 / 海洋', 
+                    example: '夏には海で泳ぎます。', exampleTranslation: '夏には海で泳ぎます。',
+                    example2: '海の前のビーチはとても美しいです。', exampleTranslation2: '海の前のビーチはとても美しいです。'
+                },
+                ko: { 
+                    meaning: '바다', 
+                    example: '우리는 여름에 바다에서 수영을 합니다.', exampleTranslation: '우리는 여름에 바다에서 수영을 합니다.',
+                    example2: '바다 앞 해변이 아주 아름답습니다.', exampleTranslation2: '바다 앞 해변이 아주 아름답습니다.'
+                }
             }
         },
         {
@@ -397,11 +878,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'fiori',
             image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '花 / 花朵', example: 'Questo fiore profuma di primavera.', exampleTranslation: '這朵花聞起來有春天的氣息。' },
-                en: { meaning: 'flower', example: 'Questo fiore profuma di primavera.', exampleTranslation: 'This flower smells like spring.' },
-                es: { meaning: 'flor', example: 'Questo fiore profuma di primavera.', exampleTranslation: 'Esta flor huele a primavera.' },
-                ja: { meaning: '花 / 草花', example: 'この花は春の香りがします。', exampleTranslation: 'この花は春の香りがします。' },
-                ko: { meaning: '꽃', example: '이 꽃에서 봄 냄새가 납니다.', exampleTranslation: '이 꽃에서 봄 냄새가 납니다.' }
+                zh: { 
+                    meaning: '花 / 花朵', 
+                    example: 'Questo fiore profuma di primavera.', exampleTranslation: '這朵花聞起來有春天的氣息。',
+                    example2: 'Regalo un fiore rosso alla mia ragazza.', exampleTranslation2: '我送一朵紅花給我的女朋友。'
+                },
+                en: { 
+                    meaning: 'flower', 
+                    example: 'This flower smells like spring.', exampleTranslation: 'This flower smells like spring.',
+                    example2: 'I give a red flower to my girlfriend.', exampleTranslation2: 'I give a red flower to my girlfriend.'
+                },
+                es: { 
+                    meaning: 'flor', 
+                    example: 'Esta flor huele a primavera.', exampleTranslation: 'Esta flor huele a primavera.',
+                    example2: 'Le regalo una flor roja a mi novia.', exampleTranslation2: 'Le regalo una flor roja a mi novia.'
+                },
+                ja: { 
+                    meaning: '花 / 草花', 
+                    example: 'この花は春の香りがします。', exampleTranslation: 'この花は春の香りがします。',
+                    example2: '彼女に赤い花をプレゼントします。', exampleTranslation2: '彼女に赤い花をプレゼントします。'
+                },
+                ko: { 
+                    meaning: '꽃', 
+                    example: '이 꽃에서 봄 냄새가 납니다.', exampleTranslation: '이 꽃에서 봄 냄새가 납니다.',
+                    example2: '여자친구에게 빨간 꽃 한 송이를 선물합니다.', exampleTranslation2: '여자친구에게 빨간 꽃 한 송이를 선물합니다.'
+                }
             }
         },
         {
@@ -412,11 +913,31 @@ document.addEventListener('DOMContentLoaded', () => {
             plural: 'stelle',
             image: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '星星', example: 'Vedo una stella cadente nel cielo.', exampleTranslation: '我看見天空中有一顆流星。' },
-                en: { meaning: 'star', example: 'Vedo una stella cadente nel cielo.', exampleTranslation: 'I see a shooting star in the sky.' },
-                es: { meaning: 'estrella', example: 'Vedo una stella cadente nel cielo.', exampleTranslation: 'Veo una estrella fugaz en el cielo.' },
-                ja: { meaning: '星 / 天体', example: '空に流れ星が見えます。', exampleTranslation: '空に流れ星が見えます。' },
-                ko: { meaning: '별', example: '하늘에서 별똥별이 보입니다.', exampleTranslation: '하늘에서 별똥별이 보입니다.' }
+                zh: { 
+                    meaning: '星星', 
+                    example: 'Vedo una stella cadente nel cielo.', exampleTranslation: '我看見天空中有一顆流星。',
+                    example2: 'La stella polare indica il nord.', exampleTranslation2: '北極星指示著北方。'
+                },
+                en: { 
+                    meaning: 'star', 
+                    example: 'I see a shooting star in the sky.', exampleTranslation: 'I see a shooting star in the sky.',
+                    example2: 'The North Star points north.', exampleTranslation2: 'The North Star points north.'
+                },
+                es: { 
+                    meaning: 'estrella', 
+                    example: 'Veo una estrella fugaz en el cielo.', exampleTranslation: 'Veo una estrella fugaz en el cielo.',
+                    example2: 'La estrella polar indica el norte.', exampleTranslation2: 'La estrella polar indica el norte.'
+                },
+                ja: { 
+                    meaning: '星 / 天体', 
+                    example: '空に流れ星が見えます。', exampleTranslation: '空に流れ星が見えます。',
+                    example2: '北極星は北を指しています。', exampleTranslation2: '北極星は北を指しています。'
+                },
+                ko: { 
+                    meaning: '별', 
+                    example: '하늘에서 별똥별이 보입니다.', exampleTranslation: '하늘에서 별똥별이 보입니다.',
+                    example2: '북극성은 북쪽을 가리킵니다.', exampleTranslation2: '북극성은 북쪽을 가리킵니다.'
+                }
             }
         },
         {
@@ -426,11 +947,31 @@ document.addEventListener('DOMContentLoaded', () => {
             conjugation: 'regular -are',
             image: 'assets/images/mangiare.jpg',
             translations: {
-                zh: { meaning: '吃 (動詞)', example: 'Mi piace mangiare la pizza italiana.', exampleTranslation: '我喜歡吃義大利比薩。' },
-                en: { meaning: 'to eat', example: 'Mi piace mangiare la pizza italiana.', exampleTranslation: 'I like to eat Italian pizza.' },
-                es: { meaning: 'comer', example: 'Mi piace mangiare la pizza italiana.', exampleTranslation: 'Me gusta comer pizza italiana.' },
-                ja: { meaning: '食べる', example: '私はイタリアンピザを食べるのが好きです。', exampleTranslation: '私はイタリアンピザを食べるのが好きです。' },
-                ko: { meaning: '먹다', example: '나는 이탈리아 피자를 먹는 것을 좋아합니다.', exampleTranslation: '나는 이탈리아 피자를 먹는 것을 좋아합니다.' }
+                zh: { 
+                    meaning: '吃 (動詞)', 
+                    example: 'Mi piace mangiare la pizza italiana.', exampleTranslation: '我喜歡吃義大利比薩。',
+                    example2: 'Dobbiamo mangiare più verdura fresca.', exampleTranslation2: '我們應該吃更多新鮮蔬菜。'
+                },
+                en: { 
+                    meaning: 'to eat', 
+                    example: 'I like to eat Italian pizza.', exampleTranslation: 'I like to eat Italian pizza.',
+                    example2: 'We must eat more fresh vegetables.', exampleTranslation2: 'We must eat more fresh vegetables.'
+                },
+                es: { 
+                    meaning: 'comer', 
+                    example: 'Me gusta comer pizza italiana.', exampleTranslation: 'Me gusta comer pizza italiana.',
+                    example2: 'Debemos comer más verduras frescas.', exampleTranslation2: 'Debemos comer más verduras frescas.'
+                },
+                ja: { 
+                    meaning: '食べる', 
+                    example: '私はイタリアンピザを食べるのが好きです。', exampleTranslation: '私はイタリアンピザを食べるのが好きです。',
+                    example2: 'もっと新鮮な野菜を食べなければなりません。', exampleTranslation2: 'もっと新鮮な野菜を食べなければなりません。'
+                },
+                ko: { 
+                    meaning: '먹다', 
+                    example: '나는 이탈리아 피자를 먹는 것을 좋아합니다.', exampleTranslation: '나는 이탈리아 피자를 먹는 것을 좋아합니다.',
+                    example2: '우리는 더 많은 신선한 채소를 먹어야 합니다.', exampleTranslation2: '우리는 더 많은 신선한 채소를 먹어야 합니다.'
+                }
             }
         },
         {
@@ -440,11 +981,31 @@ document.addEventListener('DOMContentLoaded', () => {
             conjugation: 'regular -are',
             image: 'assets/images/parlare.jpg',
             translations: {
-                zh: { meaning: '說話 / 討論', example: 'Parlo l\'italiano con i miei amici.', exampleTranslation: '我和我的朋友們說義大利文。' },
-                en: { meaning: 'to speak / to talk', example: 'Parlo l\'italiano con i miei amici.', exampleTranslation: 'I speak Italian with my friends.' },
-                es: { meaning: 'hablar', example: 'Parlo l\'italiano con i miei amici.', exampleTranslation: 'Hablo italiano con mis amigos.' },
-                ja: { meaning: '話す / しゃべる', example: '私は友達とイタリア語を話します。', exampleTranslation: '私は友達とイタリア語を話します。' },
-                ko: { meaning: '말하다', example: '나는 친구들과 이탈리아어로 말합니다.', exampleTranslation: '나는 친구들과 이탈리아어로 말합니다.' }
+                zh: { 
+                    meaning: '說話 / 討論', 
+                    example: 'Parlo l\'italiano con i miei amici.', exampleTranslation: '我和我的朋友們說義大利文。',
+                    example2: 'Lui ama parlare in pubblico.', exampleTranslation2: '他喜歡在公開場合演講。'
+                },
+                en: { 
+                    meaning: 'to speak / to talk', 
+                    example: 'I speak Italian with my friends.', exampleTranslation: 'I speak Italian with my friends.',
+                    example2: 'He loves speaking in public.', exampleTranslation2: 'He loves speaking in public.'
+                },
+                es: { 
+                    meaning: 'hablar', 
+                    example: 'Hablo italiano con mis amigos.', exampleTranslation: 'Hablo italiano con mis amigos.',
+                    example2: 'A él le encanta hablar en público.', exampleTranslation2: 'A él le encanta hablar en público.'
+                },
+                ja: { 
+                    meaning: '話す / しゃべる', 
+                    example: '私は友達とイタリア語を話します。', exampleTranslation: '私は友達とイタリア語を話します。',
+                    example2: '彼は人前で話すのが大好きです。', exampleTranslation2: '彼は人前で話すのが大好きです。'
+                },
+                ko: { 
+                    meaning: '말하다', 
+                    example: '나는 친구들과 이탈리아어로 말합니다.', exampleTranslation: '나는 친구들과 이탈리아어로 말합니다.',
+                    example2: '그는 대중 앞에서 말하는 것을 좋아합니다.', exampleTranslation2: '그는 대중 앞에서 말하는 것을 좋아합니다.'
+                }
             }
         },
         {
@@ -452,12 +1013,33 @@ document.addEventListener('DOMContentLoaded', () => {
             phonetic: 'ahn-DAH-reh',
             pos: 'v.',
             conjugation: 'irregular',
+            image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=300&q=80',
             translations: {
-                zh: { meaning: '去 / 前往', example: 'Vado in Italia questo fine settimana.', exampleTranslation: '這個週末我要去義大利。' },
-                en: { meaning: 'to go', example: 'Vado in Italia questo fine settimana.', exampleTranslation: 'I am going to Italy this weekend.' },
-                es: { meaning: 'ir', example: 'Vado in Italia questo fine settimana.', exampleTranslation: 'Voy a Italia este fin de semana.' },
-                ja: { meaning: '行く', example: '私は今週末イタリアに行きます。', exampleTranslation: '私は今週末イタリアに行きます。' },
-                ko: { meaning: '가다', example: '나는 이번 주말에 이탈리아에 갑니다.', exampleTranslation: '나는 이번 주말에 이탈리아에 갑니다.' }
+                zh: { 
+                    meaning: '去 / 前往', 
+                    example: 'Vado in Italia questo fine settimana.', exampleTranslation: '這個週末我要去義大利。',
+                    example2: 'Vogliamo andare al cinema stasera.', exampleTranslation2: '我們今晚想去電影院。'
+                },
+                en: { 
+                    meaning: 'to go', 
+                    example: 'I am going to Italy this weekend.', exampleTranslation: 'I am going to Italy this weekend.',
+                    example2: 'We want to go to the cinema tonight.', exampleTranslation2: 'We want to go to the cinema tonight.'
+                },
+                es: { 
+                    meaning: 'ir', 
+                    example: 'Voy a Italia este fin de semana.', exampleTranslation: 'Voy a Italia este fin de semana.',
+                    example2: 'Queremos ir al cine esta noche.', exampleTranslation2: 'Queremos ir al cine esta noche.'
+                },
+                ja: { 
+                    meaning: '行く', 
+                    example: '私は今週末イタリアに行きます。', exampleTranslation: '私は今週末イタリアに行きます。',
+                    example2: '今夜映画館に行きたいです。', exampleTranslation2: '今夜映画館に行きたいです。'
+                },
+                ko: { 
+                    meaning: '가다', 
+                    example: '나는 이번 주말에 이탈리아에 갑니다.', exampleTranslation: '나는 이번 주말에 이탈리아에 갑니다.',
+                    example2: '우리는 오늘 밤에 영화관에 가고 싶습니다.', exampleTranslation2: '우리는 오늘 밤에 영화관에 가고 싶습니다.'
+                }
             }
         }
     ];
@@ -485,9 +1067,11 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescMem: '利用原生短片加深字彙記憶，提供最道地的當地人用語。',
             appDescAnki: '使用間隔重複系統 (SRS) 演算法，適合高效率背單字。',
             wordLabel: '單字',
-            sentenceLabel: '例句',
+            sentenceLabel: '例句一',
+            sentenceLabel2: '例句二',
             meaningLabel: '意',
-            exampleLabel: '譯',
+            exampleLabel: '例句一',
+            exampleLabel2: '例句二',
             singularLabel: '單數: ',
             pluralLabel: '複數: ',
             conjugationLabel: '動詞變位: ',
@@ -523,9 +1107,11 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescMem: 'Immerse in short video clips featuring native local speakers to build context.',
             appDescAnki: 'SRS flashcard algorithm, highly optimized for custom active recall list building.',
             wordLabel: 'Word',
-            sentenceLabel: 'Sentence',
+            sentenceLabel: 'Ex 1',
+            sentenceLabel2: 'Ex 2',
             meaningLabel: 'Def',
-            exampleLabel: 'Trans',
+            exampleLabel: 'Example 1',
+            exampleLabel2: 'Example 2',
             singularLabel: 'Singular: ',
             pluralLabel: 'Plural: ',
             conjugationLabel: 'Conjugation: ',
@@ -561,9 +1147,11 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescMem: 'Clips cortos de video con nativos locales para aprender palabras coloquiales.',
             appDescAnki: 'Tarjetas de memorización con algoritmo SRS, perfecto para estudiar vocabulario.',
             wordLabel: 'Palabra',
-            sentenceLabel: 'Frase',
+            sentenceLabel: 'Eje 1',
+            sentenceLabel2: 'Eje 2',
             meaningLabel: 'Sign',
-            exampleLabel: 'Trad',
+            exampleLabel: 'Ejemplo 1',
+            exampleLabel2: 'Ejemplo 2',
             singularLabel: 'Singular: ',
             pluralLabel: 'Plural: ',
             conjugationLabel: 'Conjugación: ',
@@ -599,9 +1187,11 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescMem: 'ネイティブが話すリアルなショート動画で、生きた単語を記憶。',
             appDescAnki: 'SRSアルゴリズムを採用した単語カード。効率的な暗記に最適。',
             wordLabel: '単語',
-            sentenceLabel: '例文',
+            sentenceLabel: '例文1',
+            sentenceLabel2: '例文2',
             meaningLabel: '意味',
-            exampleLabel: '対訳',
+            exampleLabel: '例文1',
+            exampleLabel2: '例文2',
             singularLabel: '単数: ',
             pluralLabel: '複数: ',
             conjugationLabel: '活用変化: ',
@@ -637,14 +1227,16 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescMem: '원어민들이 촬영한 짧은 동영상을 통해 실생활에 유용한 어휘를 각인시킵니다.',
             appDescAnki: 'SRS 알고리즘을 사용한 플래시카드 앱으로, 개인별 맞춤형 단어 암기에 탁월합니다.',
             wordLabel: '단어',
-            sentenceLabel: '문장',
+            sentenceLabel: '예문 1',
+            sentenceLabel2: '예문 2',
             meaningLabel: '의미',
-            exampleLabel: '번역',
+            exampleLabel: '예문 1',
+            exampleLabel2: '예문 2',
             singularLabel: '단수형: ',
             pluralLabel: '복수형: ',
             conjugationLabel: '동사 변화: ',
             articleLabel: '정관사: ',
-            rateLabel: '<i class="fas fa-tint"></i> 속도: ',
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> 속도: ',
             onlineTag: '<i class="fas fa-globe-americas"></i> 온라인 실시간 번역 시스템',
             onlineTranslating: '번역 중...',
             onlineTranslationLabel: '번역',
@@ -669,6 +1261,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('dict-search-input');
     const clearSearchBtn = document.getElementById('clear-search-btn');
     const resultsCountText = document.getElementById('results-count-text');
+
+    // Navigation Tabs view controls
+    const tabDizionario = document.getElementById('btn-view-dizionario');
+    const tabGrammatica = document.getElementById('btn-view-grammatica');
+    const dictViewContent = document.getElementById('dict-view-content');
+    const grammarViewContent = document.getElementById('grammar-view-content');
+    const searchSection = document.getElementById('dictionary-search-section');
+
+    if (tabDizionario && tabGrammatica) {
+        tabDizionario.addEventListener('click', () => {
+            tabDizionario.classList.add('active');
+            tabGrammatica.classList.remove('active');
+            dictViewContent.style.display = 'block';
+            grammarViewContent.style.display = 'none';
+            if (searchSection) searchSection.style.display = 'flex';
+        });
+
+        tabGrammatica.addEventListener('click', () => {
+            tabGrammatica.classList.add('active');
+            tabDizionario.classList.remove('active');
+            dictViewContent.style.display = 'none';
+            grammarViewContent.style.display = 'block';
+            if (searchSection) searchSection.style.display = 'none';
+        });
+    }
 
     // Helper: Guess POS and Gender of online query words dynamically
     const guessPOSAndGender = (word) => {
@@ -906,24 +1523,47 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="label-badge badge-meaning">${ui.meaningLabel}</span>
                         <div class="meaning">${translation.meaning}</div>
                     </div>
-                    <div class="example">
-                        <i class="fas fa-quote-left" style="font-size: 0.7rem; opacity: 0.5; margin-right: 0.3rem;"></i>
-                        <strong>${translation.example}</strong>
+                    
+                    <!-- Example Sentence 1 -->
+                    <div class="vocab-example-block">
+                        <div class="vocab-example-text-side">
+                            <div class="example">
+                                <i class="fas fa-quote-left" style="font-size: 0.7rem; opacity: 0.5; margin-right: 0.3rem;"></i>
+                                <strong>${translation.example}</strong>
+                            </div>
+                            <div class="example-translation-row">
+                                <span class="label-badge badge-example">${ui.exampleLabel}</span>
+                                <div class="example-translation">${translation.exampleTranslation}</div>
+                            </div>
+                        </div>
+                        <button class="play-btn btn-play-sentence btn-play-ex1" aria-label="播放例句一發音">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
                     </div>
-                    <div class="example-translation-row">
-                        <span class="label-badge badge-example">${ui.exampleLabel}</span>
-                        <div class="example-translation">${translation.exampleTranslation}</div>
+
+                    <!-- Example Sentence 2 -->
+                    <div class="vocab-example-block" style="border-left-color: var(--secondary);">
+                        <div class="vocab-example-text-side">
+                            <div class="example">
+                                <i class="fas fa-quote-left" style="font-size: 0.7rem; opacity: 0.5; margin-right: 0.3rem;"></i>
+                                <strong>${translation.example2}</strong>
+                            </div>
+                            <div class="example-translation-row">
+                                <span class="label-badge badge-example" style="background: rgba(6, 182, 212, 0.1); color: var(--secondary); border-color: rgba(6, 182, 212, 0.2);">${ui.exampleLabel2}</span>
+                                <div class="example-translation">${translation.exampleTranslation2}</div>
+                            </div>
+                        </div>
+                        <button class="play-btn btn-play-sentence btn-play-ex2" style="background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.25); color: var(--secondary);" aria-label="播放例句二發音">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
                     </div>
                 </div>
+                
                 <div class="play-btn-group">
                     <button class="play-btn btn-play-word" aria-label="播放單字發音">
                         <i class="fas fa-volume-up"></i>
                     </button>
                     <span class="play-label">${ui.wordLabel}</span>
-                    <button class="play-btn btn-play-sentence" aria-label="播放例句發音">
-                        <i class="fas fa-comment-dots"></i>
-                    </button>
-                    <span class="play-label" style="font-size: 0.6rem;">${ui.sentenceLabel}</span>
                 </div>
             `;
 
@@ -933,10 +1573,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 speakItalian(item.word);
             });
 
-            // Speak Sentence Event
-            card.querySelector('.btn-play-sentence').addEventListener('click', (e) => {
+            // Speak Example 1 Event
+            card.querySelector('.btn-play-ex1').addEventListener('click', (e) => {
                 e.stopPropagation();
                 speakItalian(item.translations['en'].example); // Always speak Italian sentence
+            });
+
+            // Speak Example 2 Event
+            card.querySelector('.btn-play-ex2').addEventListener('click', (e) => {
+                e.stopPropagation();
+                speakItalian(item.translations['en'].example2); // Always speak Italian sentence
             });
 
             vocabDisplay.appendChild(card);
