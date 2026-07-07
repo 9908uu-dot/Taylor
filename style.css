@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Nova Italian - Stylesheet
+   Nova Italian Dictionary - Stylesheet
    Dedicated Language Learning Space (Dark & Light Theme)
    ========================================================================== */
 
@@ -309,6 +309,114 @@ body.light-theme .flag-btn {
     box-shadow: 0 4px 15px rgba(139, 92, 246, 0.35);
 }
 
+/* --- Dictionary Search & Index Section --- */
+.dictionary-search-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--bg-surface-border);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2.5rem;
+    box-shadow: var(--shadow-premium);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.search-box-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-main-icon {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+#dict-search-input {
+    width: 100%;
+    padding: 1.2rem 3rem 1.2rem 3.5rem;
+    border: 1px solid var(--bg-surface-border);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1.1rem;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+#dict-search-input:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    transition: var(--transition-fast);
+}
+
+.clear-search-btn:hover {
+    color: var(--danger);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Alphabet Quick Index Filter */
+.alphabet-index-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.alphabet-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--bg-surface-border);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+body.light-theme .alphabet-btn {
+    background: #ffffff;
+}
+
+.alphabet-btn:hover {
+    border-color: var(--secondary);
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+.alphabet-btn.active {
+    background: var(--secondary-gradient);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
+
+.alphabet-btn[data-letter="all"] {
+    width: 60px;
+    border-radius: 20px;
+}
+
 /* --- Italian Split Workspace --- */
 .italian-layout {
     display: grid;
@@ -350,44 +458,10 @@ body.light-theme .tool-control-bar {
     background: rgba(0, 0, 0, 0.02);
 }
 
-.tab-selectors {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.btn {
-    padding: 0.55rem 1.2rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-radius: var(--radius-sm);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    transition: var(--transition-fast);
-}
-
-.btn-primary {
-    background: var(--primary-gradient);
-    color: #ffffff;
-}
-
-.btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.35);
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--bg-surface-border);
-    color: var(--text-primary);
-}
-
-body.light-theme .btn-secondary {
-    background: #ffffff;
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
+.results-count-wrapper {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--secondary);
 }
 
 .voice-selection-bar {
@@ -407,7 +481,7 @@ body.light-theme .btn-secondary {
 /* --- Vocab Card List Wrapper --- */
 .vocab-list-wrapper {
     padding: 2rem;
-    max-height: 600px;
+    max-height: 800px;
     overflow-y: auto;
 }
 
@@ -467,7 +541,7 @@ body.light-theme .vocab-card {
 }
 
 .vocab-word-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--text-primary);
     display: flex;
@@ -484,6 +558,32 @@ body.light-theme .vocab-card {
     padding: 0.15rem 0.5rem;
     border-radius: 4px;
     font-style: italic;
+}
+
+/* Dictionary details and grammar styling */
+.pos-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-family: inherit;
+    text-transform: lowercase;
+    display: inline-block;
+}
+
+.grammar-info-row {
+    margin-top: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 1.2rem;
+}
+
+.grammar-info-row span strong {
+    color: var(--text-primary);
 }
 
 /* Localized Translation Fields Styling */
@@ -594,6 +694,29 @@ body.light-theme .vocab-card {
     font-size: 0.7rem;
     color: var(--text-secondary);
     text-transform: uppercase;
+}
+
+/* Empty Search Results styling */
+.empty-results-box {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.empty-results-box i {
+    font-size: 3rem;
+    color: var(--danger);
+    opacity: 0.6;
+}
+
+.empty-results-box h4 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    font-weight: 700;
 }
 
 /* --- Resource sidebar cards --- */

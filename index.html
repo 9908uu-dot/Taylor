@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Italian - 義大利文學習空間</title>
-    <meta name="description" content="專為各國學習者打造的極致美感義大利文自學平台，提供真人般原生發音、生活常用字彙例句，並支援五種母語即時對照翻譯。">
+    <title>Nova Italian - 劍橋風義大利文線上詞典</title>
+    <meta name="description" content="專門為各國學者打造的義大利文線上對照詞典，包含單字陰陽性標示、複數型、詞性、真人發音與例句對照，如同學術級劍橋詞典。">
     <!-- Google Fonts: Outfit & Noto Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
     <header class="app-header">
         <div class="header-container">
             <a href="#" class="logo">
-                <span class="logo-text">Nova</span><span class="logo-dot">.</span><span class="logo-sub">Italian</span>
+                <span class="logo-text">Nova</span><span class="logo-dot">.</span><span class="logo-sub">Dizionario</span>
             </a>
             <div class="header-controls">
                 <button class="theme-toggle" id="theme-toggle" aria-label="切換主題">
@@ -42,14 +42,14 @@
                 <span class="flag-strip white"></span>
                 <span class="flag-strip red"></span>
             </div>
-            <h2 id="hero-title">Ciao, benvenuto!</h2>
-            <p id="hero-subtitle">開啟您的義大利文學習之旅。在此學習最道地的發音、文字與生活例句，並可自由切換您的母語進行對照。</p>
+            <h2 id="hero-title">Nova Dizionario Italiano</h2>
+            <p id="hero-subtitle">義大利文線上學術詞典。提供精確的單字陰陽性、單複數變化、發音與生活例句對照，支援多國母語檢索。</p>
         </section>
 
         <!-- Prominent Language Selector Bar -->
         <section class="language-selection-section">
             <div class="lang-selector-header">
-                <span id="select-lang-title"><i class="fas fa-globe"></i> 選擇您的母語 / Select Your Native Language:</span>
+                <span id="select-lang-title"><i class="fas fa-globe"></i> 選擇您的母語 (Select Your Native Language):</span>
             </div>
             <div class="lang-flags-container">
                 <button class="flag-btn active" data-lang="zh">🇹🇼 繁體中文</button>
@@ -60,15 +60,38 @@
             </div>
         </section>
 
+        <!-- Dictionary Search and Index Bar -->
+        <section class="dictionary-search-section">
+            <div class="search-box-wrapper">
+                <i class="fas fa-search search-main-icon"></i>
+                <input type="text" id="dict-search-input" placeholder="輸入義大利文單字搜尋... (例如: pizza, libro, mangiare)">
+                <button class="clear-search-btn" id="clear-search-btn" style="display: none;"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="alphabet-index-container">
+                <button class="alphabet-btn active" data-letter="all">ALL</button>
+                <button class="alphabet-btn" data-letter="a">A</button>
+                <button class="alphabet-btn" data-letter="b">B</button>
+                <button class="alphabet-btn" data-letter="c">C</button>
+                <button class="alphabet-btn" data-letter="d">D</button>
+                <button class="alphabet-btn" data-letter="f">F</button>
+                <button class="alphabet-btn" data-letter="g">G</button>
+                <button class="alphabet-btn" data-letter="l">L</button>
+                <button class="alphabet-btn" data-letter="m">M</button>
+                <button class="alphabet-btn" data-letter="p">P</button>
+                <button class="alphabet-btn" data-letter="s">S</button>
+                <button class="alphabet-btn" data-letter="t">T</button>
+                <button class="alphabet-btn" data-letter="v">V</button>
+            </div>
+        </section>
+
         <!-- Italian Learning Layout -->
         <div class="italian-layout">
-            <!-- Left Panel: Word categories & Vocab List -->
+            <!-- Left Panel: Dictionary Search Results -->
             <div class="italian-main-panel">
                 <div class="tool-control-bar">
-                    <div class="tab-selectors">
-                        <button class="btn btn-primary btn-tab active" data-category="greetings" id="tab-greetings">日常問候</button>
-                        <button class="btn btn-secondary btn-tab" data-category="phrases" id="tab-phrases">實用情境</button>
-                        <button class="btn btn-secondary btn-tab" data-category="dining" id="tab-dining">飲食餐飲</button>
+                    <div class="results-count-wrapper">
+                        <span id="results-count-text">顯示所有詞彙 (共 16 筆)</span>
                     </div>
                     <div class="voice-selection-bar">
                         <label for="voice-rate" id="rate-label"><i class="fas fa-tachometer-alt"></i> 語速: </label>
@@ -166,7 +189,7 @@
 
     <!-- Footer -->
     <footer class="app-footer-bar">
-        <p>&copy; 2026 Nova Italian. 保留所有權利。 Designed by Antigravity.</p>
+        <p>&copy; 2026 Nova Italian Dictionary. 保留所有權利。 Designed by Antigravity.</p>
     </footer>
 
     <!-- Scripts -->
