@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         zh: {
             heroTitle: 'Ciao, benvenuto!',
             heroSubtitle: '開啟您的義大利文學習之旅。在此學習最道地的發音、文字與生活例句，並可自由切換您的母語進行對照。',
+            selectLangTitle: '<i class="fas fa-globe"></i> 選擇您的母語 (Select Your Native Language):',
             resTitleWeb: '<i class="fas fa-external-link-alt"></i> 義大利文推薦學習網站',
             resDescWr: '全球最受歡迎的義大利文字典，提供詳細的變位表與詞彙用法討論區。',
             resDescCollins: '優質的英義雙語字典，內附清晰的單字原生真人發音。',
@@ -254,15 +255,17 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescAnki: '使用間隔重複系統 (SRS) 演算法，適合高效率背單字。',
             wordLabel: '單字',
             sentenceLabel: '例句',
+            meaningLabel: '意',
+            exampleLabel: '譯',
             navGreetings: '日常問候',
             navPhrases: '實用情境',
             navDining: '飲食餐飲',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> 語速: ',
-            langLabel: '<i class="fas fa-globe"></i> 母語: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> 語速: '
         },
         en: {
             heroTitle: 'Ciao, benvenuto!',
             heroSubtitle: 'Start your Italian learning journey. Learn authentic pronunciation, words, and real-life phrases, with free language translation toggling.',
+            selectLangTitle: '<i class="fas fa-globe"></i> Select Your Native Language:',
             resTitleWeb: '<i class="fas fa-external-link-alt"></i> Recommended Websites',
             resDescWr: 'The most popular translation dictionary, featuring helpful conjugation tables and community forums.',
             resDescCollins: 'A quality bilingual English-Italian reference with clear native audio pronunciations.',
@@ -277,15 +280,17 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescAnki: 'SRS flashcard algorithm, highly optimized for custom active recall list building.',
             wordLabel: 'Word',
             sentenceLabel: 'Sentence',
+            meaningLabel: 'Def',
+            exampleLabel: 'Trans',
             navGreetings: 'Greetings',
             navPhrases: 'Daily Phrases',
             navDining: 'Food & Dining',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> Speed: ',
-            langLabel: '<i class="fas fa-globe"></i> Native: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> Speed: '
         },
         es: {
             heroTitle: 'Ciao, benvenuto!',
             heroSubtitle: 'Comienza tu viaje de aprendizaje de italiano. Aprende pronunciación auténtica, palabras y frases de la vida real con traducción gratuita.',
+            selectLangTitle: '<i class="fas fa-globe"></i> Seleccione su idioma nativo (Native Language):',
             resTitleWeb: '<i class="fas fa-external-link-alt"></i> Sitios web recomendados',
             resDescWr: 'El diccionario bilingüe más popular, con tablas de conjugación y foros de discusión.',
             resDescCollins: 'Excelente recurso bilingüe con pronunciación nativa en audio de alta calidad.',
@@ -300,15 +305,17 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescAnki: 'Tarjetas de memorización con algoritmo SRS, perfecto para estudiar vocabulario.',
             wordLabel: 'Palabra',
             sentenceLabel: 'Frase',
+            meaningLabel: 'Sign',
+            exampleLabel: 'Trad',
             navGreetings: 'Saludos',
             navPhrases: 'Frases comunes',
             navDining: 'Comida y Cena',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> Vel: ',
-            langLabel: '<i class="fas fa-globe"></i> Materno: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> Vel: '
         },
         ja: {
             heroTitle: 'Ciao, benvenuto!',
             heroSubtitle: 'イタリア語の学習へようこそ。ネイティブの発音、単語、日常会話を学びましょう。母国語での対訳表示にも対応しています。',
+            selectLangTitle: '<i class="fas fa-globe"></i> 母国語を選択してください (Select Your Native Language):',
             resTitleWeb: '<i class="fas fa-external-link-alt"></i> おすすめ学習サイト',
             resDescWr: '動詞変化表や活発なQ&Aコミュニティが魅力の世界的な伊英・英伊オンライン辞典。',
             resDescCollins: 'ネイティブスピーカーによる高品質な音声発音が付いた英伊・伊英学習辞典。',
@@ -323,15 +330,17 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescAnki: 'SRS（間隔反復）アルゴリズムを採用した単語カード。効率的な暗記に最適。',
             wordLabel: '単語',
             sentenceLabel: '例文',
+            meaningLabel: '意味',
+            exampleLabel: '対訳',
             navGreetings: '日常の挨拶',
             navPhrases: '実用表現',
             navDining: '飲食・グルメ',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> 速度: ',
-            langLabel: '<i class="fas fa-globe"></i> 母国語: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> 速度: '
         },
         ko: {
             heroTitle: 'Ciao, benvenuto!',
             heroSubtitle: '이탈리아어 학습 여정을 시작하세요. 모국어 번역과 함께 원어민 발음, 단어, 그리고 실생활 예문을 학습할 수 있습니다.',
+            selectLangTitle: '<i class="fas fa-globe"></i> 모국어를 선택하세요 (Select Your Native Language):',
             resTitleWeb: '<i class="fas fa-external-link-alt"></i> 추천 학습 사이트',
             resDescWr: '가장 널리 쓰이는 이탈리아어 사전으로 동사 변화표와 유용한 포럼 토론을 제공합니다.',
             resDescCollins: '원어민 오디오 발음이 포함된 고품질 영-이 사전입니다.',
@@ -346,11 +355,12 @@ document.addEventListener('DOMContentLoaded', () => {
             appDescAnki: 'SRS 알고리즘을 사용한 플래시카드 앱으로, 개인별 맞춤형 단어 암기에 탁월합니다.',
             wordLabel: '단어',
             sentenceLabel: '문장',
+            meaningLabel: '의미',
+            exampleLabel: '번역',
             navGreetings: '인사말',
             navPhrases: '유용한 대화',
             navDining: '식사 & 식당',
-            rateLabel: '<i class="fas fa-tachometer-alt"></i> 속도: ',
-            langLabel: '<i class="fas fa-globe"></i> 모국어: '
+            rateLabel: '<i class="fas fa-tachometer-alt"></i> 속도: '
         }
     };
 
@@ -360,13 +370,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const vocabDisplay = document.getElementById('vocab-display');
     const rateSlider = document.getElementById('voice-rate');
     const rateVal = document.getElementById('rate-val');
-    const nativeLangSelect = document.getElementById('native-lang');
+    const flagButtons = document.querySelectorAll('.flag-btn');
     const italianTabs = document.querySelectorAll('.btn-tab');
 
     // Speech synthesis function
     const speakItalian = (text) => {
         if ('speechSynthesis' in window) {
-            // Cancel current speech if speaking
             window.speechSynthesis.cancel();
             
             const utterance = new SpeechSynthesisUtterance(text);
@@ -391,7 +400,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const ui = uiTranslations[selectedNativeLanguage] || uiTranslations['en'];
 
         data.forEach(item => {
-            // Get translation block based on selected mother tongue, fall back to english
             const translation = item.translations[selectedNativeLanguage] || item.translations['en'];
 
             const card = document.createElement('div');
@@ -402,12 +410,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${item.word}
                         <span class="phonetic">/ ${item.phonetic} /</span>
                     </h3>
-                    <div class="meaning">${translation.meaning}</div>
+                    <div class="vocab-meaning-row">
+                        <span class="label-badge badge-meaning">${ui.meaningLabel}</span>
+                        <div class="meaning">${translation.meaning}</div>
+                    </div>
                     <div class="example">
                         <i class="fas fa-quote-left" style="font-size: 0.7rem; opacity: 0.5; margin-right: 0.3rem;"></i>
                         <strong>${translation.example}</strong>
                     </div>
-                    <div class="example-translation">${translation.exampleTranslation}</div>
+                    <div class="example-translation-row">
+                        <span class="label-badge badge-example">${ui.exampleLabel}</span>
+                        <div class="example-translation">${translation.exampleTranslation}</div>
+                    </div>
                 </div>
                 <div class="play-btn-group">
                     <button class="play-btn btn-play-word" aria-label="播放單字發音">
@@ -447,6 +461,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroTitle) heroTitle.innerText = ui.heroTitle;
         if (heroSubtitle) heroSubtitle.innerText = ui.heroSubtitle;
 
+        // Select lang title
+        const selectLangTitle = document.getElementById('select-lang-title');
+        if (selectLangTitle) selectLangTitle.innerHTML = ui.selectLangTitle;
+
         // Categories tabs text
         const tabGreetings = document.getElementById('tab-greetings');
         const tabPhrases = document.getElementById('tab-phrases');
@@ -458,8 +476,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Labels in control bar
         const rateLabel = document.getElementById('rate-label');
         if (rateLabel) rateLabel.innerHTML = ui.rateLabel;
-        const langLabel = document.getElementById('lang-label');
-        if (langLabel) langLabel.innerHTML = ui.langLabel;
 
         // Resource sections title & texts
         const resTitleWeb = document.getElementById('res-title-web');
@@ -516,14 +532,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Mother Tongue Dropdown listener
-    if (nativeLangSelect) {
-        nativeLangSelect.addEventListener('change', (e) => {
-            selectedNativeLanguage = e.target.value;
+    // Flag Buttons selection listener
+    flagButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Toggle active flag class
+            flagButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            selectedNativeLanguage = button.getAttribute('data-lang');
             translateUITexts(selectedNativeLanguage);
             renderVocabList(currentItalianCategory);
         });
-    }
+    });
 
     // Initialize list inside current category
     if (vocabDisplay) {
