@@ -43,6 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             },
             {
+                word: 'Buonasera',
+                phonetic: 'bwoh-nah-SEH-rah',
+                image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80',
+                translations: {
+                    zh: { meaning: '晚安 / 下午好', example: 'Buonasera! Come sta?', exampleTranslation: '晚安！您好嗎？' },
+                    en: { meaning: 'Good evening / Hello (evening)', example: 'Buonasera! Come sta?', exampleTranslation: 'Good evening! How are you?' },
+                    es: { meaning: 'Buenas tardes / Buenas noches', example: 'Buonasera! Come sta?', exampleTranslation: '¡Buenas noches! ¿Cómo está?' },
+                    ja: { meaning: 'こんばんは', example: 'Buonasera! Come sta?', exampleTranslation: 'こんばんは！お元気ですか？' },
+                    ko: { meaning: '좋은 저녁입니다 / 안녕하세요', example: 'Buonasera! Come sta?', exampleTranslation: '좋은 저녁입니다! 어떻게 지내세요?' }
+                }
+            },
+            {
                 word: 'Ciao',
                 phonetic: 'CHAH-oh',
                 image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80',
@@ -112,6 +124,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             },
             {
+                word: 'Amico',
+                phonetic: 'ah-MEE-koh',
+                image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=300&q=80',
+                translations: {
+                    zh: { meaning: '朋友', example: 'Lui è il mio migliore amico.', exampleTranslation: '他是我的好朋友。' },
+                    en: { meaning: 'Friend', example: 'Lui è il mio migliore amico.', exampleTranslation: 'He is my best friend.' },
+                    es: { meaning: 'Amigo', example: 'Lui è il mio migliore amico.', exampleTranslation: 'Él es mi mejor amigo.' },
+                    ja: { meaning: '友達 / 友人', example: 'Lui è il mio migliore amico.', exampleTranslation: '彼は私の親友です。' },
+                    ko: { meaning: '친구', example: 'Lui è il mio migliore amico.', exampleTranslation: '그는 내 가장 친한 친구입니다.' }
+                }
+            },
+            {
                 word: 'Dov\'è il bagno?',
                 phonetic: 'doh-VEH eel BAHN-yoh',
                 image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=300&q=80',
@@ -121,6 +145,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     es: { meaning: '¿Dónde está el baño?', example: 'Scusi, dov\'è il bagno in questo bar?', exampleTranslation: 'Disculpe, ¿dónde está el baño en este bar?' },
                     ja: { meaning: 'トイレはどこですか？', example: 'Scusi, dov\'è il bagno in questo bar?', exampleTranslation: 'すみません、このカフェのトイレはどこですか？' },
                     ko: { meaning: '화장실이 어디예요?', example: 'Scusi, dov\'è il bagno in questo bar?', exampleTranslation: '실례합니다, 이 카페의 화장실은 어디인가요?' }
+                }
+            },
+            {
+                word: 'Treno',
+                phonetic: 'TREH-noh',
+                image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=300&q=80',
+                translations: {
+                    zh: { meaning: '火車 / 列車', example: 'Il treno per Roma parte alle dieci.', exampleTranslation: '開往羅馬的火車在十點出發。' },
+                    en: { meaning: 'Train', example: 'Il treno per Roma parte alle dieci.', exampleTranslation: 'The train to Rome leaves at ten.' },
+                    es: { meaning: 'Tren', example: 'Il treno per Roma parte alle dieci.', exampleTranslation: 'El tren para Roma sale a las diez.' },
+                    ja: { meaning: '電車 / 列車', example: 'Il treno per Roma parte alle dieci.', exampleTranslation: 'ローマ行きの列車は10時に出発します。' },
+                    ko: { meaning: '기차 / 열차', example: 'Il treno per Roma parte alle dieci.', exampleTranslation: '로마행 기차는 10시에 출발합니다.' }
                 }
             },
             {
@@ -136,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 word: 'Parla inglese?',
-                phonetic: 'PAHR-lah een-GLEH-zeh',
                 translations: {
                     zh: { meaning: '您會說英文嗎？', example: 'Non parlo bene l\'italiano. Parla inglese?', exampleTranslation: '我義大利文說得不好。您會說英文嗎？' },
                     en: { meaning: 'Do you speak English?', example: 'Non parlo bene l\'italiano. Parla inglese?', exampleTranslation: 'I don\'t speak Italian well. Do you speak English?' },
@@ -218,6 +253,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             },
             {
+                word: 'Vino',
+                phonetic: 'VEE-noh',
+                image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=300&q=80',
+                translations: {
+                    zh: { meaning: '葡萄酒 / 紅酒', example: 'Vorrei un bicchiere di vino rosso.', exampleTranslation: '我想來一杯紅葡萄酒。' },
+                    en: { meaning: 'Wine', example: 'Vorrei un bicchiere di vino rosso.', exampleTranslation: 'I would like a glass of red wine.' },
+                    es: { meaning: 'Vino', example: 'Vorrei un bicchiere di vino rosso.', exampleTranslation: 'Me gustaría una copa de vino tinto.' },
+                    ja: { meaning: 'ワイン', example: 'Vorrei un bicchiere di vino rosso.', exampleTranslation: '赤ワインをグラスで一杯お願いします。' },
+                    ko: { meaning: '와인 / 포도주', example: 'Vorrei un bicchiere di vino rosso.', exampleTranslation: '레드 와인 한 잔 주세요.' }
+                }
+            },
+            {
+                word: 'Pane',
+                phonetic: 'PAH-neh',
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=300&q=80',
+                translations: {
+                    zh: { meaning: '麵包', example: 'Compriamo del pane fresco per cena.', exampleTranslation: '我們買些新鮮麵包當晚餐。' },
+                    en: { meaning: 'Bread', example: 'Compriamo del pane fresco per cena.', exampleTranslation: 'Let\'s buy some fresh bread for dinner.' },
+                    es: { meaning: 'Pan', example: 'Compriamo del pane fresco per cena.', exampleTranslation: 'Compremos pan fresco para la cena.' },
+                    ja: { meaning: 'パン', example: 'Compriamo del pane fresco per cena.', exampleTranslation: '夕食のために新鮮なパンを買いましょう。' },
+                    ko: { meaning: '빵', example: 'Compriamo del pane fresco per cena.', exampleTranslation: '저녁 식사로 신선한 빵을 좀 삽시다.' }
+                }
+            },
+            {
+                word: 'Formaggio',
+                phonetic: 'fohr-MAHD-joh',
+                image: 'https://images.unsplash.com/photo-1486299267070-83823f5448dd?auto=format&fit=crop&w=300&q=80',
+                translations: {
+                    zh: { meaning: '起司 / 乾酪', example: 'Mi piace molto il formaggio parmigiano.', exampleTranslation: '我非常喜歡帕馬森起司。' },
+                    en: { meaning: 'Cheese', example: 'Mi piace molto il formaggio parmigiano.', exampleTranslation: 'I really like parmesan cheese.' },
+                    es: { meaning: 'Queso', example: 'Mi piace molto il formaggio parmigiano.', exampleTranslation: 'Me gusta mucho el queso parmesano.' },
+                    ja: { meaning: 'チーズ', example: 'Mi piace molto il formaggio parmigiano.', exampleTranslation: '私はパルメザンチーズが大好きです。' },
+                    ko: { meaning: '치즈', example: 'Mi piace molto il formaggio parmigiano.', exampleTranslation: '나는 파르메산 치즈를 정말 좋아해요.' }
+                }
+            },
+            {
                 word: 'Acqua',
                 phonetic: 'AHK-wah',
                 image: 'https://images.unsplash.com/photo-1548839134-6fd0ec258549?auto=format&fit=crop&w=300&q=80',
@@ -243,7 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 word: 'Il conto, per favore',
-                phonetic: 'eel KOHN-toh pehr fah-VOH-reh',
                 translations: {
                     zh: { meaning: '請結帳', example: 'Cameriere, il conto, per favore.', exampleTranslation: '服務生，請幫我結帳。' },
                     en: { meaning: 'The bill, please', example: 'Cameriere, il conto, per favore.', exampleTranslation: 'Waiter, the bill please.' },
@@ -440,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="vocab-word-info">
                     <h3>
                         ${item.word}
-                        <span class="phonetic">/ ${item.phonetic} /</span>
+                        ${item.phonetic ? `<span class="phonetic">/ ${item.phonetic} /</span>` : ''}
                     </h3>
                     <div class="vocab-meaning-row">
                         <span class="label-badge badge-meaning">${ui.meaningLabel}</span>
