@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Toolbox - 多功能工具箱</title>
-    <meta name="description" content="集合多種實用數位工具的極致美感工具箱，包含開發者工具、設計助理與日常生產力工具。">
+    <title>Nova Italian - 義大利文學習空間</title>
+    <meta name="description" content="專為各國學習者打造的極致美感義大利文自學平台，提供真人般原生發音、生活常用字彙例句，並支援五種母語即時對照翻譯。">
     <!-- Google Fonts: Outfit & Noto Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Marked.js for Markdown parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,305 +19,151 @@
     <div class="bg-glow circle-1"></div>
     <div class="bg-glow circle-2"></div>
 
-    <div class="app-layout">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <a href="#" class="logo">
-                    <span class="logo-text">Nova</span><span class="logo-dot">.</span><span class="logo-sub">Box</span>
-                </a>
+    <!-- Navigation Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span class="logo-text">Nova</span><span class="logo-dot">.</span><span class="logo-sub">Italian</span>
+            </a>
+            <div class="header-controls">
+                <div class="lang-selector-wrapper">
+                    <label for="native-lang" id="lang-label"><i class="fas fa-globe"></i> 母語: </label>
+                    <select id="native-lang" class="select-dropdown">
+                        <option value="zh">繁體中文</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="ja">日本語</option>
+                        <option value="ko">한국어</option>
+                    </select>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="切換主題">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
-            
-            <div class="search-wrapper">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="tool-search" placeholder="搜尋工具...">
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Hero Banner Section -->
+        <section class="hero-banner">
+            <div class="flag-wrapper">
+                <span class="flag-strip green"></span>
+                <span class="flag-strip white"></span>
+                <span class="flag-strip red"></span>
+            </div>
+            <h2 id="hero-title">Ciao, benvenuto!</h2>
+            <p id="hero-subtitle">開啟您的義大利文學習之旅。在此學習最道地的發音、文字與生活例句，並可自由切換您的母語進行對照。</p>
+        </section>
+
+        <!-- Italian Learning Layout -->
+        <div class="italian-layout">
+            <!-- Left Panel: Word categories & Vocab List -->
+            <div class="italian-main-panel">
+                <div class="tool-control-bar">
+                    <div class="tab-selectors">
+                        <button class="btn btn-primary btn-tab active" data-category="greetings" id="tab-greetings">日常問候</button>
+                        <button class="btn btn-secondary btn-tab" data-category="phrases" id="tab-phrases">實用情境</button>
+                        <button class="btn btn-secondary btn-tab" data-category="dining" id="tab-dining">飲食餐飲</button>
+                    </div>
+                    <div class="voice-selection-bar">
+                        <label for="voice-rate" id="rate-label"><i class="fas fa-tachometer-alt"></i> 語速: </label>
+                        <span id="rate-val">1x</span>
+                        <input type="range" id="voice-rate" min="0.5" max="1.5" step="0.1" value="1">
+                    </div>
+                </div>
+
+                <div class="vocab-list-wrapper">
+                    <div id="vocab-display" class="vocab-grid">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                </div>
             </div>
 
-            <nav class="sidebar-nav">
-                <div class="nav-section">
-                    <span class="nav-section-title">工具分類</span>
-                    <ul class="nav-list">
+            <!-- Right Panel: Resources and links -->
+            <aside class="italian-resource-panel">
+                <div class="resource-section">
+                    <h3 id="res-title-web"><i class="fas fa-external-link-alt"></i> 義大利文推薦學習網站</h3>
+                    <ul class="resource-list">
                         <li>
-                            <button class="nav-btn active" data-target="dashboard">
-                                <i class="fas fa-th-large"></i> 儀表板首頁
-                            </button>
+                            <a href="https://www.wordreference.com/" target="_blank" class="resource-item">
+                                <strong>WordReference</strong>
+                                <span id="res-desc-wr">全球最受歡迎的義大利文字典，提供詳細的變位表與詞彙用法討論區。</span>
+                            </a>
                         </li>
                         <li>
-                            <button class="nav-btn" data-target="json-tool">
-                                <i class="fas fa-code"></i> JSON 格式化與驗證
-                            </button>
+                            <a href="https://www.collinsdictionary.com/dictionary/english-italian" target="_blank" class="resource-item">
+                                <strong>Collins Dictionary</strong>
+                                <span id="res-desc-collins">優質的英義雙語字典，內附清晰的單字原生真人發音。</span>
+                            </a>
                         </li>
                         <li>
-                            <button class="nav-btn" data-target="color-tool">
-                                <i class="fas fa-palette"></i> 漸層配色產生器
-                            </button>
-                        </li>
-                        <li>
-                            <button class="nav-btn" data-target="markdown-tool">
-                                <i class="fab fa-markdown"></i> Markdown 即時預覽
-                            </button>
-                        </li>
-                        <li>
-                            <button class="nav-btn" data-target="italian-tool">
-                                <i class="fas fa-language"></i> 義大利文學習助手
-                            </button>
+                            <a href="https://www.treccani.it/vocabolario/" target="_blank" class="resource-item">
+                                <strong>Treccani</strong>
+                                <span id="res-desc-treccani">義大利國家百科全書官方詞典，最權威的義義字典（適合中高級學者）。</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
-            </nav>
 
-            <div class="sidebar-footer">
-                <div class="theme-toggle-wrapper">
-                    <span>切換主題</span>
-                    <button class="theme-toggle" id="theme-toggle">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Main Workspace -->
-        <main class="workspace">
-            <header class="workspace-header">
-                <h1 id="active-tool-title">儀表板首頁</h1>
-                <div class="header-actions">
-                    <span class="status-indicator"><span class="status-dot"></span> 系統運作正常</span>
-                </div>
-            </header>
-
-            <div class="workspace-content">
-                <!-- Tab 1: Dashboard Home -->
-                <div class="tab-pane active" id="dashboard">
-                    <div class="dashboard-hero">
-                        <h2>歡迎來到 Nova Toolbox</h2>
-                        <p>為開發者與設計師打造的極致美感工具箱。點擊左側導覽列開始使用工具，或點擊下方卡片直接進入。</p>
-                    </div>
-
-                    <div class="tools-grid">
-                        <!-- Card 1 -->
-                        <div class="tool-card" data-card-target="json-tool">
-                            <div class="tool-card-icon bg-blue">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3>JSON 格式化與驗證</h3>
-                            <p>解析、格式化、排版與壓縮您的 JSON 數據，並即時檢查語法錯誤。</p>
-                            <span class="card-action">開始使用 <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                        
-                        <!-- Card 2 -->
-                        <div class="tool-card" data-card-target="color-tool">
-                            <div class="tool-card-icon bg-purple">
-                                <i class="fas fa-palette"></i>
-                            </div>
-                            <h3>漸層配色產生器</h3>
-                            <p>一鍵隨機生成高質感的調色盤，支援顏色鎖定、複製程式碼與配色調整。</p>
-                            <span class="card-action">開始使用 <i class="fas fa-arrow-right"></i></span>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="tool-card" data-card-target="markdown-tool">
-                            <div class="tool-card-icon bg-pink">
-                                <i class="fab fa-markdown"></i>
-                            </div>
-                            <h3>Markdown 即時預覽</h3>
-                            <p>雙欄式編輯器，即時將您的 Markdown 語法編譯成 HTML 渲染效果。</p>
-                            <span class="card-action">開始使用 <i class="fas fa-arrow-right"></i></span>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="tool-card" data-card-target="italian-tool">
-                            <div class="tool-card-icon bg-green">
-                                <i class="fas fa-language"></i>
-                            </div>
-                            <h3>義大利文學習助手</h3>
-                            <p>提供常用義大利文發音、文字與生活例句，並整合推薦學習網站、頻道與 App 資源。</p>
-                            <span class="card-action">開始使用 <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
+                <div class="resource-section">
+                    <h3 id="res-title-yt"><i class="fab fa-youtube"></i> 推薦 YouTube 學習頻道</h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://www.youtube.com/@LearnItalianwithLucrezia" target="_blank" class="resource-item">
+                                <strong>Learn Italian with Lucrezia</strong>
+                                <span id="res-desc-lucrezia">最受歡迎的義大利文網紅！發音標準，包含豐富的生活 Vlogs 與文法教學。</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/@EasyItalian" target="_blank" class="resource-item">
+                                <strong>Easy Italian</strong>
+                                <span id="res-desc-easy">街頭街坊實測學習！提供雙語字幕，帶您學習義大利人日常最真實的對話與語速。</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/@ItalyMadeEasy" target="_blank" class="resource-item">
+                                <strong>Italy Made Easy</strong>
+                                <span id="res-desc-easy-italy">主持人講英文十分風趣，透過科學與邏輯方法拆解義大利文的結構，非常適合完全零基礎。</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Tab 2: JSON Formatter & Validator -->
-                <div class="tab-pane" id="json-tool">
-                    <div class="tool-container">
-                        <div class="tool-control-bar">
-                            <button class="btn btn-primary" id="btn-json-format"><i class="fas fa-indent"></i> 美化排版</button>
-                            <button class="btn btn-secondary" id="btn-json-minify"><i class="fas fa-compress-arrows-alt"></i> 壓縮 Minify</button>
-                            <button class="btn btn-secondary" id="btn-json-clear"><i class="fas fa-trash-alt"></i> 清除</button>
-                            <button class="btn btn-secondary" id="btn-json-copy"><i class="fas fa-copy"></i> 複製結果</button>
-                        </div>
-                        
-                        <div class="editor-grid">
-                            <div class="editor-pane">
-                                <div class="pane-header">輸入原始 JSON</div>
-                                <textarea id="json-input" placeholder='請在此貼上您的 JSON 資料... 例如：\n{"name": "Nova", "age": 5, "active": true}'></textarea>
-                            </div>
-                            <div class="editor-pane">
-                                <div class="pane-header">輸出結果</div>
-                                <div id="json-output-wrapper">
-                                    <pre id="json-output" class="empty-output">格式化後的資料將在此顯示...</pre>
-                                </div>
+                <div class="resource-section">
+                    <h3 id="res-title-app"><i class="fas fa-mobile-alt"></i> 推薦實用 App</h3>
+                    <div class="app-badges">
+                        <div class="app-badge">
+                            <span class="app-icon"><i class="fas fa-owl"></i></span>
+                            <div class="app-details">
+                                <strong>Duolingo (多鄰國)</strong>
+                                <span id="app-desc-duo">每天 5 分鐘闖關式遊戲化學習，最適合建立基礎習慣。</span>
                             </div>
                         </div>
-                        <div id="json-status" class="tool-status-bar"></div>
-                    </div>
-                </div>
-
-                <!-- Tab 3: Color Palette Generator -->
-                <div class="tab-pane" id="color-tool">
-                    <div class="tool-container color-palette-container">
-                        <div class="color-control-header">
-                            <button class="btn btn-primary" id="btn-generate-colors"><i class="fas fa-sync-alt"></i> 隨機生成配色</button>
-                            <p class="tool-hint">提示：點擊色塊可以複製色彩代碼，點擊 <i class="fas fa-lock-open"></i> 鎖定色彩。</p>
-                        </div>
-
-                        <div class="palette-display" id="palette-display">
-                            <!-- Color slots will be populated by JS -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab 4: Markdown Previewer -->
-                <div class="tab-pane" id="markdown-tool">
-                    <div class="tool-container">
-                        <div class="tool-control-bar">
-                            <button class="btn btn-secondary" id="btn-md-clear"><i class="fas fa-trash-alt"></i> 清除</button>
-                            <button class="btn btn-secondary" id="btn-md-sample"><i class="fas fa-file-alt"></i> 載入範本</button>
-                        </div>
-                        
-                        <div class="editor-grid markdown-editor-grid">
-                            <div class="editor-pane">
-                                <div class="pane-header">編輯 Markdown</div>
-                                <textarea id="markdown-input" placeholder="# 歡迎使用 Markdown 編輯器\n\n在此輸入 Markdown 語法...\n\n- 項目一\n- 項目二\n\n**粗體字** 與 *斜體字*"></textarea>
+                        <div class="app-badge">
+                            <span class="app-icon"><i class="fas fa-brain"></i></span>
+                            <div class="app-details">
+                                <strong>Memrise (憶術家)</strong>
+                                <span id="app-desc-mem">利用原生短片加深字彙記憶，提供最道地的當地人用語。</span>
                             </div>
-                            <div class="editor-pane">
-                                <div class="pane-header">即時預覽</div>
-                                <div id="markdown-output" class="markdown-body">
-                                    <!-- Parsed markdown will be outputted here -->
-                                </div>
+                        </div>
+                        <div class="app-badge">
+                            <span class="app-icon"><i class="fas fa-clone"></i></span>
+                            <div class="app-details">
+                                <strong>Anki 記憶卡</strong>
+                                <span id="app-desc-anki">使用間隔重複系統 (SRS) 演算法，適合高效率背單字。</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </aside>
+        </div>
+    </main>
 
-                <!-- Tab 5: Italian Learning Tool -->
-                <div class="tab-pane" id="italian-tool">
-                    <div class="italian-layout">
-                        <!-- Left Panel: Word categories -->
-                        <div class="italian-main-panel">
-                            <div class="tool-control-bar flex-between">
-                                <div class="tab-selectors">
-                                    <button class="btn btn-primary btn-tab active" data-category="greetings">日常問候</button>
-                                    <button class="btn btn-secondary btn-tab" data-category="phrases">實用情境</button>
-                                    <button class="btn btn-secondary btn-tab" data-category="dining">飲食餐飲</button>
-                                </div>
-                                <div class="control-actions-wrapper">
-                                    <div class="lang-selector-wrapper">
-                                        <label for="native-lang"><i class="fas fa-globe"></i> 母語: </label>
-                                        <select id="native-lang" class="select-dropdown">
-                                            <option value="zh">繁體中文</option>
-                                            <option value="en">English</option>
-                                            <option value="es">Español</option>
-                                            <option value="ja">日本語</option>
-                                            <option value="ko">한국어</option>
-                                        </select>
-                                    </div>
-                                    <div class="voice-selection-bar">
-                                        <label for="voice-rate"><i class="fas fa-tachometer-alt"></i> 語速: </label>
-                                        <span id="rate-val">1x</span>
-                                        <input type="range" id="voice-rate" min="0.5" max="1.5" step="0.1" value="1">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="vocab-list-wrapper">
-                                <div id="vocab-display" class="vocab-grid">
-                                    <!-- Populated dynamically by JS -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Right Panel: Resources and tips -->
-                        <div class="italian-resource-panel">
-                            <div class="resource-section">
-                                <h3 id="res-title-web"><i class="fas fa-external-link-alt"></i> 義大利文推薦學習網站</h3>
-                                <ul class="resource-list">
-                                    <li>
-                                        <a href="https://www.wordreference.com/" target="_blank" class="resource-item">
-                                            <strong>WordReference</strong>
-                                            <span id="res-desc-wr">全球最受歡迎的義大利文字典，提供詳細的變位表與詞彙用法討論區。</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.collinsdictionary.com/dictionary/english-italian" target="_blank" class="resource-item">
-                                            <strong>Collins Dictionary</strong>
-                                            <span id="res-desc-collins">優質的英義雙語字典，內附清晰的單字原生真人發音。</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.treccani.it/vocabolario/" target="_blank" class="resource-item">
-                                            <strong>Treccani</strong>
-                                            <span id="res-desc-treccani">義大利國家百科全書官方詞典，最權威的義義字典（適合中高級學者）。</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="resource-section">
-                                <h3 id="res-title-yt"><i class="fab fa-youtube"></i> 推薦 YouTube 學習頻道</h3>
-                                <ul class="resource-list">
-                                    <li>
-                                        <a href="https://www.youtube.com/@LearnItalianwithLucrezia" target="_blank" class="resource-item">
-                                            <strong>Learn Italian with Lucrezia</strong>
-                                            <span id="res-desc-lucrezia">最受歡迎的義大利文網紅！發音標準，包含豐富的生活 Vlogs 與文法教學。</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.youtube.com/@EasyItalian" target="_blank" class="resource-item">
-                                            <strong>Easy Italian</strong>
-                                            <span id="res-desc-easy">街頭街坊實測學習！提供雙語字幕，帶您學習義大利人日常最真實的對話與語速。</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.youtube.com/@ItalyMadeEasy" target="_blank" class="resource-item">
-                                            <strong>Italy Made Easy</strong>
-                                            <span id="res-desc-easy-italy">主持人講英文十分風趣，透過科學與邏輯方法拆解義大利文的結構，非常適合完全零基礎。</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="resource-section">
-                                <h3 id="res-title-app"><i class="fas fa-mobile-alt"></i> 推薦實用 App</h3>
-                                <div class="app-badges">
-                                    <div class="app-badge">
-                                        <span class="app-icon"><i class="fas fa-owl"></i></span>
-                                        <div class="app-details">
-                                            <strong>Duolingo (多鄰國)</strong>
-                                            <span id="app-desc-duo">每天 5 分鐘闖關式遊戲化學習，最適合建立基礎習慣。</span>
-                                        </div>
-                                    </div>
-                                    <div class="app-badge">
-                                        <span class="app-icon"><i class="fas fa-brain"></i></span>
-                                        <div class="app-details">
-                                            <strong>Memrise (憶術家)</strong>
-                                            <span id="app-desc-mem">利用原生短片加深字彙記憶，提供最道地的當地人用語。</span>
-                                        </div>
-                                    </div>
-                                    <div class="app-badge">
-                                        <span class="app-icon"><i class="fas fa-clone"></i></span>
-                                        <div class="app-details">
-                                            <strong>Anki 記憶卡</strong>
-                                            <span id="app-desc-anki">使用間隔重複系統 (SRS) 演算法，適合高效率背單字。</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
+    <!-- Footer -->
+    <footer class="app-footer-bar">
+        <p>&copy; 2026 Nova Italian. 保留所有權利。 Designed by Antigravity.</p>
+    </footer>
 
     <!-- Scripts -->
     <script src="script.js"></script>
